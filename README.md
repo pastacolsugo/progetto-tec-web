@@ -16,9 +16,13 @@ Pagine:
 	* Ricerca
 	* Product card
 * Pagina di ricerca
+	* Lista prodotti
+* Pagina prodotto
 * Login / Signup
-* Gestione listino
+* Checkout page
+* Payment page
 * Impostazioni
+* Gestione listino (venditore)
 
 * Notifiche
 
@@ -37,3 +41,11 @@ Pagine:
 * DB con i prodotti e gli utenti
 * Server
 * Servizio notifiche (push + mail + eventuali)
+
+### Interesting technologies
+
+* Bootstrap
+* GraphQL
+* Laravel
+* zxcvbn
+* MariaDB (?)
