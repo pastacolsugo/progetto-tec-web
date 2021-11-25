@@ -1,130 +1,160 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="index.scss">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>eCommerce bello</title>
-  </head>
-  <body>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="index.scss">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <title>eCommerce bello</title>
+</head>
 
-    <!-- Questo è il navbar -->
-    <header>
-        <nav class="navbar navbar-light bg-light">
-            <div class="container-fluid">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <a class="navbar-brand" href="#">eCommerce</a>
-                        </div>
-                      <div class="col-6">
-                        <div class="container">
-                            <form class="d-flex">
-                              <input class="form-control me-2" type="search" placeholder="Search a product" aria-label="Search">
-                              <button class="btn btn-outline-primary" type="submit">Search</button>
-                            </form>
-                          </div>
-                      </div>
-                      <div class="col">
-                        <div class="container-sm">
-                            <div class="row">
-                              <div class="col">
-                                <button type="button" class="btn btn-link">Sign in</button>
-                              </div>
-                              <div class="col">
-                                <button type="button" class="btn btn-primary">Sign up!</button>
-                              </div>
-                            </div>
-                          </div> 
-                      </div>
-                    </div> 
-                </div>
-            </div>
-          </nav>
-    </header>
+<body>
 
-    <!-- main -->
-    <main>
-      <section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+  <!-- Questo è il navbar -->
+  <header>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
         <div class="container">
-          <div class="container">
-              <div class="row">
-                <div class="col">
-                  <p>Inizia ora ad aquistare</p>
-                  <h1>
-                      Compra tutto quello che ti serve, quando ti serve e comodamente da casa tua.
-                  </h1>
-                  <h3>
-                    eCommerce è il sito più semplice per acquistare e vendere qualsiasi prodotto. Registrati per iniziare oggi stesso.
-                  </h3>
-                  <button type="button" class="btn btn-primary">Sign up!</button>
-                </div>
-                <div class="col">
-                  <span class="border-0">
-                    <h2>
-                      Prodotti hot
-                    </h2>
-                  </span>  
+          <div class="row">
+            <div class="col">
+              <a class="navbar-brand" href="#">eCommerce</a>
+            </div>
+            <div class="col-6">
+              <div class="container">
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search a product" aria-label="Search">
+                  <button class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+            <div class="col">
+              <div class="container-sm">
+                <div class="row">
+                  <div class="col">
+                    <button type="button" class="btn btn-link">Sign in</button>
+                  </div>
+                  <div class="col">
+                    <button type="button" class="btn btn-primary">Sign up!</button>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
       </div>
-      </section>
-      <section>
+    </nav>
+  </header>
 
-        <!-- tabella offerta premium -->
+  <!-- main -->
+  <main>
+    <section>
+      <div class="container">
         <div class="container">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Tipo piano</th>
-                <th scope="col">Piano Standard</th>
-                <th scope="col">Piano Premium</th>
-                <th scope="col">Piano Premium family</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">n° Account</th>
-                <td>1</td>
-                <td>1</td>
-                <td>6</td>
-              </tr>
-              <tr>
-                <th scope="row">Consegna</th>
-                <td>X</td>
-                <td>Gratuita *</td>
-                <td>Gratuita *</td>
-              </tr>
-              <tr>
-                <th scope="row">Tempi di consegna</th>
-                <td>3-5 giorni lavorativi</td>
-                <td>1-2 giorni festivi inclusi</td>
-                <td>1-2 giorni festivi inclusi</td>
-              </tr>
-              <tr>
-                <th scope="row">Prezzi</th>
-                <td>0$/m</td>
-                <td>4.99$/m</td>
-                <td>11.99$/m</td>
-              </tr>
-            </tbody>
-          </table>
-          <button type="button" class="btn btn-primary">Scopri di più</button>
-        </div> 
-      </section>
-          <footer class="footer">
-            <div class="container">
-              <span class="text-muted">footer.</span>
+          <div class="row">
+            <div class="col">
+              <p>Inizia ora ad aquistare</p>
+              <h1>
+                Compra tutto quello che ti serve, quando ti serve e comodamente da casa tua.
+              </h1>
+              <h3>
+                eCommerce è il sito più semplice per acquistare e vendere qualsiasi prodotto. Registrati per iniziare
+                oggi stesso.
+              </h3>
+              <button type="button" class="btn btn-primary">Sign up!</button>
             </div>
-          </footer>
-    </main>
-  </body>
+            <div class="col">
+              <span class="border-0">
+                <h2>
+                  Prodotti hot
+                </h2>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+
+      <!-- tabella offerta premium -->
+      <div class="container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Tipo piano</th>
+              <th scope="col">Piano Standard</th>
+              <th scope="col">Piano Premium</th>
+              <th scope="col">Piano Premium family</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">n° Account</th>
+              <td>1</td>
+              <td>1</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <th scope="row">Consegna</th>
+              <td>X</td>
+              <td>Gratuita *</td>
+              <td>Gratuita *</td>
+            </tr>
+            <tr>
+              <th scope="row">Tempi di consegna</th>
+              <td>3-5 giorni lavorativi</td>
+              <td>1-2 giorni festivi inclusi</td>
+              <td>1-2 giorni festivi inclusi</td>
+            </tr>
+            <tr>
+              <th scope="row">Prezzi</th>
+              <td>0$/m</td>
+              <td>4.99$/m</td>
+              <td>11.99$/m</td>
+            </tr>
+          </tbody>
+        </table>
+        <button type="button" class="btn btn-primary">Scopri di più</button>
+      </div>
+    </section>
+
+    <section>
+      <div class="timeline">
+        <div class="container">
+          <header>
+            <h3>RoadMap</h3>
+          </header>
+        </div>
+       
+        <div class="container">
+          <div class="date">15 Dec</div>
+          <i class="icon fa fa-home"></i>
+          <div class="content">
+            <h2>Lorem ipsum dolor sit amet</h2>
+            <p>
+              Lorem ipsum dolor sit amet elit. Aliquam odio dolor, id luctus erat sagittis non. Ut blandit semper
+              pretium.
+            </p>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">footer.</span>
+      </div>
+    </footer>
+  </main>
+</body>
+
 </html>
