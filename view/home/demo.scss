@@ -1,0 +1,13 @@
+// Custom.scss
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+#mainfoto{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.selector-for-some-widget {
+    box-sizing: content-box;
+}
