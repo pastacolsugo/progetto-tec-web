@@ -1,0 +1,21 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+*{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 100%;
+}
+#background-img{
+    background-image: url('/Users/endridomi/Documents/GitHub/progetto-tec-web/img/space1.jpeg');
+    background-size: contain;
+}
+#mainText{
+    margin-top: 5rem;
+    text-align: center;
+}
+#secondText{
+    margin: 2rem;
+    text-align: center;
+}
+.card{
+    box-sizing: border-box;
+}
