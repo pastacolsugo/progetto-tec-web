@@ -19,6 +19,8 @@ class CreateProductsTable extends Migration
             $table->floatval('price');
             $table->string('description');
             $table->integer('stock');
+            $table->string('categoryName');
+            $table->string('sellerName');
         });
     }
 
