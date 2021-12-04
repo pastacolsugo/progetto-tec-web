@@ -3,6 +3,46 @@
     font-size: 100%;
 }
 
-.nav-item{
+h2{
+    text-align: center;
+    color: rgb(118, 214, 255);
+}
+
+.card{
+    transition: transform .3s;
+    box-shadow: rgba(0, 0, 0, 0.3);
+    border-bottom: rgba(0, 0, 0, 0.3);
+}
+
+.card:hover{
+    transform: translateY(5px);
+
+}
+
+.card-title{
+    text-align: center;
+}
+
+.card-text{
+    text-align: center;
+}
+
+.card-view{
+    background-color: red;
+}
+
+#view-standard:hover{
+    background-color: blue;
+}
+
+#view-premium:hover{
+    background-color: chartreuse;
+}
+
+#view-business:hover{
+    background-color: darkgoldenrod;
+}
+
+.card-view > .service-name-item{
     text-align: center;
 }
