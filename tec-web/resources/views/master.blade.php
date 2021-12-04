@@ -3,10 +3,9 @@
     <div class="container-lg py-3">
         <div class="row">
             <div class="col py-2">
-                <h1 class="display-3 text-center text-md-start">
+                <h2 class="display-3 text-center text-md-start" id="main-title">
                     Compra quello che vuoi, quando vuoi, dove vuoi...
-                    Con un semplice click!
-                </h1>
+                </h2>
                 <h3 class="lead text-center text-md-start text-muted mb-6 mb-lg-8 py-2">
                     eCommerce è il sito più semplice per acquistare e vendere quello che ti serve.
                     Registrati per iniziare oggi stesso.

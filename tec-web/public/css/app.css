@@ -3,9 +3,16 @@
     font-size: 100%;
 }
 
+#title-navbar{
+    color: red;
+}
+
+#main-title{
+    font-family: 'Merriweather', serif;
+}
+
 h2{
     text-align: center;
-    color: rgb(118, 214, 255);
 }
 
 .card{
