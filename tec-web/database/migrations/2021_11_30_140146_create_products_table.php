@@ -19,8 +19,8 @@ class CreateProductsTable extends Migration
             $table->floatval('price');
             $table->string('description');
             $table->integer('stock');
-            $table->string('categoryName');
-            $table->string('sellerName');
+            $table->string('category_name');
+            $table->foreign('user_id')->references('id')->on('user');
         });
     }
 
