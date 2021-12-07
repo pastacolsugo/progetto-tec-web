@@ -14,6 +14,7 @@ class CreateOrderItemsTable extends Migration
     public function up()
     {
         Schema::create('order_items', function (Blueprint $table) {
+            $table->id();
             $table->foreign('product_id')->references('id')->on('product');
             $table->foreign('order_id')->references('id')->on('order');
             $table->integer('quantity');
