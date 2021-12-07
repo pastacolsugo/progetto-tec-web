@@ -15,11 +15,12 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string("ship_address");
+            $table->string('ship_address');
             $table->date('order_date');
             $table->date('shipped_date');
-            $table->floatval('order_total');
-            $table->string("order_status");
+            $table->float('order_total', 8, 2);
+            $table->string('order_status');
+            $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
@@ -31,6 +32,12 @@ class CreateOrdersTable extends Migration
      */
     public function down()
     {
+        Schema::table('orders', function (Blueprint $table)
+        {
+            $table->dropForeign('orders_user_id_foreign');
+            $table->dropColumn('user_id');
+        });
+
         Schema::dropIfExists('orders');
     }
 }

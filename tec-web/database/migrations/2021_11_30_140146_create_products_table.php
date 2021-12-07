@@ -14,13 +14,14 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('name');
-            $table->floatval('price');
+            $table->float('price', 8, 2);
             $table->string('description');
             $table->integer('stock');
             $table->string('category_name');
-            $table->foreign('user_id')->references('id')->on('user');
+            $table->bigInteger('seller_id')->unsigned();
+            $table->foreign('seller_id')->references('id')->on('users');
         });
     }
 
@@ -31,6 +32,12 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
+        Schema::table('products', function (Blueprint $table)
+        {
+            $table->dropForeign('products_seller_id_foreign');
+            $table->dropColumn('seller_id');
+        });
+
         Schema::dropIfExists('products');
     }
 }

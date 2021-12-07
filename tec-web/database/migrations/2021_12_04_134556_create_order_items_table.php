@@ -15,8 +15,10 @@ class CreateOrderItemsTable extends Migration
     {
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->foreign('product_id')->references('id')->on('product');
-            $table->foreign('order_id')->references('id')->on('order');
+            $table->bigInteger('product_id')->unsigned();
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->bigInteger('order_id')->unsigned();
+            $table->foreign('order_id')->references('id')->on('orders');
             $table->integer('quantity');
         });
     }
@@ -28,6 +30,14 @@ class CreateOrderItemsTable extends Migration
      */
     public function down()
     {
+        Schema::table('order_items', function (Blueprint $table)
+        {
+            $table->dropForeign('order_items_product_id_foreign');
+            $table->dropColumn('product_id');
+            $table->dropForeign('order_items_order_id_foreign');
+            $table->dropColumn('order_id');
+        });
+
         Schema::dropIfExists('order_items');
     }
 }

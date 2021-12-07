@@ -19,6 +19,7 @@ class CreateAddressesTable extends Migration
             $table->integer('ZIP_code');
             $table->string("city");
             $table->string("province");
+            $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
@@ -30,6 +31,12 @@ class CreateAddressesTable extends Migration
      */
     public function down()
     {
+        Schema::table('addresses', function (Blueprint $table)
+        {
+            $table->dropForeign('addresses_user_id_foreign');
+            $table->dropColumn('user_id');
+        });
+
         Schema::dropIfExists('addresses');
     }
 }
