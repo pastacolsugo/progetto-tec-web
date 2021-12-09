@@ -13,7 +13,7 @@
             </div>
             <div class="col py-2">
                 <div class="card">
-                    <img src="img/girl-gacd840e76_1920.jpg"" class=" card-img-top" alt="...">
+                    <img src="img/girl-gacd840e76_1920.jpg" class=" card-img-top" alt="...">
                     <div class="card-body">
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     </div>
