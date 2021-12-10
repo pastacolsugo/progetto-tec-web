@@ -19,7 +19,8 @@ class CreateProductsTable extends Migration
             $table->float('price', 8, 2);
             $table->string('description');
             $table->integer('stock');
-            $table->string('category_name');
+            $table->bigInteger('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->bigInteger('seller_id')->unsigned();
             $table->foreign('seller_id')->references('id')->on('users');
             $table->timestamps();
@@ -37,6 +38,8 @@ class CreateProductsTable extends Migration
         {
             $table->dropForeign('products_seller_id_foreign');
             $table->dropColumn('seller_id');
+            $table->dropForeign('products_category_id_foreign');
+            $table->dropColumn('category_id');
         });
 
         Schema::dropIfExists('products');

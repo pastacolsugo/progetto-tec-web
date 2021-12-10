@@ -20,6 +20,7 @@ class CreateCartItemsTable extends Migration
             $table->bigInteger('cart_id')->unsigned();
             $table->foreign('cart_id')->references('id')->on('carts');
             $table->integer('quantity');
+            $table->timestamps();
         });
     }
 
