@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\User;
-use App\Models\Category;
 
 class ProductFactory extends Factory
 {
@@ -20,7 +19,6 @@ class ProductFactory extends Factory
             'price' => $this->faker->randomFloat(2, 0, 10000),
             'description' => $this->faker->paragraph(),
             'stock' => $this->faker->randomNumber($nbDigits = 3),
-            'category_name' => Category::factory(),
             'seller_id' => User::factory(),
         ];
     }

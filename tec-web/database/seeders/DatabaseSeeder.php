@@ -3,6 +3,11 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Cart;
+use App\Models\Address;
+use App\Models\Category;
+use App\Models\Product;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,7 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Cart::factory(10)->create();
-        \App\Models\Product::factory(10)->create();
+        User::factory(10)->has(Cart::factory())->has(Address::factory()->count(2))->create();
+        Category::factory()->has(Product::factory(10))->create();
     }
 }

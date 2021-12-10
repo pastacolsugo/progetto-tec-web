@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\User;
 
 class CartFactory extends Factory
 {
@@ -17,7 +16,6 @@ class CartFactory extends Factory
         return [
             'subtotal' => 0,
             'items' => 0,
-            'user_id' => User::factory(),
         ];
     }
 }
