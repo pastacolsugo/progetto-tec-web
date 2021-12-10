@@ -19,7 +19,7 @@ class ProductFactory extends Factory
             'name' => $this->faker->word(),
             'price' => $this->faker->randomFloat(2, 0, 10000),
             'description' => $this->faker->paragraph(),
-            'stock' => $this->faker->randomNumber($nbDigits = 8),
+            'stock' => $this->faker->randomNumber($nbDigits = 3),
             'category_name' => Category::factory(),
             'seller_id' => User::factory(),
         ];
