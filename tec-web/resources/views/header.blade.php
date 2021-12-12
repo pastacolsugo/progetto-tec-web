@@ -15,7 +15,7 @@
         <li class="nav-item">
           <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button class="btn btn-outline-primary" type="submit">Search</button>
           </form>
         </li>
       </ul>
@@ -30,7 +30,7 @@
           </a>
         </li>
         <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link p-2" href="login.blade.php">
+          <a class="nav-link p-2" href="/login">
             <button class="btn btn-primary>">
               <span>Log In</span>
             </button>
