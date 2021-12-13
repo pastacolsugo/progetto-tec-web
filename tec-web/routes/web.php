@@ -24,3 +24,5 @@ Route::get('login', function() {
 */
 
 Route::view('/login', 'login');
+
+Route::view("/products", 'products');
