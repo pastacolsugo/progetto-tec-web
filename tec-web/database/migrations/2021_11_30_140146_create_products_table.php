@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->bigInteger('seller_id')->unsigned();
             $table->foreign('seller_id')->references('id')->on('users');
+            $table->string('gallery');
             $table->timestamps();
         });
     }

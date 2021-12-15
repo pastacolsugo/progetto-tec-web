@@ -20,6 +20,7 @@ class ProductFactory extends Factory
             'description' => $this->faker->paragraph(),
             'stock' => $this->faker->randomNumber($nbDigits = 3),
             'seller_id' => User::factory(),
+            'gallery' => $this->faker->imageUrl(),
         ];
     }
 }
