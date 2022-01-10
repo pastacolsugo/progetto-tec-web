@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,8 @@ Route::get('/', function () {
 });
 
 Route::view("/products", 'products');
+
+Route::get('/search', SearchController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
