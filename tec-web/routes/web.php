@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/a', function () {
+    return view('products');
+});
+
 Route::view("/products", 'products');
 
 Route::get('/search', SearchController::class);
@@ -25,5 +30,7 @@ Route::get('/search', SearchController::class);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::resource('product', ProductController::class);
 
 require __DIR__.'/auth.php';
