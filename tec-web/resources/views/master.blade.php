@@ -30,7 +30,7 @@
 	<!-- 2-view: top-choise-->
 	<section id="second-view">
 		<div class="container py-2">
-
+			
 		</div>
 	</section>
 
