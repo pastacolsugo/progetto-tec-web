@@ -19,27 +19,32 @@ class UserSeeder extends Seeder
             [
                 'name'=>'Peter Parker',
                 'email'=>'peter@parker.com',
-                'password'=>Hash::make('12345')
+                'password'=>Hash::make('12345'),
+                'isSeller'=>FALSE
             ],
             [
                 'name'=>'Bruce Banner',
                 'email'=>'bruce@banner.com',
-                'password'=>Hash::make('12345')
+                'password'=>Hash::make('12345'),
+                'isSeller'=>FALSE
             ],
             [
                 'name'=>'Tony Stark',
                 'email'=>'tony@stark.com',
-                'password'=>Hash::make('12345')
+                'password'=>Hash::make('12345'),
+                'isSeller'=>TRUE
             ],
             [
                 'name'=>'Steve Rogers',
                 'email'=>'steve@rogers.com',
-                'password'=>Hash::make('12345')
+                'password'=>Hash::make('12345'),
+                'isSeller'=>FALSE
             ],
             [
                 'name'=>'Natasha Romanoff',
                 'email'=>'natasha@romanoff.com',
-                'password'=>Hash::make('12345')
+                'password'=>Hash::make('12345'),
+                'isSeller'=>FALSE
             ]
         ]);
     }
