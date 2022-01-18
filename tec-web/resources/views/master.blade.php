@@ -36,7 +36,6 @@
 
 	<!-- 3-view: last-view-products -->
 	<section id="third-view">
-
 	</section>
 
 </main>
