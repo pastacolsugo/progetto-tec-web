@@ -16,11 +16,10 @@
 
 
     <main>
-       <div class="card-grid">
-            <div>
-                hi
-            </div>
-       </div>
+        <div class="card-grid">
+            
+        
+        </div>
     </main>
 
     <!-- footer -->
