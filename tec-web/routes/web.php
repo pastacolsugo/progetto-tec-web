@@ -19,13 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/a', function () {
-    return view('products');
-});
-
 Route::view("/products", 'products');
 
-Route::get('/search', SearchController::class);
+Route::get('/search', SearchController::class)->middleware('guest');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
