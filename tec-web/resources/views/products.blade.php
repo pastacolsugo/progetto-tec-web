@@ -16,85 +16,11 @@
 
 
     <main>
-        <table>
-            <div class="row">
-                <div class="col-3">
-
-                </div>
-                <div class="col-9">
-                    <!-- products -->
-                    <div class="container-lg py-3">
-                        <div class="row">
-                            <div class="col">
-                                <div class="card" style="width: 15rem;">
-                                    <img src="/img/iphone.jpeg" class="card-img-top" alt="">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Apple iPhone 13 Pro Max (512 GB) - Azzurro Sierra</h5>
-                                        <p class="card-text">Prezzo: 1.639,00$</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card" style="width: 15rem;">
-                                    <img src="/img/iphone.jpeg" class="card-img-top" alt="">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Apple iPhone 13 Pro Max (512 GB) - Azzurro Sierra</h5>
-                                        <p class="card-text">Prezzo: 1.639,00$</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card" style="width: 15rem;">
-                                    <img src="/img/iphone.jpeg" class="card-img-top" alt="">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Apple iPhone 13 Pro Max (512 GB) - Azzurro Sierra</h5>
-                                        <p class="card-text">Prezzo: 1.639,00$</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container-lg py-3">
-                        <div class="row">
-                            <div class="col">
-                                <div class="card" style="width: 15rem;">
-                                    <img src="/img/iphone.jpeg" class="card-img-top" alt="">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Apple iPhone 13 Pro Max (512 GB) - Azzurro Sierra</h5>
-                                        <p class="card-text">Prezzo: 1.639,00$</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card" style="width: 15rem;">
-                                    <img src="/img/iphone.jpeg" class="card-img-top" alt="">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Apple iPhone 13 Pro Max (512 GB) - Azzurro Sierra</h5>
-                                        <p class="card-text">Prezzo: 1.639,00$</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card" style="width: 15rem;">
-                                    <img src="/img/iphone.jpeg" class="card-img-top" alt="">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Apple iPhone 13 Pro Max (512 GB) - Azzurro Sierra</h5>
-                                        <p class="card-text">Prezzo: 1.639,00$</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+       <div class="card-grid">
+            <div>
+                hi
             </div>
-        </table>
-
+       </div>
     </main>
 
     <!-- footer -->
