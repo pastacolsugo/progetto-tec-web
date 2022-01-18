@@ -17,7 +17,7 @@
         </li>
       </ul>
       <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
-        <li class="nav-item col-6 col-md-auto">
+        <li class="nav-item col-4 col-md-auto">
           <a class="nav-link p-2" href="https://github.com/pastacolsugo/progetto-tec-web" target="_blank" rel="noopener">
             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" class="navbar-nav-svg d-inline-block align-text-top" viewBox="0 0 512 499.36" role="img">
               <title>GitHub</title>
@@ -26,10 +26,17 @@
             <small class="d-md-none ms-2">GitHub</small>
           </a>
         </li>
-        <li class="nav-item col-6 col-md-auto">
+        <li class="nav-item col-4 col-md-auto">
           <a class="nav-link p-2" href="/login">
-            <button class="btn btn-primary>">
+            <button class="btn">
               <span>Log In</span>
+            </button>
+          </a>
+        </li>
+        <li class="nav-item col-4 col-md-auto">
+          <a class="nav-link p-2" href="/products">
+            <button class="btn">
+              <span>Shopping bag</span>
             </button>
           </a>
         </li>
