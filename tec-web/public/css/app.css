@@ -1,3 +1,5 @@
+@charset "uft-8";
+
 *, *::after, *::before{
     font-family: 'Open Sans', sans-serif;
 }
