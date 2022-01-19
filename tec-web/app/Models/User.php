@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'isSeller'
     ];
 
     /**
@@ -45,13 +46,13 @@ class User extends Authenticatable
     public function addresses() {
 
         return $this->hasMany('App\Models\Address');
-  
+
     }
 
     public function cart() {
 
         return $this->hasOne('App\Models\Cart');
-  
+
     }
 
 }
