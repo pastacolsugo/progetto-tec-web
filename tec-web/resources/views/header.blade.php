@@ -10,8 +10,8 @@
           <a class="nav-link" href="/products">Prodotti</a>
         </li>
         <li class="nav-item">
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <form action="/search" method="get" class="d-flex">
+            <input id="searchQuery" name="searchQuery" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-primary" type="submit">Search</button>
           </form>
         </li>
