@@ -19,17 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/products', 'products', function () {
-
-//     $products = \App\Models\Product::all();
-
-//     dd($products);
-
-//     return view('products', ['products' => $products]);
-// });
-
-Route::view("/products", 'products');
-
 Route::get('/search', SearchController::class);
 
 Route::get('/dashboard', function () {
