@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
+<!-- TODO remove view when is no longer needed -->
 <body>
     TEST VIEW
     @foreach ($products as $product)
