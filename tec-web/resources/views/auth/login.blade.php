@@ -1,9 +1,10 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
+            <!-- TODO @endri: uncomment logo once css correctly resizes it in the page -->
+            <!-- <a href="/">
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+            </a> -->
         </x-slot>
 
         <!-- Session Status -->
