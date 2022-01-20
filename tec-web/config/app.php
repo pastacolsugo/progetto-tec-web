@@ -79,6 +79,8 @@ return [
     | to any of the locales which will be supported by the application.
     |
     */
+    // TODO: check localization configuration
+    // https://laravel.com/docs/8.x/localization
 
     'locale' => 'en',
 
