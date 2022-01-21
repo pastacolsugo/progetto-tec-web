@@ -9,6 +9,7 @@ use App\Models\Address;
 use App\Models\Category;
 use App\Models\Product;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -18,7 +19,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(10)->has(Cart::factory())->has(Address::factory()->count(2))->create();
-        Category::factory()->has(Product::factory(10))->create();
+        $this->call([
+            CategorySeeder::class,
+            UserSeeder::class,
+            ProductSeeder::class,
+            CartSeeder::class,
+        ]);
+        // User::factory(10)->has(Cart::factory())->has(Address::factory()->count(2))->create();
+        // Category::factory()->has(Product::factory(10))->create();
     }
 }
