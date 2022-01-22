@@ -1,81 +1,180 @@
 @charset "uft-8";
 
-*, *::after, *::before{
+*,
+*::after,
+*::before {
     font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
 }
 
-.card-grid{
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+}
+
+.brand-title {
+    font-size: 1.5rem;
+    margin: .5rem;
+}
+
+.navbar-links {
+    height: 100%;
+}
+
+.navbar-links ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    list-style: none;
+}
+
+.navbar-links li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+}
+
+.navbar-links li:hover {
+    background-color: #555;
+}
+
+.toggle-button {
+    position: absolute;
+    top: .75rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
     align-items: flex-start;
-  }
-  
-  .card{
-      --padding: 1rem;
-      background: white;
-      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
-      border-radius: .25rem;
-      overflow: hidden;
-  }
-  
-  .card.card-shadow {
-      border: none;
-      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
-  }
-  
-  .card-header{
+}
+
+.card {
+    --padding: 1rem;
+    background: white;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
+    border-radius: .25rem;
+    overflow: hidden;
+}
+
+.card.card-shadow {
+    border: none;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
+}
+
+.card-header {
     font-size: 1.5rem;
     padding: var(--padding);
     padding-bottom: 0;
     margin-bottom: .5rem;
-  }
-  
-  .card-header.card-image{
-      padding: 0;
-      overflow: hidden;
-  }
-  
-  .card-header.card-image > img{
-      display: block;
-      width: 100%;
-      max-height: 200px;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      object-position: center;
-      transition: 200ms transform ease-in-out;
-  }
-  
-  .card:hover > .card-header.card-header.card-image > .img{
-      transform: scale(1.025);
-  }
-  
-  .card-body{
-      font-size: .9rem;
-      padding: 0 var(--padding);
-  }
-  
-  .card-footer{
-      margin-top: 1rem;
-      padding: var(--padding);
-      padding-top: 0;
-  }
-  
-  .btn{
-      --color: hsl(200, 50%, 50%);
-      background: var(--color);
-      color: white;
-      border: none;
-      font-size: 1rem;
-      padding: .5em .75em;
-      border-radius: .25em;
-      cursor: pointer;
-  }
-  
-  .btn:hover, .btn:focus{
-      background: hsl(200, 50%, 60%);
-  }
-  
-  .btn + .btn{
-      margin-left: .25rem;
-  }
+}
+
+.card-header.card-image {
+    padding: 0;
+    overflow: hidden;
+}
+
+.card-header.card-image>img {
+    display: block;
+    width: 100%;
+    max-height: 200px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center;
+    transition: 200ms transform ease-in-out;
+}
+
+.card:hover>.card-header.card-header.card-image>.img {
+    transform: scale(1.025);
+}
+
+.card-body {
+    font-size: .9rem;
+    padding: 0 var(--padding);
+}
+
+.card-footer {
+    margin-top: 1rem;
+    padding: var(--padding);
+    padding-top: 0;
+}
+
+.btn {
+    --color: hsl(200, 50%, 50%);
+    background: var(--color);
+    color: white;
+    border: none;
+    font-size: 1rem;
+    padding: .5em .75em;
+    border-radius: .25em;
+    cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus {
+    background: hsl(200, 50%, 60%);
+}
+
+.btn+.btn {
+    margin-left: .25rem;
+}
+
+@media (max-widht: 800px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .toggle-button {
+        display: flex;
+    }
+
+    .navbar-links {
+        display: none;
+        width: 100%;
+    }
+
+    .navbar-links ul {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .navbar-links ul li {
+        text-align: center;
+    }
+
+    .navbar-links ul li a {
+        padding: .5rem 1rem;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+}
