@@ -1,14 +1,32 @@
-@if($results)
-    <div class="space-y-4">
+<section>
+
+    <div class="container py-4">
+    @if($results)
         @if($results->count())
-            @foreach($results as $result)
-                <p>{{ $result->name }}</p>
-                <!-- Proof of concept -->
-                <!-- Basic way to show search results -->
-                <!-- @Alice Feel free to replace with more complete version -->
+        <p>Found {{$results->total()}} results</p>
+        <div class="card-grid">
+            @foreach ($results as $result)
+                <x-product-card>
+                  <x-slot name="productName">{{ $result->name }}</x-slot>
+                  <x-slot name="productGallery"> {{ $result->gallery }}</x-slot>
+                  <x-slot name="productDescription"> {{ $result->description}}</x-slot>
+                  <x-slot name="productPrice"> {{ $result->price}}$</x-slot>
+                </x-product-card>
             @endforeach
+        </div>
+        
+        <div class="space-y-4" >{{ $results }}</div>
         @else
-            <p>No results found</p>
-        @endif
+        <div class="row">
+            <p class="text-center badge bg-primary fs-6">No results for {{ request()->get('query') }}</p>
+        </div>
+        @endif 
+    @else
+    <div class="row">
+            <p class="text-center badge bg-primary fs-6">No results for {{ request()->get('query') }}</p>
+        </div>
+    @endif
     </div>
-@endif
+</section>
+
+

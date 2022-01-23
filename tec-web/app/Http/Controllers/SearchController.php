@@ -12,8 +12,8 @@ class SearchController extends Controller
     {
         $results = null;
 
-        if($searchQuery = $request->get('searchQuery')){
-            $results = Product::search($searchQuery)->get();
+        if($query = $request->get('query')){
+            $results = Product::search($query)->paginate(2);
         }
 
         return view('search', ['results' => $results]);
