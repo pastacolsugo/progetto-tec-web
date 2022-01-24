@@ -1,4 +1,6 @@
-<form action="{{ route('search') }}" method="GET" class="search-form">
-        <input id="query" name="query" type="search" placeholder="Search" class="search-box" value="{{ request()->get('query') }}">
-        <button type="submit" class="search-btn">Search</button>
-</form>
+<div>
+    <form action="/search" method="GET" class="search-form">
+        <x-input name="query"></x-input>
+        <x-button>Search</x-button>
+    </form>
+</div>
