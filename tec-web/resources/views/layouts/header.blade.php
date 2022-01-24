@@ -57,7 +57,7 @@
       <div class="navbar-links">
         <ul>
             <li><a href="">Home</a></li>
-            <li><a href="">Qui ci va la search</a></li>
+            <li><x-search-form /></li>
             <li><a href="">Product</a></li>
             <li><a href="">Are you a seller?</a></li>
             <li><a href="">Log In</a></li>
