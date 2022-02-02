@@ -4,6 +4,7 @@ use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +30,14 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::resource('products', ProductController::class);
+
+// TODO: If necessary convert to POST
+Route::get('/addProductToCart', [CartController::class, 'addProductToCart'])->middleware('auth');
+
+// TODO: If necessary convert to POST
+Route::get('/emptyCart', [CartController::class, 'emptyCart'])->middleware('auth');
+
+Route::get('cart', [CartController::class, 'showCart'])->name('cart');
+
 
 require __DIR__.'/auth.php';
