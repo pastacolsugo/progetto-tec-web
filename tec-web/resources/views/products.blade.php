@@ -8,7 +8,7 @@
 
 <body>
 
-    {{ View::make('header') }}
+    {{ View::make('layouts.header') }}
 
     <div class="container py-4">
         <div class="card-grid">
@@ -20,7 +20,7 @@
                   <x-slot name="productPrice"> {{ $product->price}}</x-slot>
                 </x-product-card>
             @endforeach
-        </div> 
+        </div>
     </div>
 </body>
 
