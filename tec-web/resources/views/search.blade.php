@@ -23,28 +23,28 @@
             </nav>
         </div>
     </div>
-    @if($results)
-        @if($results->count())
-        <p class="py-2">Found {{ $results->total() }} results</p>
-        <div class="card-grid">
-            @foreach ($results as $result)
-                <x-product-card>
-                  <x-slot name="productName">{{ $result->name }}</x-slot>
-                  <x-slot name="productGallery"> {{ $result->gallery }}</x-slot>
-                  <x-slot name="productDescription"> {{ $result->description}}</x-slot>
-                  <x-slot name="productPrice"> {{ $result->price}}$</x-slot>
-                </x-product-card>
-            @endforeach
-        </div>
-            <div class="py-2">
-                {{ $results->links() }}
+    @if($query and $results)
+        @if($results->count() > 0)
+            <p class="py-2">Found {{ $results->total() }} results</p>
+            <div class="card-grid">
+                @foreach ($results as $result)
+                    <x-product-card>
+                    <x-slot name="productName">{{ $result->name }}</x-slot>
+                    <x-slot name="productGallery"> {{ $result->gallery }}</x-slot>
+                    <x-slot name="productDescription"> {{ $result->description}}</x-slot>
+                    <x-slot name="productPrice"> {{ $result->price}}$</x-slot>
+                    </x-product-card>
+                @endforeach
             </div>
-        </div>
+                <div class="py-2">
+                    {{ $results->links() }}
+                </div>
+            </div>
         @else
-        <div class="alert alert-warning text-center pt-2" role="alert">No results for {{ request()->get('query') }}</div>
-        @endif 
+            <div class="alert alert-warning text-center pt-2" role="alert">No results for {{ $query }}</div>
+        @endif
     @else
-    <div class="alert alert-warning text-center pt-2" role="alert">No results for {{ request()->get('query') }}</div>
+        <p>Search fantastic products!</p>
     @endif
     </div>
 </body>

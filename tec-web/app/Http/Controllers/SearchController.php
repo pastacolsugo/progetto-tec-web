@@ -13,7 +13,7 @@ class SearchController extends Controller
         $results = null;
 
         if($query = $request->get('query')){
-           // $results = Product::search($query)->paginate(10);
+           $results = Product::search($query)->paginate(10);
 
             switch (request('sortBy')) {
                 case 'ascendingPrice':
@@ -30,7 +30,7 @@ class SearchController extends Controller
             }
         }
 
-        return view('search', ['results' => $results]);
+        return view('search', ['query' => $query, 'results' => $results]);
     }
 
 }
