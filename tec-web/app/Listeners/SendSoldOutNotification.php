@@ -29,7 +29,7 @@ class SendSoldOutNotification
      */
     public function handle(ProductSoldOut $event)
     {
-        $seller=User::find($event->product->seller_id);
+        $seller = User::find($event->product->seller_id);
         $seller->notify(new SoldOut($event->product));
     }
 }

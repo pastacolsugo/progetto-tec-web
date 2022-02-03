@@ -29,7 +29,7 @@ class SendOrderShippedNotification
      */
     public function handle(OrderShipped $event)
     {
-        $user=User::find($event->order->user_id);
+        $user = User::find($event->order->user_id);
         $seller->notify(new SoldOut($event->order));
     }
 }

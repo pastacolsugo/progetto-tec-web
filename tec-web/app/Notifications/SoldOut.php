@@ -18,7 +18,7 @@ class SoldOut extends Notification
      */
     public function __construct($product)
     {
-        $this->product=$product;
+        $this->product = $product;
     }
 
     /**
