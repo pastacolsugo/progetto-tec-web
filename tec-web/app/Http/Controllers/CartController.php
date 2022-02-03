@@ -32,7 +32,7 @@ class CartController extends Controller
 
         $newItem = new CartItem;
         $newItem->product_id = $request->productId;
-        $newItem->cart_id = Cart::where('user_id', $user_id)->select('id')->get()->first()->id;
+        $newItem->cart_id = getCartId($user_id);
         $newItem->quantity = $request->quantity;
         $newItem->save();
 
@@ -47,8 +47,12 @@ class CartController extends Controller
             return Response("User not logged in", 401);
         }
         $user_id = Auth::id();
-        $cart_id = Cart::where('user_id', $user_id)->select('id')->get()->first()->id;
+        $cart_id = getCartId($user_id);
         CartItem::where('cart_id', $cart_id)->delete();
         return Response("Successfully emptied cart w/ cart_id = $cart_id", 200);
+    }
+
+    private function getCartId(int $user_id) {
+        return CArt::where('user_id', $user_id)->select('id')->get()->first()->id;
     }
 }
