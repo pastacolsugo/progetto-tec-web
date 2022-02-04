@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Carbon\Carbon;
+use DateTime;
 use App\Models\Order;
 use App\Models\Cart;
 use App\Models\OrderItem;
@@ -30,7 +30,7 @@ class OrderController extends Controller
         $items = CartItem::where('id', cart)->get();
 
         $newOrder = new Order;
-        $newOrder->order_date = Carbon::now();
+        $newOrder->order_date = new DateTime();
         $newOrder->order_total = $cart->subtotal;
         $newOrder->order_status = "Pending";
         $newOrder->user_id = $user_id;
@@ -61,7 +61,7 @@ class OrderController extends Controller
     public function shipOrder(Order $order)
     {
         $order->order_status = "Shipped";
-        $order->shipped_date = Carbon::now();
+        $order->shipped_date = new DateTime();
         $order->save();
 
         event(new OrderShipped($order));
