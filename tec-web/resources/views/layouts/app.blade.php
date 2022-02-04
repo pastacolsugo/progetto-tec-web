@@ -25,7 +25,7 @@
 
             <!-- Page Content -->
             <main>
-                
+               {{ $slot }}
             </main>
 
             <footer>
