@@ -39,5 +39,11 @@ Route::get('/emptyCart', [CartController::class, 'emptyCart'])->middleware('auth
 
 Route::get('cart', [CartController::class, 'showCart'])->name('cart');
 
+Route::get('newOrder', [OrderController::class, 'showOrder'])->middleware('auth');
+
+Route::get('myOrders', [OrderController::class, 'showMyOrders'])->middleware('auth');
+
+Route::get('notifications', [NotificationController::class, 'show'])->middleware('auth');
+
 
 require __DIR__.'/auth.php';
