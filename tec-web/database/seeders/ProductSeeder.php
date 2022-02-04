@@ -45,7 +45,7 @@ class ProductSeeder extends Seeder
             [
                 'name'=>'LG fridge',
                 'price'=>'200',
-                'description'=>'A fridge with much more feature',
+                'description'=>'A fridge with many more feature',
                 'stock'=>'250',
                 'category_id'=>'3',
                 'seller_id'=>'3',
