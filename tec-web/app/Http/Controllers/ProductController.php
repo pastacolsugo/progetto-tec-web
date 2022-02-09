@@ -18,7 +18,7 @@ class ProductController extends Controller
     {
         $products = Product::all();
         // $products = DB::table('products')->get();
-        return View::make('products', ['products' => $products]);
+        return View::make('products.products', ['products' => $products]);
     }
 
     /**
