@@ -10,18 +10,22 @@ class NotificationController extends Controller
 
     public function show()
     {
-        $notifications = User::find(Auth::id())->unreadNotifications;
+        $notifications = auth()->user()->unreadNotifications;
 
-        return view('notifications');
+        return view('notifications', ['notifications' => $notifications]);
     }
 
-    public function markNotification(Request $request)
-    {
-        User::find(Auth::id())->unreadNotifications->where($request->input('id'), function($query) use ($request)
+    public function markNotification($id)
+    {   
+        if($id == 'mark-all')
         {
-            return $query->where('id', $request->input('id'));
-        })->markAsRead();
-
+            auth()->user()->unreadNotifications->markAsRead();
+        }
+        else
+        {
+            auth()->user()->unreadNotifications->where('id', $id)->markAsRead();
+        }
+        return redirect()->route('notifications');
     }
 
 }
