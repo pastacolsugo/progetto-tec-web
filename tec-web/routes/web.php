@@ -6,6 +6,8 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\SellerController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +46,9 @@ Route::get('newOrder', [OrderController::class, 'showOrder'])->middleware('auth'
 
 Route::get('myOrders', [OrderController::class, 'showMyOrders'])->middleware('auth');
 
-Route::get('notifications', [NotificationController::class, 'show'])->middleware('auth');
+Route::get('notifications', [NotificationController::class, 'show'])->name('notifications');
+
+Route::get('/mark-as-read/{id}', [NotificationController::class, 'markNotification'])->name('markNotification');
 
 Route::get('seller', [SellerController::class, 'index']);
 
