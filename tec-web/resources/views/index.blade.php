@@ -1,3 +1,5 @@
-<x-app-layout>
-    <p>Home page</p>
-</x-app-layout>
+@extends('layouts.app')
+
+@section('content')
+    Home page
+@endsection
