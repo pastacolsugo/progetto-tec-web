@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\SellerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,8 @@ Route::get('newOrder', [OrderController::class, 'showOrder'])->middleware('auth'
 Route::get('myOrders', [OrderController::class, 'showMyOrders'])->middleware('auth');
 
 Route::get('notifications', [NotificationController::class, 'show'])->middleware('auth');
+
+Route::get('seller', [SellerController::class, 'index']);
 
 
 require __DIR__.'/auth.php';
