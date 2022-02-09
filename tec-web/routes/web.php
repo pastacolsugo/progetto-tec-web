@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\SellerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\NotificationController;
 
@@ -49,8 +48,6 @@ Route::get('myOrders', [OrderController::class, 'showMyOrders'])->middleware('au
 Route::get('notifications', [NotificationController::class, 'show'])->name('notifications');
 
 Route::get('/mark-as-read/{id}', [NotificationController::class, 'markNotification'])->name('markNotification');
-
-Route::get('seller', [SellerController::class, 'index']);
 
 
 require __DIR__.'/auth.php';
