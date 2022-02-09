@@ -56,12 +56,11 @@
       </a>
       <div class="navbar-links">
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="products">Product</a></li>
-          <li><a href="seller">Are you a seller?</a></li>
-          <li><a href="">Log In</a></li>
-          <li> <x-search-form /></li>
-          <li><a href="cart">Carello</a></li>
+            <li><a href="">Home</a></li>
+            <li><a href="">Product</a></li>
+            <li><a href="">Are you a seller?</a></li>
+            <li><a href="">Log In</a></li>
         </ul>
       </div>
+      <x-search-form />
   </nav>
