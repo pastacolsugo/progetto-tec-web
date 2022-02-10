@@ -1,3 +1,7 @@
+<!-- <div style="border: solid black 1px" id='questoeuncomponente'>
+   
+</div> -->
+
 <div class="card card-shadow">
     <div class="card-header card-image">
         {{ $productName }}
