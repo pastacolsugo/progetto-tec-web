@@ -7,6 +7,7 @@
     box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 body {
     margin: 0;
     padding: 0;
@@ -24,6 +25,11 @@ body {
 .brand-title {
     font-size: 1.5rem;
     margin: .5rem;
+=======
+h2{
+    text-align: center;
+    color: rgb(118, 214, 255);
+>>>>>>> parent of 0e63917 (some change)
 }
 
 .navbar-links {
