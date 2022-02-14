@@ -46,7 +46,6 @@
             </div>
 
             <!-- TODO: Localize text -->
-            <!-- TODO: Fix style and position -->
             <!-- Seller -->
             <div class="mt-4">
                 Sei un venditore?
