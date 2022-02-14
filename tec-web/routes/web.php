@@ -19,11 +19,7 @@ use App\Http\Controllers\NotificationController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::get('/', [PagesController::class, 'index']);
+Route::get('/', HomeController::class);
 
 Route::get('/search', SearchController::class);
 
