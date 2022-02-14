@@ -19,11 +19,7 @@ use App\Http\Controllers\NotificationController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::get('/', [PagesController::class, 'index']);
+Route::get('/', HomeController::class);
 
 Route::get('/search', SearchController::class);
 
@@ -37,9 +33,10 @@ Route::resource('products', ProductController::class);
 Route::get('/addProductToCart', [CartController::class, 'addProductToCart'])->middleware('auth');
 
 // TODO: If necessary convert to POST
+// TODO: redirect to /cart once the empty operation is completed
 Route::get('/emptyCart', [CartController::class, 'emptyCart'])->middleware('auth');
 
-Route::get('cart', [CartController::class, 'showCart'])->name('cart');
+Route::get('cart', [CartController::class, 'showCart'])->middleware('auth')->name('cart');
 
 Route::get('newOrder', [OrderController::class, 'showOrder'])->middleware('auth');
 
