@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +24,7 @@ Route::get('/', HomeController::class);
 
 Route::get('/search', SearchController::class);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', DashboardController::class)->middleware(['auth'])->name('dashboard');
 
 Route::resource('products', ProductController::class);
 
