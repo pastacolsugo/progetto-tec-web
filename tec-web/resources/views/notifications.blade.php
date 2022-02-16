@@ -19,7 +19,7 @@
             @if($notifications->count() > 0)
                 @foreach ($notifications as $notification)
                     <div class="alert alert-info" role="alert">[ {{$notification->created_at}} ] product {{$notification->data['name']}} is sold out!  
-                        <a href="{{ route('markNotification', $notification->id) }}" class="float-right mark-as-read" id={{$notification->id}}>Mark as read</a>
+                        <a href="{{ route('markNotification', $notification->id) }}" class="float-right mark-as-read" id="{{$notification->id}}">Mark as read</a>
                     </div>
                 @endforeach
                 <a href="{{ route('markNotification', $notification = "mark-all") }}"  class="mark-all">Mark all as read</a>

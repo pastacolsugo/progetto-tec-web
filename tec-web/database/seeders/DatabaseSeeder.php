@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ProductSeeder::class,
             CartSeeder::class,
+            CartItemSeeder::class,
         ]);
         // User::factory(10)->has(Cart::factory())->has(Address::factory()->count(2))->create();
         // Category::factory()->has(Product::factory(10))->create();
