@@ -10,7 +10,12 @@ class NotificationController extends Controller
 
     public function show()
     {
-        $notifications = auth()->user()->unreadNotifications;
+        if(auth()->user()->notifications){
+            $notifications = auth()->user()->unreadNotifications;
+        }
+        else{
+            $notifications = null;
+        }
 
         return view('notifications', ['notifications' => $notifications]);
     }
