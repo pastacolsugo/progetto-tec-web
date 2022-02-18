@@ -45,5 +45,9 @@ Route::get('notifications', [NotificationController::class, 'show'])->name('noti
 
 Route::get('/mark-as-read/{id}', [NotificationController::class, 'markNotification'])->name('markNotification');
 
+Route::get('/sellerListing', function(Request $req) {
+    return view('sellerListing');
+})->middleware('auth')->name('sellerListing');
+
 
 require __DIR__.'/auth.php';
