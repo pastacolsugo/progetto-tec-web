@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">Seller Listing</x-slot>
-    <div class="flex flex-col">
+    <div class="flex flex-col max-w-7xl mx-auto">
     <div class="my-0 overflow-x-auto md:mx-0 xl:mx-8">
         <div class="py-2 align-middle inline-block min-w-full sm:px-0 lg:px-8">
         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -19,39 +19,20 @@
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-                <tr>
-                <td class="px-6 py-4">
-                <div class="flex-shrink-0 h-20 w-20 hidden md:block">
-                    <img class="h-20 w-20-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
-                </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-base text-gray-900">Telefono XYZ</div>
-                    <div class="text-sm text-gray-500">8GB / 256GB</div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-base font-medium text-gray-500">#123456</div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">199.99</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">6</td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                </td>
-                </tr>
-
+            @foreach ($products as $product)
                 <x-table-listing>
-                    <x-slot name="image">/img/products/oppo-phone.png</x-slot>
-                    <x-slot name="name">Banana</x-slot>
-                    <x-slot name="model">yellow</x-slot>
-                    <x-slot name="id">111</x-slot>
-                    <x-slot name="price">1.69</x-slot>
-                    <x-slot name="stock">4</x-slot>
+                    <x-slot name="image">{{ $product->gallery }}</x-slot>
+                    <x-slot name="name">{{ $product->name }}</x-slot>
+                    @if ($product->model != null){
+                        <x-slot name="model">{{ $product->model }}</x-slot>
+                    }
+                    @endif
+                    <x-slot name="id">{{ $product->id }}</x-slot>
+                    <x-slot name="price">{{ $product->price }}€</x-slot>
+                    <x-slot name="stock">{{ $product->stock }}</x-slot>
                     <x-slot name="status">Active</x-slot>
                 </x-table-listing>
-
+            @endforeach
 
                 <!-- <tr class="hidden">
                 <td class="px-6 py-4 whitespace-nowrap">

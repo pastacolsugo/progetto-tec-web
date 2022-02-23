@@ -8,6 +8,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SellerListingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,9 +46,7 @@ Route::get('notifications', [NotificationController::class, 'show'])->name('noti
 
 Route::get('/mark-as-read/{id}', [NotificationController::class, 'markNotification'])->name('markNotification');
 
-Route::get('/sellerListing', function(Request $req) {
-    return view('sellerListing');
-})->middleware('auth')->name('sellerListing');
+Route::get('/sellerListing', SellerListingController::class)->middleware('auth')->name('sellerListing');
 
 
 require __DIR__.'/auth.php';
