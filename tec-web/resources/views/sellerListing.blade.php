@@ -31,6 +31,7 @@
                     <x-slot name="price">{{ $product->price }}€</x-slot>
                     <x-slot name="stock">{{ $product->stock }}</x-slot>
                     <x-slot name="status">Active</x-slot>
+                    <x-slot name="edit_href">{{ route('editProductListing', ['product_id' => $product->id]) }}</x-slot>
                 </x-table-listing>
             @endforeach
 
