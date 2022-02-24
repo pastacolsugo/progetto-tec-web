@@ -9,6 +9,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SellerListingController;
+use App\Http\Controllers\EditProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,11 @@ Route::get('notifications', [NotificationController::class, 'show'])->name('noti
 Route::get('/mark-as-read/{id}', [NotificationController::class, 'markNotification'])->name('markNotification');
 
 Route::get('/sellerListing', SellerListingController::class)->middleware('auth')->name('sellerListing');
+
+Route::get('/editProductListing/{product_id}', [EditProductController::class, 'editProductForm'])->
+    whereNumber('product_id')->middleware('auth')->name('editProductListing');
+
+Route::post('/editProduct', [EditProductController::class, 'editProductRequest'])->middleware('auth')->name('editProduct');
 
 
 require __DIR__.'/auth.php';
