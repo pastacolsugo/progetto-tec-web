@@ -33,6 +33,9 @@ Route::resource('products', ProductController::class);
 Route::get('/addProductToCart', [CartController::class, 'addProductToCart'])->middleware('auth');
 
 // TODO: If necessary convert to POST
+Route::get('/removeProductFromCart', [CartController::class, 'removeProductFromCart'])->middleware('auth');
+
+// TODO: If necessary convert to POST
 // TODO: redirect to /cart once the empty operation is completed
 Route::get('/emptyCart', [CartController::class, 'emptyCart'])->middleware('auth');
 

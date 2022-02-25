@@ -96,8 +96,25 @@ class CartController extends Controller
         if (!$request->has('productId')) {
             return Response('Missing request parameters', 422);
         }
+
         $user_id = Auth::id();
         $cart_id = $this->getCartId($user_id);
+        $product_id = $request->product_id;
 
+        $cartItem = CartItem::where('cart_id', $cart_id)->where('product_id', $product_id)->get()->first();
+
+        if ($cartItem == null) {
+            return Response("Item not found in user's cart.");
+        }
+
+        $cartItem->quantity -= $request->quantity;
+
+        if ($cartItem->quantity <= 0) {
+            $cartItem->delete();
+        } else {
+            $cartItem->save();
+        }
+
+        return Response("Successfully removed items.", 200);
     }
 }
