@@ -107,12 +107,13 @@ class CartController extends Controller
             return Response("Item not found in user's cart.");
         }
 
-        $cartItem->quantity -= $request->quantity;
-
-        if ($cartItem->quantity <= 0) {
-            $cartItem->delete();
-        } else {
+        if ($request->has('quantity')) {
+            $cartItem->quantity -= $request->quantity;
             $cartItem->save();
+        }
+
+        if ($cartItem->quantity <= 0 or !$request->has('quantity')) {
+            $cartItem->delete();
         }
 
         return Response("Successfully removed items.", 200);
