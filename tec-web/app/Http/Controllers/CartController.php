@@ -53,20 +53,27 @@ class CartController extends Controller
 
     public function addProductToCart(Request $request)
     {
-        if (!$request->has('productId') or !$request->has('quantity')) {
+        if (!$request->has('product_id') or !$request->has('quantity')) {
             return Response('Missing request parameters', 422);
         }
         $user_id = Auth::id();
-        $productId = $request->productId;
-        $quantity = $request->quantity;
+        $product_id = $request->product_id;
+        $cart_id = $this->getCartId($user_id);
 
-        $newItem = new CartItem;
-        $newItem->product_id = $request->productId;
-        $newItem->cart_id = $this->getCartId($user_id);
-        $newItem->quantity = $request->quantity;
-        $newItem->save();
+        $cartItem = CartItem::where('cart_id', $cart_id)->where('product_id', $product_id)->get()->first();
 
-        $body = "Successfully added n = $quantity, productId = $productId";
+        if ($cartItem != null) {
+            $cartItem->quantity += $request->quantity;
+            $cartItem->save();
+        } else {
+            $newItem = new CartItem;
+            $newItem->product_id = $product_id;
+            $newItem->cart_id = $this->getCartId($user_id);
+            $newItem->quantity = $request->quantity;
+            $newItem->save();
+        }
+
+        $body = "Successfully added n = $request->quantity, productId = $product_id";
         $res = Response($body, 200);
 
         return $res;
@@ -89,8 +96,26 @@ class CartController extends Controller
         if (!$request->has('productId')) {
             return Response('Missing request parameters', 422);
         }
+
         $user_id = Auth::id();
         $cart_id = $this->getCartId($user_id);
+        $product_id = $request->product_id;
 
+        $cartItem = CartItem::where('cart_id', $cart_id)->where('product_id', $product_id)->get()->first();
+
+        if ($cartItem == null) {
+            return Response("Item not found in user's cart.");
+        }
+
+        if ($request->has('quantity')) {
+            $cartItem->quantity -= $request->quantity;
+            $cartItem->save();
+        }
+
+        if ($cartItem->quantity <= 0 or !$request->has('quantity')) {
+            $cartItem->delete();
+        }
+
+        return Response("Successfully removed items.", 200);
     }
 }
