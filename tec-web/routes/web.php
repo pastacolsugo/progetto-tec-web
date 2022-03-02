@@ -30,10 +30,10 @@ Route::get('/dashboard', function () {
 Route::resource('products', ProductController::class);
 
 // TODO: If necessary convert to POST
-Route::get('/addProductToCart', [CartController::class, 'addProductToCart'])->middleware('auth');
+Route::get('/addProductToCart', [CartController::class, 'addProductToCart'])->middleware('auth')->name('addProductToCart');
 
 // TODO: If necessary convert to POST
-Route::get('/removeProductFromCart', [CartController::class, 'removeProductFromCart'])->middleware('auth');
+Route::get('/removeProductFromCart', [CartController::class, 'removeProduct'])->middleware('auth')->name('removeProductFromCart');
 
 // TODO: If necessary convert to POST
 // TODO: redirect to /cart once the empty operation is completed
