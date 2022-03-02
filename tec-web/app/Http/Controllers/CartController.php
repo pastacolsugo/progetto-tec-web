@@ -59,8 +59,12 @@ class CartController extends Controller
         $user_id = Auth::id();
         $product_id = $request->product_id;
         $cart_id = $this->getCartId($user_id);
+        //need cart for update
+        $cart = Cart::where('user_id', $user_id)->get()->first();
 
         $cartItem = CartItem::where('cart_id', $cart_id)->where('product_id', $product_id)->get()->first();
+        //need cart_items for route new-order
+        $cart_items = $this->getCartItems($cart_id);
 
         if ($cartItem != null) {
             $cartItem->quantity += $request->quantity;
@@ -72,11 +76,14 @@ class CartController extends Controller
             $newItem->quantity = $request->quantity;
             $newItem->save();
         }
+        //update cart subtotal and quantity
+        $cart->items += $request->quantity;
+        $cart->subtotal += ($this->getProductPrice($product_id)) * ($request->quantity);
+        $cart->save();
 
-        $body = "Successfully added n = $request->quantity, productId = $product_id";
-        $res = Response($body, 200);
+        //removed response
 
-        return $res;
+        return redirect()->route('new-order', ['cart_items' => $cart_items, 'cart' => $cart]);
     }
 
     public function emptyCart(Request $request) {
@@ -93,15 +100,19 @@ class CartController extends Controller
         if (Auth::id() == null) {
             return Response("User not logged in", 401);
         }
-        if (!$request->has('productId')) {
+        if (!$request->has('product_id')) {
             return Response('Missing request parameters', 422);
         }
 
         $user_id = Auth::id();
         $cart_id = $this->getCartId($user_id);
         $product_id = $request->product_id;
+        //need cart for update
+        $cart = Cart::where('user_id', $user_id)->get()->first();
 
         $cartItem = CartItem::where('cart_id', $cart_id)->where('product_id', $product_id)->get()->first();
+        //need cart_items for route new-order
+        $cart_items = $this->getCartItems($cart_id);
 
         if ($cartItem == null) {
             return Response("Item not found in user's cart.");
@@ -110,12 +121,22 @@ class CartController extends Controller
         if ($request->has('quantity')) {
             $cartItem->quantity -= $request->quantity;
             $cartItem->save();
+            //update cart subtotal and quantity
+            $cart->items -= $request->quantity;
+            $cart->subtotal -= ($this->getProductPrice($product_id)) * ($request->quantity);
         }
 
         if ($cartItem->quantity <= 0 or !$request->has('quantity')) {
+            //update cart subtotal and quantity
+            $cart->items -= $cartItem->quantity;
+            $cart->subtotal -= ($this->getProductPrice($product_id)) * ($cartItem->quantity);
             $cartItem->delete();
         }
+        
+        $cart->save();
 
-        return Response("Successfully removed items.", 200);
+        //removed response
+
+        return redirect()->route('new-order', ['cart_items' => $cart_items, 'cart' => $cart]);
     }
 }
