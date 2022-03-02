@@ -41,7 +41,7 @@ Route::get('/emptyCart', [CartController::class, 'emptyCart'])->middleware('auth
 
 Route::get('cart', [CartController::class, 'showCart'])->middleware('auth')->name('cart');
 
-Route::get('new-order', [OrderController::class, 'showOrder'])->middleware('auth');
+Route::get('new-order', [OrderController::class, 'showOrder'])->middleware('auth')->name('new-order');
 
 Route::get('my-orders', [OrderController::class, 'showMyOrders'])->middleware('auth');
 
