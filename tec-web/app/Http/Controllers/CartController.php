@@ -63,8 +63,6 @@ class CartController extends Controller
         $cart = Cart::where('user_id', $user_id)->get()->first();
 
         $cartItem = CartItem::where('cart_id', $cart_id)->where('product_id', $product_id)->get()->first();
-        //need cart_items for route new-order
-        $cart_items = $this->getCartItems($cart_id);
 
         if ($cartItem != null) {
             $cartItem->quantity += $request->quantity;
@@ -83,7 +81,7 @@ class CartController extends Controller
 
         //removed response
 
-        return redirect()->route('new-order', ['cart_items' => $cart_items, 'cart' => $cart]);
+        return redirect()->route('new-order');
     }
 
     public function emptyCart(Request $request) {
@@ -111,8 +109,6 @@ class CartController extends Controller
         $cart = Cart::where('user_id', $user_id)->get()->first();
 
         $cartItem = CartItem::where('cart_id', $cart_id)->where('product_id', $product_id)->get()->first();
-        //need cart_items for route new-order
-        $cart_items = $this->getCartItems($cart_id);
 
         if ($cartItem == null) {
             return Response("Item not found in user's cart.");
@@ -137,6 +133,6 @@ class CartController extends Controller
 
         //removed response
 
-        return redirect()->route('new-order', ['cart_items' => $cart_items, 'cart' => $cart]);
+        return redirect()->route('new-order');
     }
 }
