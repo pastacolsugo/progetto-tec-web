@@ -41,11 +41,11 @@ Route::get('cart', [CartController::class, 'showCart'])->middleware('auth')->nam
 
 Route::get('new-order', [OrderController::class, 'showOrder'])->middleware('auth')->name('new-order');
 
-Route::get('my-orders', [OrderController::class, 'showMyOrders'])->middleware('auth');
+Route::get('my-orders', [OrderController::class, 'showMyOrders'])->middleware('auth')->name('my-orders');
 
-Route::get('notifications', [NotificationController::class, 'show'])->name('notifications');
+Route::get('notifications', [NotificationController::class, 'show'])->middleware('auth')->name('notifications');
 
-Route::get('/mark-as-read/{id}', [NotificationController::class, 'markNotification'])->name('markNotification');
+Route::get('/mark-as-read/{id}', [NotificationController::class, 'markNotification'])->middleware('auth')->name('markNotification');
 
 
 require __DIR__.'/auth.php';
