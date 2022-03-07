@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SearchController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\SellerListingController;
 use App\Http\Controllers\EditProductController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImagesController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SellerListingController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,5 +55,6 @@ Route::get('/editProductListing/{product_id}', [EditProductController::class, 'e
 
 Route::post('/editProduct', [EditProductController::class, 'editProductRequest'])->middleware('auth')->name('editProduct');
 
+Route::get('/product-image/{product_id}', ImagesController::class)->name('product-image');
 
 require __DIR__.'/auth.php';

@@ -49,8 +49,15 @@ class EditProductController extends Controller
                 $product->$field = $request->$field;
             }
         }
+
+        if ($request->has('image_upload')) {
+            $file = $request->file('image_upload')->store('images');
+            $product->gallery = $file;
+        }
+
         $product->save();
 
-        return redirect()->route('sellerListing');
+        return Response(200);
+        // return redirect()->route('sellerListing');
     }
 }
