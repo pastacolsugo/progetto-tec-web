@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ProductSoldOut;
 use Illuminate\Http\Request;
 use DateTime;
 use App\Models\Order;
@@ -15,19 +16,41 @@ class OrderController extends Controller
 
     public function showOrder()
     {
-        return view('newOrder');
+        $user_id = auth()->user()->id;
+
+        $cart = Cart::where('user_id', $user_id)->get()->first();
+        $cart_id = $cart->id;
+        $cart_items = CartItem::where('cart_id', $cart_id)->get();
+
+        foreach ($cart_items as $cart_item) {
+            $image_url = Product::where('id', $cart_item->product_id)->select('gallery')->get()->first()->gallery;
+            $price = Product::where('id', $cart_item->product_id)->select('price')->get()->first()->price;
+            $name = Product::where('id', $cart_item->product_id)->select('name')->get()->first()->name;
+            $cart_item['image'] = $image_url;
+            $cart_item['price'] = $price;
+            $cart_item['name'] = $name;
+        }
+
+        return view('new-order', ['cart_items' => $cart_items, 'cart' => $cart]);
     }
 
     public function showMyOrders()
     {
-        return view('myOrders');
+        $user_id = auth()->user()->id;
+        $orders = Order::where('user_id', $user_id)->get();
+
+        return view('my-orders', ['orders' => $orders]);
     }
 
     public function placeOrder(Request $request)
     {
-        $user_id = Auth::id();
-        $cart = Cart::where('user_id', $user_id)->get();
-        $items = CartItem::where('id', cart)->get();
+        $user_id = auth()->user()->id;
+        $items = CartItem::where('user_id', $user_id)->get();
+
+        foreach($items as $item)
+        {
+            $this->checkSoldOut($item);
+        }
 
         $newOrder = new Order;
         $newOrder->order_date = new DateTime();
@@ -39,15 +62,33 @@ class OrderController extends Controller
 
         foreach($items as $item)
         {
-            checkSoldOut($item);
             $newOrderItem = new OrderItem;
             $newOrderItem->product_id = $item->product_id;
             $newOrderItem->order_id = $newOrder->id;
             $newOrderItem->quantity = $item->quantity;
             $newOrderItem->save();
         }
-//TODO redirect to checkout route or thankyou route
-//        return redirect()->route('');
+
+        return redirect()->route('my-orders');
+    }
+
+    public function orderNow(Request $request, $product_id)
+    {
+        $user_id = auth()->user()->id;
+        $cart = Cart::where('user_id', $user_id)->get();
+        $product = Product::find($product_id);
+
+        $newCartItem = new CartItem;
+        $newCartItem->product_id = $product_id;
+        $newCartItem->cart_id = $cart->id;
+        $newCartItem->quantity = 1;
+        $newCartItem->save();
+
+        $cart->items ++;
+        $cart->subtotal += $product->price;
+        $cart->save();
+
+        return redirect()->route('new-order');
     }
 
     public function confirmOrder(Order $order)
