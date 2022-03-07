@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class ProductSeeder extends Seeder
 {
@@ -22,7 +24,7 @@ class ProductSeeder extends Seeder
                 'stock'=>'100',
                 'category_id'=>'1',
                 'seller_id'=>'3',
-                'gallery'=>'/img/products/oppo-phone.png'
+                'gallery'=>'/images/oppo-phone.png'
             ],
             [
                 'name'=>'Panasonic Tv',
@@ -31,7 +33,7 @@ class ProductSeeder extends Seeder
                 'stock'=>'10',
                 'category_id'=>'2',
                 'seller_id'=>'3',
-                'gallery'=>'/img/products/panasonic-tv.png'
+                'gallery'=>'/images/panasonic-tv.png'
             ],
             [
                 'name'=>'Sony Tv',
@@ -40,7 +42,7 @@ class ProductSeeder extends Seeder
                 'stock'=>'5',
                 'category_id'=>'2',
                 'seller_id'=>'3',
-                'gallery'=>'/img/products/sony-tv.png'
+                'gallery'=>'/images/sony-tv.png'
             ],
             [
                 'name'=>'LG fridge',
@@ -49,8 +51,15 @@ class ProductSeeder extends Seeder
                 'stock'=>'250',
                 'category_id'=>'3',
                 'seller_id'=>'3',
-                'gallery'=>'/img/products/lg-fridge.jpg'
+                'gallery'=>'/images/lg-fridge.jpg'
              ]
         ]);
+
+        $imgs_folder = 'database/seeders/imgs/';
+        $imgs = ['lg-fridge.jpg', 'oppo-phone.png', 'panasonic-tv.png', 'sony-tv.png'];
+
+        foreach ($imgs as $img) {
+            File::copy($imgs_folder . $img, Storage::path("images/$img"));
+        }
     }
 }
