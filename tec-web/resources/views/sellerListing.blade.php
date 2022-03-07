@@ -21,7 +21,7 @@
             <tbody class="bg-white divide-y divide-gray-200">
             @foreach ($products as $product)
                 <x-table-listing>
-                    <x-slot name="image">{{ $product->gallery }}</x-slot>
+                    <x-slot name="image">{{ route('product-image', [$product->id]) }}</x-slot>
                     <x-slot name="name">{{ $product->name }}</x-slot>
                     @if ($product->model != null){
                         <x-slot name="model">{{ $product->model }}</x-slot>
