@@ -63,5 +63,7 @@ class EditProductController extends Controller
     public function deleteProductRequest (Request $request, $id) {
         $userId = Auth::id();
         $product = Product::where('seller_id', $userId)->where('id', $id)->delete();
+
+        return redirect()->route('sellerListing');
     }
 }
