@@ -57,4 +57,7 @@ Route::post('/editProduct', [EditProductController::class, 'editProductRequest']
 
 Route::get('/product-image/{product_id}', ImagesController::class)->name('product-image');
 
+Route::post('/deleteProduct/{product_id}', [EditProductController::class, 'deleteProductRequest'])->middleware('auth')->name('deleteProduct');
+
+
 require __DIR__.'/auth.php';

@@ -1,7 +1,13 @@
 <x-app-layout>
 <div class="max-w-7xl mx-auto bg-white p-8 my-4 rounded border border-gray-200">
-    <h1 class="font-medium text-3xl">Edit product</h1>
-    {{-- <p class="text-gray-600 mt-6">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos dolorem vel cupiditate laudantium dicta.</p> --}}
+    <div class="flex justify-between">
+        <h1 class="font-medium text-3xl">Edit product</h1>
+
+        <form action={{ route('deleteProduct', [$product->id]) }} method="POST">
+            @csrf
+            <button type="submit" class="py-2 px-4 bg-red-500 text-red-100 rounded hover:bg-red-600 active:bg-red-700 disabled:opacity-50" id="delete-button">Delete</button>
+        </form>
+    </div>
 
     <form action="{{ route('editProduct') }}" enctype="multipart/form-data" method="POST">
         @csrf
@@ -44,11 +50,11 @@
 
         </div>
 
-      <div class="space-x-4 mt-8">
-        <button type="submit" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700 disabled:opacity-50">Save</button>
-
+      <div class="flex justify-end space-x-4 mt-8">
         <!-- Secondary -->
-        <button class="py-2 px-4 bg-white border border-gray-200 text-gray-600 rounded hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50">Cancel</button>
+        <button type="reset" class="py-2 px-4 bg-white border border-gray-200 text-gray-600 rounded hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50">Reset</button>
+
+        <button type="submit" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700 disabled:opacity-50">Save</button>
       </div>
     </form>
   </div>

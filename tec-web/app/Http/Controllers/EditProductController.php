@@ -57,7 +57,11 @@ class EditProductController extends Controller
 
         $product->save();
 
-        return Response(200);
-        // return redirect()->route('sellerListing');
+        return redirect()->route('sellerListing');
+    }
+
+    public function deleteProductRequest (Request $request, $id) {
+        $userId = Auth::id();
+        $product = Product::where('seller_id', $userId)->where('id', $id)->delete();
     }
 }
