@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// TODO: Refactor routes and route names for style consistency!
+
 Route::get('/', HomeController::class);
 
 Route::get('/search', SearchController::class);
