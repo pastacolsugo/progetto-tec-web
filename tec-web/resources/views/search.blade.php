@@ -16,7 +16,7 @@
                 @foreach ($results as $result)
                     <x-product-card>
                     <x-slot name="productName">{{ $result->name }}</x-slot>
-                    <x-slot name="productGallery"> <img src={{ $result->gallery }} alt=""></x-slot>
+                    <x-slot name="productGallery"> <img src="{{ $result->gallery }}" alt=""></x-slot>
                     <x-slot name="productDescription"> {{ $result->description}}</x-slot>
                     <x-slot name="productPrice"> {{ $result->price}}$</x-slot>
                     </x-product-card>

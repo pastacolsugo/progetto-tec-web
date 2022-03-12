@@ -33,8 +33,9 @@ Route::get('/dashboard', DashboardController::class)->middleware(['auth'])->name
 
 Route::resource('products', ProductController::class);
 
-// TODO: If necessary convert to POST
-Route::get('/addProductToCart', [CartController::class, 'addProductToCart'])->middleware('auth');
+Route::post('/addProductToCart', [CartController::class, 'addProductToCart'])->middleware('auth')->name('addProductToCart');
+
+Route::post('/removeProductFromCart', [CartController::class, 'removeProduct'])->middleware('auth')->name('removeProductFromCart');
 
 // TODO: If necessary convert to POST
 // TODO: redirect to /cart once the empty operation is completed
@@ -42,13 +43,13 @@ Route::get('/emptyCart', [CartController::class, 'emptyCart'])->middleware('auth
 
 Route::get('cart', [CartController::class, 'showCart'])->middleware('auth')->name('cart');
 
-Route::get('newOrder', [OrderController::class, 'showOrder'])->middleware('auth');
+Route::get('new-order', [OrderController::class, 'showOrder'])->middleware('auth')->name('new-order');
 
-Route::get('myOrders', [OrderController::class, 'showMyOrders'])->middleware('auth');
+Route::get('my-orders', [OrderController::class, 'showMyOrders'])->middleware('auth')->name('my-orders');
 
-Route::get('notifications', [NotificationController::class, 'show'])->name('notifications');
+Route::get('notifications', [NotificationController::class, 'show'])->middleware('auth')->name('notifications');
 
-Route::get('/mark-as-read/{id}', [NotificationController::class, 'markNotification'])->name('markNotification');
+Route::get('/mark-as-read/{id}', [NotificationController::class, 'markNotification'])->middleware('auth')->name('markNotification');
 
 Route::get('/sellerListing', SellerListingController::class)->middleware('auth')->name('sellerListing');
 
