@@ -1,12 +1,16 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SearchController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EditProductController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SellerListingController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +23,13 @@ use App\Http\Controllers\NotificationController;
 |
 */
 
+// TODO: Refactor routes and route names for style consistency!
+
 Route::get('/', HomeController::class);
 
 Route::get('/search', SearchController::class);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', DashboardController::class)->middleware(['auth'])->name('dashboard');
 
 Route::resource('products', ProductController::class);
 
@@ -46,6 +50,17 @@ Route::get('my-orders', [OrderController::class, 'showMyOrders'])->middleware('a
 Route::get('notifications', [NotificationController::class, 'show'])->middleware('auth')->name('notifications');
 
 Route::get('/mark-as-read/{id}', [NotificationController::class, 'markNotification'])->middleware('auth')->name('markNotification');
+
+Route::get('/sellerListing', SellerListingController::class)->middleware('auth')->name('sellerListing');
+
+Route::get('/editProductListing/{product_id}', [EditProductController::class, 'editProductForm'])->
+    whereNumber('product_id')->middleware('auth')->name('editProductListing');
+
+Route::post('/editProduct', [EditProductController::class, 'editProductRequest'])->middleware('auth')->name('editProduct');
+
+Route::get('/product-image/{product_id}', ImagesController::class)->name('product-image');
+
+Route::post('/deleteProduct/{product_id}', [EditProductController::class, 'deleteProductRequest'])->middleware('auth')->name('deleteProduct');
 
 
 require __DIR__.'/auth.php';
