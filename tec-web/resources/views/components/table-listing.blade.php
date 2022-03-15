@@ -1,8 +1,8 @@
 <tr>
-    <td class="px-6 py-4">
-    <div class="flex-shrink-0 h-20 w-20 hidden md:block">
-        <img class="h-20 w-20-full" src="{{ $image }}" alt="">
-    </div>
+    <td class="px-6 py-4 hidden md:block">
+        <div class="flex-shrink-0 h-20 w-20">
+            <img class="h-20 w-20-full" src="{{ $image }}" alt="">
+        </div>
     </td>
     <td class="px-6 py-4 whitespace-nowrap">
         <div class="text-base text-gray-900">{{ $name}}</div>
