@@ -17,7 +17,7 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <div class="flex flex-col min-h-screen bg-gray-200">
             @include('layouts.navigation')
 
             @if(isset($header))
@@ -30,9 +30,15 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="flex-1">
                 {{ $slot }}
             </main>
+
+            <footer class="bg-gray-500 text-center text-xs p-2 py-4">
+                <p class="text-white">Alma Mater Studiorum - Università di Bologna</p>
+                <p class="text-white">Tecnologie Web A.A. 2021/2022</p>
+                <p class="text-white italic">Project by: Ugo Baroncini e Alice Girolomini</p>
+            </footer>
         </div>
     </body>
 </html>
