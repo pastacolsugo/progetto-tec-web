@@ -7,7 +7,7 @@
             <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
                 <tr>
-                <th scope="col" class="w-px px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th>
+                <th scope="col" class="w-px px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:block">Image</th>
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SKU</th>
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
@@ -23,9 +23,8 @@
                 <x-table-listing>
                     <x-slot name="image">{{ route('product-image', [$product->id]) }}</x-slot>
                     <x-slot name="name">{{ $product->name }}</x-slot>
-                    @if ($product->model != null){
+                    @if ($product->model != null)
                         <x-slot name="model">{{ $product->model }}</x-slot>
-                    }
                     @endif
                     <x-slot name="id">{{ $product->id }}</x-slot>
                     <x-slot name="price">{{ $product->price }}€</x-slot>
