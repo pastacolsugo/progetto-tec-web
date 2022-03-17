@@ -62,7 +62,7 @@
                             @foreach($cart_items as $cart_item)
                                 <div class="flex justify-between mt-6">
                                     <div class="flex">
-                                        <img class="h-20 w-20 object-cover rounded" src="{{ $cart_item->image }}" alt="{{ $cart_item->name }}">
+                                        <img class="h-20 w-20 object-cover rounded" src="{{ route('product-image', $cart_item->product_id) }}" alt="{{ $cart_item->name }}">
                                         <div class="mx-3">
                                             <h3 class="text-sm text-gray-600">{{ $cart_item->name }}</h3>
                                             <div class="flex items-center mt-2">
