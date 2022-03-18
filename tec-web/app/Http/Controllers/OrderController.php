@@ -23,10 +23,8 @@ class OrderController extends Controller
         $cart_items = CartItem::where('cart_id', $cart_id)->get();
 
         foreach ($cart_items as $cart_item) {
-            $image_url = Product::where('id', $cart_item->product_id)->select('gallery')->get()->first()->gallery;
             $price = Product::where('id', $cart_item->product_id)->select('price')->get()->first()->price;
             $name = Product::where('id', $cart_item->product_id)->select('name')->get()->first()->name;
-            $cart_item['image'] = $image_url;
             $cart_item['price'] = $price;
             $cart_item['name'] = $name;
         }

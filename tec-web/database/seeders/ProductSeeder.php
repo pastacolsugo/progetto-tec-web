@@ -59,7 +59,7 @@ class ProductSeeder extends Seeder
         $imgs = ['lg-fridge.jpg', 'oppo-phone.png', 'panasonic-tv.png', 'sony-tv.png'];
 
         foreach ($imgs as $img) {
-            File::copy($imgs_folder . $img, Storage::path("images/$img"));
+            File::copy($imgs_folder . $img, Storage::path("images/" . $img));
         }
     }
 }
