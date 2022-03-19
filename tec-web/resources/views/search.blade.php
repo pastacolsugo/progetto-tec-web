@@ -1,24 +1,22 @@
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
     <div class="container-fluid p-0 overflow-hidden">
         <x-select onchange="location = this.value;" class="form-select">
             <option value="">Sort by</option>
             <option value="?query=<?php echo request()->get('query')?>&sortBy=ascendingPrice" {{ (request('sortBy') == 'ascendingPrice' ? 'selected=selected' : '') }}>Low to High</option>
             <option value="?query=<?php echo request()->get('query')?>&sortBy=descendingPrice" {{ (request('sortBy') == 'descendingPrice' ? 'selected=selected' : '') }}>High to Low</option>
         </x-select>
-        
-            
+
+
     @if($query and $results)
         @if($results->count() > 0)
             <p class="py-2">Found {{ $results->total() }} results</p>
             <div class="card-grid">
-                @foreach ($results as $result)
+                @foreach ($results as $product)
                     <x-product-card>
-                    <x-slot name="productName">{{ $result->name }}</x-slot>
-                    <x-slot name="productGallery"> <img src="{{ $result->gallery }}" alt=""></x-slot>
-                    <x-slot name="productDescription"> {{ $result->description}}</x-slot>
-                    <x-slot name="productPrice"> {{ $result->price}}$</x-slot>
+                        <x-slot name="name">{{ $product->name }}</x-slot>
+                        <x-slot name="id">{{ $product->id }}</x-slot>
+                        <x-slot name="price"> {{ $product->price}}$</x-slot>
+                        {{ $product->description}}
                     </x-product-card>
                 @endforeach
             </div>
@@ -33,6 +31,4 @@
         <p>Search fantastic products!</p>
     @endif
     </div>
-@endsection
-
-
+</x-app-layout>
