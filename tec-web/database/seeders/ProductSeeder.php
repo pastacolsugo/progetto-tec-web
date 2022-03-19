@@ -24,7 +24,7 @@ class ProductSeeder extends Seeder
                 'stock'=>'100',
                 'category_id'=>'1',
                 'seller_id'=>'3',
-                'gallery'=>'/images/oppo-phone.png'
+                'gallery'=>'/images/oppo-phone.webp'
             ],
             [
                 'name'=>'Panasonic Tv',
@@ -33,7 +33,7 @@ class ProductSeeder extends Seeder
                 'stock'=>'10',
                 'category_id'=>'2',
                 'seller_id'=>'3',
-                'gallery'=>'/images/panasonic-tv.png'
+                'gallery'=>'/images/panasonic-tv.webp'
             ],
             [
                 'name'=>'Sony Tv',
@@ -42,7 +42,7 @@ class ProductSeeder extends Seeder
                 'stock'=>'5',
                 'category_id'=>'2',
                 'seller_id'=>'3',
-                'gallery'=>'/images/sony-tv.png'
+                'gallery'=>'/images/sony-tv.webp'
             ],
             [
                 'name'=>'LG fridge',
@@ -51,7 +51,7 @@ class ProductSeeder extends Seeder
                 'stock'=>'250',
                 'category_id'=>'3',
                 'seller_id'=>'3',
-                'gallery'=>'/images/lg-fridge.jpg'
+                'gallery'=>'/images/lg-fridge.webp'
              ]
         ]);
 
