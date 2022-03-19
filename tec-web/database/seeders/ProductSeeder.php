@@ -56,7 +56,7 @@ class ProductSeeder extends Seeder
         ]);
 
         $imgs_folder = 'database/seeders/imgs/';
-        $imgs = ['lg-fridge.jpg', 'oppo-phone.png', 'panasonic-tv.png', 'sony-tv.png'];
+        $imgs = ['lg-fridge.webp', 'oppo-phone.webp', 'panasonic-tv.webp', 'sony-tv.webp'];
 
         foreach ($imgs as $img) {
             File::copy($imgs_folder . $img, Storage::path("images/$img"));
