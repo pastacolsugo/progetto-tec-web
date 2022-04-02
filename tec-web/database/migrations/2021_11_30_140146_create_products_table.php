@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('model')->nullable();
             $table->float('price', 8, 2);
-            $table->string('description', 20000);
+            $table->text('description');
             $table->integer('stock');
             $table->bigInteger('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
