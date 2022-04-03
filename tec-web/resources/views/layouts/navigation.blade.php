@@ -1,17 +1,17 @@
 <nav x-data="{ open: false }" class="bg-gray-900">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="flex h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="m-4 shrink-0 flex items-center">
-                    <a href="{{ route('home') }}">
+                <div class="m-2 sm:m-4 shrink-0 flex items-center">
+                    <a href="{{ route('home') }}" aria-label="Home">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-100" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 mr-2 sm:-my-px sm:ml-10 sm:mr-16  sm:flex text-gray-100">
+                <div class="hidden space-x-8 mr-2 lg:-my-px lg:ml-10 lg:mr-16 md:flex text-gray-100">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
@@ -19,9 +19,9 @@
             </div>
 
             <!-- Search Bar -->
-            <form class="flex-1 mx-8 my-3.5 flex block focus:ring-amber-700 focus:border-blue-500 text-gray-700 w-full" action="{{ route('search') }}" method="GET">
-                <input type="text" name="query" class="flex-1 border-none bg-gray-100 rounded-l focus:border-none" placeholder="Cerca..." value=""/>
-                <button type="submit" class="py-1 px-3 bg-amber-400 rounded-r border-left material-icons">search</button>
+            <form role="search" class="flex-1 ml-1 mr-4 sm:mx-8 my-3.5 flex block focus:ring-amber-700 focus:border-blue-500 text-gray-700" action="{{ route('search') }}" method="GET">
+                <input type="text" aria-label="search box" label="search" name="query" class="flex-1 w-auto text-sm sm:text-base border-none bg-gray-100 rounded-l focus:border-none" placeholder="Cerca..." value=""/>
+                <button type="submit" class="py-1 px-2 sm:px-3 bg-amber-400 text-sm sm:text-base rounded-r border-left material-icons">search</button>
             </form>
 
             <!-- Settings Dropdown -->
@@ -55,7 +55,7 @@
                     </x-dropdown>
                 </div>
             @else
-                <div class="hidden sm:ml-16 sm:flex">
+                <div class="hidden md:ml-16 md:flex">
                     <div class="shrink-0 flex items-center">
                         <a href="/login" class="py-1.5 px-3 bg-gray-900 text-gray-100 rounded hover:text-gray-400 active:text-gray-300 disabled:opacity-50">Log In</a>
                     </div>
@@ -66,8 +66,8 @@
             @endauth
 
             <!-- Hamburger -->
-            <div class="-mr-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-100 hover:text-gray-200 focus:outline-none focus:text-gray-200 transition duration-150 ease-in-out">
+            <div class="mr-2 flex items-center md:hidden">
+                <button @click="open = ! open" aria-label="Hamburger menu" class="inline-flex items-center justify-center p-2 rounded-md text-gray-100 hover:text-gray-200 focus:outline-none focus:text-gray-200 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />

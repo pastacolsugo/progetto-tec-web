@@ -10,6 +10,7 @@
     src: local('Material Icons'),
       local('public/font/MaterialIcons-Regular'),
       url(/font/MaterialIcons-Regular.ttf) format('truetype');
+    font-display: swap; /* https://web.dev/font-display/ */
 }
 
 
@@ -51,3 +52,5 @@
 /* Rules for using icons as white on a dark background. */
 .material-icons.md-light { color: rgba(255, 255, 255, 1); }
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+.safe-area-padding { padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }

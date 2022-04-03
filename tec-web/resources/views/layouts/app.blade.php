@@ -13,11 +13,13 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+        <link rel="preload" href="{{ asset('/font/MaterialIcons-Regular.ttf') }}" as="font" type="font/ttf">
+
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
-        <div class="flex flex-col min-h-screen bg-gray-300">
+    <body class="font-sans antialiased safe-area-padding">
+        <div class="flex flex-col min-h-screen bg-gray-300 bg-gradient-to-b from-gray-200 to-gray-500">
             @include('layouts.navigation')
 
             @if(isset($header))
@@ -26,6 +28,10 @@
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
+                </header>
+            @else
+                <header class="bg-gray-700 w-full p-1 text-gray-200 text-center">
+                    <p>✨ <b>Localhost</b>, il progetto eCommerce da 30 e lode! ✨</p>
                 </header>
             @endif
 
