@@ -9,9 +9,8 @@
     src: url(/font/MaterialIcons-Regular.eot); /* For IE6-8 */
     src: local('Material Icons'),
       local('public/font/MaterialIcons-Regular'),
-      url(/font/MaterialIcons-Regular.woff2) format('woff2'),
-      url(/font/MaterialIcons-Regular.woff) format('woff'),
       url(/font/MaterialIcons-Regular.ttf) format('truetype');
+    font-display: swap; /* https://web.dev/font-display/ */
 }
 
 
@@ -53,3 +52,5 @@
 /* Rules for using icons as white on a dark background. */
 .material-icons.md-light { color: rgba(255, 255, 255, 1); }
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+.safe-area-padding { padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }

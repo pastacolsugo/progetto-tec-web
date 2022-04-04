@@ -1,5 +1,6 @@
 <x-app-layout>
-<div class="max-w-7xl mx-auto bg-white p-8 my-4 rounded border border-gray-200">
+<div class="max-w-7xl mx-auto bg-white py-8 my-4 border border-gray-200">
+<div class="my-0 overflow-x-auto md:mx-0 xl:mx-8">
     <div class="flex justify-between">
         <h1 class="font-medium text-3xl">Edit product</h1>
 
@@ -45,7 +46,7 @@
 
             <div class="col-span-full">
                 <label for="description" class="text-sm text-gray-700 block mb-1 font-medium">Description</label>
-                <textarea cols="64" rows="8" type="text" name="description" id="description" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="{{ $product->description }}">{{ $product->description }}</textarea>
+                <textarea cols="50" rows="8" type="text" name="description" id="description" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="{{ $product->description }}">{{ $product->description }}</textarea>
             </div>
 
         </div>
@@ -57,5 +58,6 @@
         <button type="submit" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700 disabled:opacity-50">Save</button>
       </div>
     </form>
+  </div>
   </div>
 </x-app-layout>

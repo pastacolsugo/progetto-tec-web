@@ -25,13 +25,15 @@ use Illuminate\Support\Facades\Route;
 
 // TODO: Refactor routes and route names for style consistency!
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 
-Route::get('/search', SearchController::class);
+Route::get('/search', SearchController::class)->name('search');
 
 Route::get('/dashboard', DashboardController::class)->middleware(['auth'])->name('dashboard');
 
-Route::resource('products', ProductController::class);
+Route::get('/product/{id}', [ProductController::class, 'showProduct'])->name('product');
+
+Route::get('/products', [ProductController::class, 'showProducts'])->name('products');
 
 Route::post('/addProductToCart', [CartController::class, 'addProductToCart'])->middleware('auth')->name('addProductToCart');
 

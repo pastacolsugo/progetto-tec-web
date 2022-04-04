@@ -13,11 +13,13 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+        <link rel="preload" href="{{ asset('/font/MaterialIcons-Regular.ttf') }}" as="font" type="font/ttf">
+
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+    <body class="font-sans antialiased safe-area-padding">
+        <div class="flex flex-col min-h-screen bg-gray-300 bg-gradient-to-b from-gray-200 to-gray-500">
             @include('layouts.navigation')
 
             @if(isset($header))
@@ -27,12 +29,22 @@
                         {{ $header }}
                     </div>
                 </header>
+            @else
+                <header class="bg-gray-700 w-full p-1 text-gray-200 text-center">
+                    <p>✨ <b>Localhost</b>, il progetto eCommerce da 30 e lode! ✨</p>
+                </header>
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="flex-1">
                 {{ $slot }}
             </main>
+
+            <footer class="bg-gray-900 text-gray-100 text-center text-xs p-2 py-4">
+                <p class="text-white">Alma Mater Studiorum - Università di Bologna</p>
+                <p class="text-white">Tecnologie Web A.A. 2021/2022</p>
+                <p class="text-white italic">Progetto di: Ugo Baroncini e Alice Girolomini</p>
+            </footer>
         </div>
     </body>
 </html>

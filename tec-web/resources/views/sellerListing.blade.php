@@ -29,6 +29,7 @@
                     <x-slot name="id">{{ $product->id }}</x-slot>
                     <x-slot name="price">{{ $product->price }}€</x-slot>
                     <x-slot name="stock">{{ $product->stock }}</x-slot>
+                    {{-- TODO: add product status column to DB --}}
                     <x-slot name="status">Active</x-slot>
                     <x-slot name="edit_href">{{ route('editProductListing', ['product_id' => $product->id]) }}</x-slot>
                 </x-table-listing>
