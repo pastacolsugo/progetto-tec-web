@@ -65,6 +65,6 @@ Route::post('/deleteProduct/{product_id}', [EditProductController::class, 'delet
 
 Route::post('/placeOrder', [OrderController::class, 'placeOrder'])->middleware('auth')->name('placeOrder');
 
-Route::get('/payments', [PaymentController::class, 'show'])->middleware('auth')->name('payments');
+Route::post('/payments', [PaymentController::class, 'show'])->middleware('auth')->name('payments');
 
 require __DIR__.'/auth.php';
