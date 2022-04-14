@@ -40,10 +40,30 @@ class OrderController extends Controller
         return view('my-orders', ['orders' => $orders]);
     }
 
+    public function showConfirmOrder()
+    {
+        $user_id = auth()->user()->id;
+
+        $cart = Cart::where('user_id', $user_id)->get()->first();
+        $cart_id = $cart->id;
+        $cart_items = CartItem::where('cart_id', $cart_id)->get();
+
+        foreach ($cart_items as $cart_item) {
+            $price = Product::where('id', $cart_item->product_id)->select('price')->get()->first()->price;
+            $name = Product::where('id', $cart_item->product_id)->select('name')->get()->first()->name;
+            $cart_item['price'] = $price;
+            $cart_item['name'] = $name;
+        }
+
+        return view('confirmOrder', ['cart_items' => $cart_items, 'cart' => $cart]);
+    }
+
     public function placeOrder(Request $request)
     {
         $user_id = auth()->user()->id;
-        $items = CartItem::where('user_id', $user_id)->get();
+        $cart = Cart::where('user_id', $user_id)->get()->first();
+        $cart_id = $cart->id;
+        $items = CartItem::where('cart_id', $cart->id)->get();
 
         foreach($items as $item)
         {
@@ -55,7 +75,7 @@ class OrderController extends Controller
         $newOrder->order_total = $cart->subtotal;
         $newOrder->order_status = "Pending";
         $newOrder->user_id = $user_id;
-        $newOrder->ship_address = $request->address;
+        $newOrder->ship_address = $request->get('address');
         $newOrder->save();
 
         foreach($items as $item)
