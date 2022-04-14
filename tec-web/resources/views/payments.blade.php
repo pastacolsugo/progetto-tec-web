@@ -27,18 +27,20 @@
                             </label>
                         </div>
                     </div>
-                    <form method="POST">
+                    <form action="{{ route('confirmOrder') }}" method="POST">
+                        @csrf
                         <div class="mb-3 mx-2 flex items-end">
                             <div class="px-2 w-1/2">
                                 <label class="font-semibold text-gray-500 text-sm mb-2 ml-1">Name on card</label>
                                 <div>
-                                    <x-input class="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md" name="name" id="name" placeholder="John Smith" type="text"/>
+                                    <x-input type="hidden" name="address" value="{{ request()->address }}"/>
+                                    <x-input class="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md" name="name" id="name" placeholder="John Smith" type="text" required/>
                                 </div>
                             </div>
                             <div class="px-2 w-1/2">
                                 <label class="font-semibold text-gray-500 text-sm mb-2 ml-1">Card number</label>
                                 <div>
-                                    <x-input class="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md" name="card_number" id="card_number" placeholder="0000 0000 0000 0000" type="text"/>
+                                    <x-input class="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md" name="card_number" id="card_number" placeholder="0000 0000 0000 0000" type="text" required/>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +82,7 @@
                         <div class="mb-10 mx-2 px-2">
                             <label class="font-semibold text-gray-500 text-sm mb-2 ml-1">Security code</label>
                             <div>
-                                <x-input class="w-32 px-3 py-2 mb-1 border-2 border-gray-200 rounded-md" name="security_code" id="security_code" placeholder="000" type="text"/>
+                                <x-input class="w-32 px-3 py-2 mb-1 border-2 border-gray-200 rounded-md" name="security_code" id="security_code" placeholder="000" type="text" required/>
                             </div>
                         </div>
                         <div class="py-3">
