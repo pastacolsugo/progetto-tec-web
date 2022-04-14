@@ -34,7 +34,7 @@
                                 <h4 class="text-sm text-gray-500 font-medium">Delivery address</h4>
                                 <div class="mt-2 flex">
                                     <label class="block flex-1">
-                                        <x-input type="text" name="address" id="address" class="form-input mt-1 block w-full text-gray-700" placeholder="Address"/>
+                                        <x-input type="text" name="address" id="address" class="form-input mt-1 block w-full text-gray-700" placeholder="Address" required/>
                                     </label>
                                 </div>
                             </div>
