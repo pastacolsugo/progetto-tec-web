@@ -17,9 +17,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mb-10">
-                        <h1 class="text-center font-semibold text-xl text-gray-800 leading-tight">Secure payment info</h1>
-                    </div>
                     <div class="mb-3 flex -mx-2">
                         <div class="px-2">
                             <label for="type1" class="flex items-center">
