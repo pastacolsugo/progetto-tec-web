@@ -33,10 +33,14 @@ switch ($width) {
             x-transition:leave="transition ease-in duration-75"
             x-transition:leave-start="transform opacity-100 scale-100"
             x-transition:leave-end="transform opacity-0 scale-95"
-            class="absolute z-50 mt-2 {{ $width }} rounded-md shadow-lg {{ $alignmentClasses }}"
+            class="absolute z-50 {{ $width }} rounded-md shadow-lg {{ $alignmentClasses }} flex flex-col"
             style="display: none;"
             @click="open = false">
-        <div class="rounded-md ring-1 ring-black ring-opacity-5 {{ $contentClasses }}">
+
+        {{-- CSS Triangle https://css-tricks.com/snippets/css/css-triangle/ --}}
+        <div class="ml-36 w-0 h-0 border-solid border-x-4 border-x-transparent border-b-4 border-b-white"></div>
+
+        <div class="rounded-md {{ $contentClasses }}">
             {{ $content }}
         </div>
     </div>
