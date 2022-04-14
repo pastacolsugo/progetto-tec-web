@@ -83,7 +83,7 @@
                             </div>
                         </div>
                         <div class="py-3">
-                            <button class="block w-full max-w-xs mx-auto bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-500 focus:outline-none focus:bg-blue-500 px-3 py-3">Pay now</button>
+                            <button class="block w-full max-w-xs mx-auto bg-amber-400 text-gray-700 text-sm font-medium rounded-md focus:outline-none px-3 py-3">Pay now</button>
                         </div>
                     </form>
                 </div>
