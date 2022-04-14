@@ -17,11 +17,12 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('ship_address');
             $table->date('order_date');
-            $table->date('shipped_date');
+            $table->date('shipped_date')->nullable();
             $table->float('order_total', 8, 2);
             $table->string('order_status');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamps();
         });
     }
 
