@@ -1,7 +1,7 @@
 <tr>
     <td class="px-6 py-4 hidden md:block">
-        <div class="flex-shrink-0 h-20 w-20">
-            <img class="h-20 w-20-full" src="{{ $image }}" alt="">
+        <div class="flex-shrink-0 h-20 w-20 flex flex-col justify-center">
+            <img class="max-h-20 max-w-[5rem] object-contain" src="{{ $image }}" alt="">
         </div>
     </td>
     <td class="px-6 py-4 whitespace-nowrap">
