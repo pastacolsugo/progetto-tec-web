@@ -10,6 +10,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SellerListingController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,5 +65,10 @@ Route::get('/product-image/{product_id}', ImagesController::class)->name('produc
 
 Route::post('/deleteProduct/{product_id}', [EditProductController::class, 'deleteProductRequest'])->middleware('auth')->name('deleteProduct');
 
+Route::post('/placeOrder', [OrderController::class, 'placeOrder'])->middleware('auth')->name('placeOrder');
+
+Route::post('/payments', [PaymentController::class, 'show'])->middleware('auth')->name('payments');
+
+Route::post('/confirmOrder', [OrderController::class, 'showConfirmOrder'])->middleware('auth')->name('confirmOrder');
 
 require __DIR__.'/auth.php';
