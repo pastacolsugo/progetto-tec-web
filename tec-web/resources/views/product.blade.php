@@ -6,7 +6,7 @@
         </div>
         <div class="mt-8 grid lg:grid-cols-2 gap-8 gap-x-16">
             <div>
-                <img class="max-h-80 max-w-md object-scale-down" src="{{ route('product-image', ['product_id' => $product->id]) }}" alt="..."/>
+                <img class="max-h-80 object-scale-down" src="{{ route('product-image', ['product_id' => $product->id]) }}" alt="..."/>
             </div>
 
             <div class="flex flex-col">
