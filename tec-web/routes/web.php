@@ -56,19 +56,23 @@ Route::get('/mark-as-read/{id}', [NotificationController::class, 'markNotificati
 
 Route::get('/sellerListing', SellerListingController::class)->middleware('auth')->name('sellerListing');
 
-Route::get('/editProductListing/{product_id}', [EditProductController::class, 'editProductForm'])->
+Route::get('/editProductListing/{product_id}', [ProductController::class, 'editProductPage'])->
     whereNumber('product_id')->middleware('auth')->name('editProductListing');
 
-Route::post('/editProduct', [EditProductController::class, 'editProductRequest'])->middleware('auth')->name('editProduct');
+Route::post('/editProduct', [ProductController::class, 'editProductRequest'])->middleware('auth')->name('editProduct');
 
 Route::get('/product-image/{product_id}', ImagesController::class)->name('product-image');
 
-Route::post('/deleteProduct/{product_id}', [EditProductController::class, 'deleteProductRequest'])->middleware('auth')->name('deleteProduct');
+Route::post('/deleteProduct/{product_id}', [ProductController::class, 'deleteProductRequest'])->middleware('auth')->name('deleteProduct');
 
 Route::post('/placeOrder', [OrderController::class, 'placeOrder'])->middleware('auth')->name('placeOrder');
 
 Route::post('/payments', [PaymentController::class, 'show'])->middleware('auth')->name('payments');
 
 Route::post('/confirmOrder', [OrderController::class, 'showConfirmOrder'])->middleware('auth')->name('confirmOrder');
+
+Route::get('/create-product', [ProductController::class, 'createProductPage'])->middleware('auth')->name('createProduct');
+
+Route::post('/create-product', [ProductController::class, 'createProductRequest'])->middleware('auth');
 
 require __DIR__.'/auth.php';

@@ -21,7 +21,7 @@
 
             <div>
                 <label for="upload" class="text-sm text-gray-700 block mb-1 font-medium">Upload new image</label>
-                <input class="py-8" type="file" accept=".jpeg,.jpg,.png" name="image_upload" id="upload">
+                <input class="py-8" type="file" accept=".jpeg,.jpg,.png" name="image_upload" id="upload" required="required">
             </div>
 
             <div>
@@ -31,7 +31,7 @@
 
             <div>
                 <label for="price" class="text-sm text-gray-700 block mb-1 font-medium">Price</label>
-                <input type="number" name="price" id="price" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="{{ $product->price }}" value="{{ $product->price }}" />
+                <input type="number" step="0.01" name="price" id="price" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="{{ $product->price }}" value="{{ $product->price }}" />
             </div>
 
             <div>
