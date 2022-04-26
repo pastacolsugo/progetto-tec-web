@@ -4,7 +4,7 @@
             <div class="py-2 align-middle inline-block min-w-full sm:px-0 lg:p-8 lg:pt-4">
                 <div class="overflow-hidden sm:rounded-lg">
                     <x-select onchange="location = this.value;" class="mx-2 form-select">
-                        <option value="">Sort by</option>
+                        <option value="?query={{ $query }}">Sort by</option>
                         <option value="?query={{ $query }}&sortBy=ascendingPrice" {{ (request('sortBy') == 'ascendingPrice' ? 'selected=selected' : '') }}>Low to High</option>
                         <option value="?query={{ $query }}&sortBy=descendingPrice" {{ (request('sortBy') == 'descendingPrice' ? 'selected=selected' : '') }}>High to Low</option>
                     </x-select>
