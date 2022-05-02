@@ -31,6 +31,8 @@
                                 <a href="{{ route('product', ['id' => $item->product_id ]) }}">
                                     <p class="mb-2">{{ $item->name }}</p>
                                     <form action="{{ route('removeProductFromCart') }}" method="POST">
+                                    @csrf
+                                        <x-input type="hidden" name="product_id" value="{{ $item->product_id }}"/>
                                         <button type="submit" class="text-gray-700">
                                             <small>(Remove item)</small>
                                         </button>
