@@ -13,19 +13,22 @@ class SearchController extends Controller
         $results = null;
 
         if($query = $request->get('query')){
-           $results = Product::search($query)->paginate(10);
-
+           $results = Product::search($query)->paginate(12);
+         
             switch (request('sortBy')) {
                 case 'ascendingPrice':
-                    $results = Product::search($query)->get()->pluck('price');
-                    $results= Product::whereIn('price',$results)->orderBy('price','asc')->paginate(10);
+                    $results = Product::search($query, function($meilisearch, $query, $options){
+                        $options['sort'] = ['price:asc'];
+                        return $meilisearch->search($query, $options);
+                    })->paginate(12)->withQueryString();
                     break;
                 case 'descendingPrice':
-                    $results = Product::search($query)->get()->pluck('price');
-                    $results= Product::whereIn('price',$results)->orderBy('price','desc')->paginate(10);
+                    $results = Product::search($query, function($meilisearch, $query, $options){
+                        $options['sort'] = ['price:desc'];
+                        return $meilisearch->search($query, $options);
+                    })->paginate(12)->withQueryString();
                     break;
                 default:
-                    $results = Product::search($query)->paginate(10);;
                     break;
             }
         }
