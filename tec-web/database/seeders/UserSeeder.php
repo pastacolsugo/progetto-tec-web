@@ -45,6 +45,12 @@ class UserSeeder extends Seeder
                 'email'=>'natasha@romanoff.com',
                 'password'=>Hash::make('12345'),
                 'isSeller'=>FALSE
+            ],
+            [
+                'name'=>'Filippo Benvenuti',
+                'email'=>'filippo@example.com',
+                'password'=>Hash::make('12345'),
+                'isSeller'=>FALSE
             ]
         ]);
     }

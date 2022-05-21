@@ -22,7 +22,7 @@ class CartItemSeeder extends Seeder
                 [
                     'product_id' => '1',
                     'cart_id' => $carts[$i]->id,
-                    'quantity' => '2',
+                    'quantity' => '1',
                 ],
                 [
                     'product_id' => '2',

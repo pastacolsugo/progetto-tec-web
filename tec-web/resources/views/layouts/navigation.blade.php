@@ -20,7 +20,7 @@
 
             <!-- Search Bar -->
             <form role="search" class="flex-1 ml-1 mr-4 sm:mx-8 my-3.5 flex block focus:ring-amber-700 focus:border-blue-500 text-gray-700" action="{{ route('search') }}" method="GET">
-                <input type="text" aria-label="search box" label="search" name="query" class="flex-1 w-auto text-sm sm:text-base border-none bg-gray-100 rounded-l focus:border-none" placeholder="Cerca..." value=""/>
+                <input type="text" aria-label="search box" label="search" name="query" value="{{ request()->get('query') }}" class="flex-1 w-auto text-sm sm:text-base border-none bg-gray-100 rounded-l focus:border-none" placeholder="Cerca..." value=""/>
                 <button type="submit" class="py-1 px-2 sm:px-3 bg-amber-400 text-sm sm:text-base rounded-r border-left material-icons">search</button>
             </form>
 
