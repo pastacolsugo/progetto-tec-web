@@ -61,30 +61,63 @@ class OrderController extends Controller
     public function placeOrder(Request $request)
     {
         $user_id = auth()->user()->id;
-        $cart = Cart::where('user_id', $user_id)->get()->first();
-        $cart_id = $cart->id;
-        $items = CartItem::where('cart_id', $cart->id)->get();
+        $user_cart = Cart::where('user_id', $user_id)->get()->first();
+        $cart_items = CartItem::where('cart_id', $user_cart->id)->get();
 
-        foreach($items as $item)
-        {
-            $this->checkSoldOut($item);
-        }
-
-        $newOrder = new Order;
+        $newOrder = new Order();
         $newOrder->order_date = new DateTime();
-        $newOrder->order_total = $cart->subtotal;
+        $newOrder->order_total = 0;
         $newOrder->order_status = "Pending";
         $newOrder->user_id = $user_id;
         $newOrder->ship_address = $request->get('address');
         $newOrder->save();
 
-        foreach($items as $item)
+        foreach ($cart_items as $cart_item)
         {
-            $newOrderItem = new OrderItem;
-            $newOrderItem->product_id = $item->product_id;
+            $availableProductStock = Product::where('id', $cart_item->product_id)->first()->stock;
+            if ($availableProductStock <= 0) {
+                continue;
+            }
+
+            $newOrderItem = new OrderItem();
+            $newOrderItem->product_id = $cart_item->product_id;
             $newOrderItem->order_id = $newOrder->id;
-            $newOrderItem->quantity = $item->quantity;
-            $newOrderItem->save();
+            $newOrderItem->quantity = $availableProductStock < $cart_item->quantity ? $availableProductStock : $cart_item->quantity;
+
+            $product = Product::where('id', $cart_item->product_id)->first();
+            $product->stock -= $newOrderItem->quantity;
+            $product->save();
+
+            $newOrder->order_total += $product->price * $newOrderItem->quantity;
+            $newOrder->save();
+
+            if ($availableProductStock < $cart_item->quantity) {
+                $cart_item->quantity -= $availableProductStock;
+                $cart_item->save();
+            } else {
+                $cart_item->delete();
+            }
+
+            if ($newOrderItem->quantity <= 0) {
+                $newOrderItem->delete();
+            } else {
+                $newOrderItem->save();
+            }
+        }
+
+        $cart_items = CartItem::where('cart_id', $user_cart->id)->get();
+        $user_cart->subtotal = 0;
+        $user_cart->items = 0;
+
+        foreach ($cart_items as $cart_item) {
+            $product_price = Product::where('id', $cart_item->product_id)->first()->price;
+            $user_cart->subtotal += $cart_item->quantity * $product_price;
+            $user_cart->items += $cart_item->quantity;
+        }
+        $user_cart->save();
+
+        if (OrderItem::where('order_id', $newOrder->id)->count() <= 0) {
+            $newOrder->delete();
         }
 
         return redirect()->route('my-orders');

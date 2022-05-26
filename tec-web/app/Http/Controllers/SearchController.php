@@ -32,8 +32,6 @@ class SearchController extends Controller
                     break;
             }
 
-            $results = $results->paginate(10);
-
         //    $results = Product::search($query)->paginate(10);
 
         //     switch (request('sortBy')) {
