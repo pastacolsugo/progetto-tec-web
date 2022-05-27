@@ -8,6 +8,11 @@
         <div class="my-0 md:mx-0 overflow-x-auto xl:mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-0 lg:px-8">
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                @if (session('Message'))
+                    <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+                        <p>{{ session('Message') }}</p>
+                    </div>
+                @endif
                     <table class="w-full text-sm lg:text-base">
                         <thead class="bg-gray-50">
                             <tr class="min-w-full divide-y divide-gray-200">
