@@ -67,7 +67,11 @@ class OrderController extends Controller
 
         foreach($items as $item)
         {
-            $this->checkSoldOut($item);
+            $product = Product::find($item->product_id);
+            if($this->checkSoldOut($product, $item->quantity))
+            {
+                return redirect()->route('cart')->with('Message', 'Only '.$product->stock .' ' .$product->name .' left in stock');
+            }
         }
 
         $newOrder = new Order;
@@ -80,6 +84,9 @@ class OrderController extends Controller
 
         foreach($items as $item)
         {
+            $product = Product::find($item->product_id);
+            $product->stock -=  $item->quantity;
+            $product->save();
             $newOrderItem = new OrderItem;
             $newOrderItem->product_id = $item->product_id;
             $newOrderItem->order_id = $newOrder->id;
@@ -136,13 +143,20 @@ class OrderController extends Controller
         return Response("Your order has been delivered", 200);
     }
 
-    private function checkSoldOut(CartItem $item)
+    private function checkSoldOut(Product $product, $quantity)
     {
-        $product = Product::find($item->product_id);
-        if($product->stock - $item->quantity == 0)
+        if($product->stock - $quantity == 0)
         {
+            $product->stock = 0;
+            $product->save();
             event(new ProductSoldOut($product));
+            return false;
         }
+        else if($product->stock - $quantity < 0)
+        {
+            return true;
+        }
+        return false;
     }
 
 }
