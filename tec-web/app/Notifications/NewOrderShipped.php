@@ -16,9 +16,11 @@ class NewOrderShipped extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($order_item, $product, $order)
     {
-        //
+        $this->order_item = $order_item;
+        $this->product = $product;
+        $this->order = $order;
     }
 
     /**
@@ -55,11 +57,11 @@ class NewOrderShipped extends Notification
     public function toArray($notifiable)
     {
         return [
-            'id' => $this->order->id,
+            'name' => $this->product->name,
+            'order_number' => $this->order->id,
             'order_date' => $this->order->order_date,
             'shipped_date' => $this->order->shipped_date,
-            'order_total' => $this->order->order_total,
-            'order_status' => $this->order->order_status,
+            'order_total' => $this->order->order_total
         ];
     }
 }
