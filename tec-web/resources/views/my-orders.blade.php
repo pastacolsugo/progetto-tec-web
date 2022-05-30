@@ -18,7 +18,7 @@
                                 <th scope="col" id="order_number" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order Number</th>
                                 <th scope="col" id="order_total" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
                                 <th scope="col" id="order_date" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order Date</th>
-                                <th scope="col" id="order_status" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <th scope="col" id="status" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
@@ -31,20 +31,20 @@
                                         </a>
                                     </div>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-base text-gray-900" headers="product_name">{{ $order_item->name }}</div>
+                                <td class="px-6 py-4 whitespace-nowrap" headers="product_name">
+                                    <div class="text-base text-gray-900">{{ $order_item->name }}</div>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-base text-gray-900" headers="order_number">#O-000{{ $order_item->order_id }}</div>
+                                <td class="px-6 py-4 whitespace-nowrap" headers="order_number">
+                                    <div class="text-base text-gray-900">#O-000{{ $order_item->order_id }}</div>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-base font-medium text-gray-500" headers="order_total">{{ $order_item->price }}$</div>
+                                <td class="px-6 py-4 whitespace-nowrap" headers="order_total">
+                                    <div class="text-base font-medium text-gray-500">{{ $order_item->price }}$</div>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-base font-medium text-gray-500" headers="order_date">{{ $orders->find($order_item->order_id)->order_date }}</div>
+                                <td class="px-6 py-4 whitespace-nowrap" headers="order_date">
+                                    <div class="text-base font-medium text-gray-500">{{ $orders->find($order_item->order_id)->order_date }}</div>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-base font-medium text-gray-500" headers="order_status">{{ $order_item->status }}</div>
+                                <td class="px-6 py-4 whitespace-nowrap" headers="status">
+                                    <div class="text-base font-medium text-gray-500">{{ $order_item->status }}</div>
                                 </td>
                             </tr>
                         @endforeach
