@@ -71,4 +71,6 @@ Route::post('/payments', [PaymentController::class, 'show'])->middleware('auth')
 
 Route::post('/confirmOrder', [OrderController::class, 'showConfirmOrder'])->middleware('auth')->name('confirmOrder');
 
+Route::get('/ordersSellerListing', [OrderController::class, 'showOrderSellerListing'])->middleware('auth')->name('ordersSellerListing');
+
 require __DIR__.'/auth.php';
