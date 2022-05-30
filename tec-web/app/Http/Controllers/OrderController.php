@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\ProductSoldOut;
+use App\Events\OrderShipped;
 use Illuminate\Http\Request;
 use DateTime;
 use App\Models\Order;
@@ -36,8 +37,34 @@ class OrderController extends Controller
     {
         $user_id = auth()->user()->id;
         $orders = Order::where('user_id', $user_id)->get();
+        $order_ids = $orders->pluck('id');
+        $order_items = OrderItem::whereIn('order_id', $order_ids)->get();
+        foreach($order_items as $order_item)
+        {
+            $product = Product::find($order_item->product_id);
+            $order_item['name'] = $product->name;
+            $order_item['price'] = $product->price;
+        }
 
-        return view('my-orders', ['orders' => $orders]);
+        return view('my-orders', ['orders' => $orders, 'order_items' => $order_items]);
+    }
+
+    public function showOrderSellerListing()
+    {
+        $seller_id = auth()->user()->id;
+        $products = Product::where('seller_id', $seller_id)->get();
+        $products_ids = $products->pluck('id');
+        $order_items = OrderItem::whereIn('product_id', $products_ids)->get();
+        $order_ids = $order_items->pluck('order_id');
+        $orders = Order::whereIn('id', $order_items_ids)->get();
+        foreach($order_items as $order_item)
+        {
+            $product = Product::find($order_item->product_id);
+            $order_item['name'] = $product->name;
+            $order_item['price'] = $product->price;
+        }
+
+        return view('ordersSellerListing', ['orders' => $orders, 'order_items' => $order_items]);
     }
 
     public function showConfirmOrder()
@@ -91,17 +118,18 @@ class OrderController extends Controller
             $newOrderItem->product_id = $item->product_id;
             $newOrderItem->order_id = $newOrder->id;
             $newOrderItem->quantity = $item->quantity;
+            $newOrderItem->status = "Pending";
             $newOrderItem->save();
         }
 
         return redirect()->route('my-orders');
     }
 
-    public function orderNow(Request $request, $product_id)
+    public function orderNow(Request $request)
     {
         $user_id = auth()->user()->id;
         $cart = Cart::where('user_id', $user_id)->get();
-        $product = Product::find($product_id);
+        $product = Product::find($request->get('product_id'));
 
         $newCartItem = new CartItem;
         $newCartItem->product_id = $product_id;
@@ -116,12 +144,35 @@ class OrderController extends Controller
         return redirect()->route('new-order');
     }
 
+    public function confirmOrderItem(Request $request)
+    {
+        $order_item = OrderItem::find($request->get('order_item_id'));
+        $order_item->status = "Confirmed";
+        $order_item->save();
+
+        //$this->confirmOrder(Order::find($order_item->order_id));
+
+        return redirect()->route('ordersSellerListing');
+    }
+
     public function confirmOrder(Order $order)
     {
         $order->order_status = "Confirmed";
         $order->save();
 
-        return Response("Your order has been confirmed", 200);
+        return;
+    }
+
+    public function shipOrderItem(Request $request)
+    {
+        $order_item = OrderItem::find($request->get('order_item_id'));
+        $order = Order::find($order_item->order_id);
+        $product = Product::find($order_item->product_id);
+        $order_item->status = "Shipped";
+        $order_item->save();
+
+        event(new OrderShipped($order_item, $order, $product));
+        return redirect()->route('ordersSellerListing');
     }
 
     public function shipOrder(Order $order)
@@ -130,9 +181,16 @@ class OrderController extends Controller
         $order->shipped_date = new DateTime();
         $order->save();
 
-        event(new OrderShipped($order));
+        return;
+    }
 
-        return Response("Your order has been shipped", 200);
+    public function deliverOrderItem(Request $request)
+    {
+        $order_item = OrderItem::find($request->get('order_item_id'));
+        $order_item->status = "Delivered";
+        $order_item->save();
+
+        return redirect()->route('ordersSellerListing');
     }
 
     public function deliverOrder(Order $order)
@@ -140,7 +198,7 @@ class OrderController extends Controller
         $order->order_status = "Delivered";
         $order->save();
 
-        return Response("Your order has been delivered", 200);
+        return;
     }
 
     private function checkSoldOut(Product $product, $quantity)
