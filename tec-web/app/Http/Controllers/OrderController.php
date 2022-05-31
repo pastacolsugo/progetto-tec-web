@@ -56,7 +56,7 @@ class OrderController extends Controller
         $products_ids = $products->pluck('id');
         $order_items = OrderItem::whereIn('product_id', $products_ids)->get();
         $order_ids = $order_items->pluck('order_id');
-        $orders = Order::whereIn('id', $order_items_ids)->get();
+        $orders = Order::whereIn('id', $order_ids)->get();
         foreach($order_items as $order_item)
         {
             $product = Product::find($order_item->product_id);
@@ -120,7 +120,10 @@ class OrderController extends Controller
             $newOrderItem->quantity = $item->quantity;
             $newOrderItem->status = "Pending";
             $newOrderItem->save();
+            $item->delete();
         }
+        $cart->subtotal = 0;
+        $cart->items = 0; 
 
         return redirect()->route('my-orders');
     }
@@ -132,7 +135,7 @@ class OrderController extends Controller
         $product = Product::find($request->get('product_id'));
 
         $newCartItem = new CartItem;
-        $newCartItem->product_id = $product_id;
+        $newCartItem->product_id = $product->id;
         $newCartItem->cart_id = $cart->id;
         $newCartItem->quantity = 1;
         $newCartItem->save();
@@ -150,15 +153,27 @@ class OrderController extends Controller
         $order_item->status = "Confirmed";
         $order_item->save();
 
-        //$this->confirmOrder(Order::find($order_item->order_id));
+        $this->confirmOrder(Order::find($order_item->order_id));
 
         return redirect()->route('ordersSellerListing');
     }
 
-    public function confirmOrder(Order $order)
+    private function confirmOrder(Order $order)
     {
-        $order->order_status = "Confirmed";
-        $order->save();
+        $order_items = OrderItem::where('order_id', $order->id)->get();
+        $count = 0;
+        foreach($order_items as $item)
+        {
+            if($item->status == "Confirmed" || $item->status == "Shipped" || $item->status == "Delivered")
+            {
+                $count++;
+            }
+        }
+        if($count == $order_items->count())
+        {
+            $order->order_status = "Confirmed";
+            $order->save();
+        }
 
         return;
     }
@@ -172,14 +187,28 @@ class OrderController extends Controller
         $order_item->save();
 
         event(new OrderShipped($order_item, $order, $product));
+        $this->shipOrder(Order::find($order_item->order_id));
+
         return redirect()->route('ordersSellerListing');
     }
 
-    public function shipOrder(Order $order)
+    private function shipOrder(Order $order)
     {
-        $order->order_status = "Shipped";
-        $order->shipped_date = new DateTime();
-        $order->save();
+        $order_items = OrderItem::where('order_id', $order->id)->get();
+        $count = 0;
+        foreach($order_items as $item)
+        {
+            if($item->status == "Shipped" || $item->status == "Delivered")
+            {
+                $count++;
+            }
+        }
+        if($count == $order_items->count())
+        {
+            $order->order_status = "Shipped";
+            $order->shipped_date = new DateTime();
+            $order->save();
+        }
 
         return;
     }
@@ -190,13 +219,27 @@ class OrderController extends Controller
         $order_item->status = "Delivered";
         $order_item->save();
 
+        $this->deliverOrder(Order::find($order_item->order_id));
+
         return redirect()->route('ordersSellerListing');
     }
 
-    public function deliverOrder(Order $order)
+    private function deliverOrder(Order $order)
     {
-        $order->order_status = "Delivered";
-        $order->save();
+        $order_items = OrderItem::where('order_id', $order->id)->get();
+        $count = 0;
+        foreach($order_items as $item)
+        {
+            if($item->status == "Delivered")
+            {
+                $count++;
+            }
+        }
+        if($count == $order_items->count())
+        {
+            $order->order_status = "Delivered";
+            $order->save();
+        }
 
         return;
     }
@@ -205,8 +248,6 @@ class OrderController extends Controller
     {
         if($product->stock - $quantity == 0)
         {
-            $product->stock = 0;
-            $product->save();
             event(new ProductSoldOut($product));
             return false;
         }

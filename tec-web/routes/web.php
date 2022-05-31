@@ -75,7 +75,7 @@ Route::get('/ordersSellerListing', [OrderController::class, 'showOrderSellerList
 
 Route::get('/confirmOrderItem', [OrderController::class, 'confirmOrderItem'])->middleware('auth')->name('confirmOrderItem');
 
-Route::get('/shiOrderItem', [OrderController::class, 'shipOrderItem'])->middleware('auth')->name('shipOrderItem');
+Route::get('/shipOrderItem', [OrderController::class, 'shipOrderItem'])->middleware('auth')->name('shipOrderItem');
 
 Route::get('/deliverOrderItem', [OrderController::class, 'deliverOrderItem'])->middleware('auth')->name('deliverOrderItem');
 
