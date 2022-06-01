@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Cart') }}
+            {{ __('Carrello') }}
         </h2>
     </x-slot>
     <div class="flex flex-col max-w-7xl mx-auto">
@@ -33,6 +33,7 @@
                                     <form action="{{ route('removeProductFromCart') }}" method="POST">
                                     @csrf
                                         <x-input type="hidden" name="product_id" value="{{ $item->product_id }}"/>
+                                        <input type="hidden" name="deleteAll" value="1"/>
                                         <button type="submit" class="text-gray-700">
                                             <small>(Remove item)</small>
                                         </button>
@@ -42,31 +43,31 @@
                             <td class="px-6 py-4 whitespace-nowrap" headers="quantity">
                                 <div class="w-20 h-5">
                                     <div class="flex flex-row w-full">
-                                        <form action="{{ route('addProductToCart') }}" method="POST">
-                                        @csrf
-                                            <x-input type="hidden" name="product_id" value="{{ $item->product_id }}"/>
-                                            <x-input type="hidden" name="quantity" value="1"/>
-                                            <button type="submit" class="text-gray-500 focus:outline-none focus:text-gray-600">
-                                                <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                            </button>
-                                        </form>
-                                        <span class="mx-2"> {{ $item->quantity }} </span>
                                         <form action="{{ route('removeProductFromCart') }}" method="POST">
-                                        @csrf
+                                            @csrf
                                             <x-input type="hidden" name="product_id" value="{{ $item->product_id }}"/>
                                             <x-input type="hidden" name="quantity" value="1"/>
                                             <button type="submit" class="btn text-gray-500 focus:outline-none focus:text-gray-600">
                                                 <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                             </button>
                                         </form>
+                                        <span class="mx-2"> {{ $item->quantity }} </span>
+                                        <form action="{{ route('addProductToCart') }}" method="POST">
+                                            @csrf
+                                            <x-input type="hidden" name="product_id" value="{{ $item->product_id }}"/>
+                                            <x-input type="hidden" name="quantity" value="1"/>
+                                            <button type="submit" class="text-gray-500 focus:outline-none focus:text-gray-600">
+                                                <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap hidden md:table-cell" headers="unit_price">
-                                <div class="text-sm lg:text-base font-medium">{{ $item->price }}$</div>
+                                <div class="text-sm lg:text-base font-medium">{{ $item->price }} €</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap" headers="total_price">
-                                <div class="text-sm lg:text-base font-medium">{{ $item->price * $item->quantity }}$</div>
+                                <div class="text-sm lg:text-base font-medium">{{ $item->price * $item->quantity }} €</div>
                             </td>
                         </tr>
                         @endforeach
@@ -78,6 +79,4 @@
             </div>
         </div>
     </div>
-        <!-- TODO #a11y: alt text -->
-      <!--  <img src="{{ $item->image }}" alt=""/> -->
 </x-app-layout>
