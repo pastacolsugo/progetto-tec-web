@@ -71,4 +71,12 @@ Route::post('/payments', [PaymentController::class, 'show'])->middleware('auth')
 
 Route::post('/confirmOrder', [OrderController::class, 'showConfirmOrder'])->middleware('auth')->name('confirmOrder');
 
+Route::get('/ordersSellerListing', [OrderController::class, 'showOrderSellerListing'])->middleware('auth')->name('ordersSellerListing');
+
+Route::get('/confirmOrderItem', [OrderController::class, 'confirmOrderItem'])->middleware('auth')->name('confirmOrderItem');
+
+Route::get('/shipOrderItem', [OrderController::class, 'shipOrderItem'])->middleware('auth')->name('shipOrderItem');
+
+Route::get('/deliverOrderItem', [OrderController::class, 'deliverOrderItem'])->middleware('auth')->name('deliverOrderItem');
+
 require __DIR__.'/auth.php';
