@@ -33,7 +33,6 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap" headers="product_name">
                                     <div class="text-base text-gray-900">{{ $order_item->name }}</div>
-                                </td>
                                 <td class="px-6 py-4 whitespace-nowrap" headers="order_number">
                                     <div class="text-base text-gray-900">#O-000{{ $order_item->order_id }}</div>
                                 </td>
