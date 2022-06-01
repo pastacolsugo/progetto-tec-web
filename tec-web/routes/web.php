@@ -75,4 +75,12 @@ Route::get('/product/create', [ProductController::class, 'createProductPage'])->
 
 Route::post('/product/create', [ProductController::class, 'createProductRequest'])->middleware('auth')->name('api-create-product');
 
+Route::get('/ordersSellerListing', [OrderController::class, 'showOrderSellerListing'])->middleware('auth')->name('ordersSellerListing');
+
+Route::get('/confirmOrderItem', [OrderController::class, 'confirmOrderItem'])->middleware('auth')->name('confirmOrderItem');
+
+Route::get('/shipOrderItem', [OrderController::class, 'shipOrderItem'])->middleware('auth')->name('shipOrderItem');
+
+Route::get('/deliverOrderItem', [OrderController::class, 'deliverOrderItem'])->middleware('auth')->name('deliverOrderItem');
+
 require __DIR__.'/auth.php';

@@ -10,6 +10,8 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\Product;
 
 class OrderShipped
 {
@@ -22,9 +24,11 @@ class OrderShipped
      *
      * @return void
      */
-    public function __construct(Order $order)
+    public function __construct(OrderItem $order_item, Order $order, Product $product)
     {
         $this->order = $order;
+        $this->order_item = $order_item;
+        $this->product = $product;
     }
 
     /**

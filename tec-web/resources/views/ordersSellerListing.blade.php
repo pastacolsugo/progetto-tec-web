@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('My Orders') }}
+            {{ __('Order Listing') }}
         </h2>
     </x-slot>
     <div class="flex flex-col max-w-7xl mx-auto">
@@ -44,7 +44,18 @@
                                     <div class="text-base font-medium text-gray-500">{{ $orders->find($order_item->order_id)->order_date }}</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap" headers="status">
-                                    <div class="text-base font-medium text-gray-500">{{ $order_item->status }}</div>
+                                    <x-select onchange="location = this.value;">
+                                        <option>{{ $order_item->status }}</option>
+                                        @if($order_item->status != "Confirmed" && $order_item->status != "Shipped" && $order_item->status != "Delivered")
+                                        <option value="{{ route('confirmOrderItem', ['order_item_id' => $order_item->id]) }}">Confirmed</option>
+                                        @endif
+                                        @if($order_item->status != "Shipped" && $order_item->status != "Delivered")
+                                        <option value="{{ route('shipOrderItem', ['order_item_id' => $order_item->id]) }}">Shipped</option>
+                                        @endif
+                                        @if($order_item->status != "Delivered")
+                                        <option value="{{ route('deliverOrderItem', ['order_item_id' => $order_item->id]) }}">Delivered</option>
+                                        @endif
+                                    </x-select>
                                 </td>
                             </tr>
                         @endforeach

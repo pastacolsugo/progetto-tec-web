@@ -6,10 +6,9 @@
     </x-slot>
     <div class="my-0 md:mx-0 xl:mx-8">
         <div class="py-0 align-middle inline-block min-w-full lg:py-2 sm:px-0 lg:px-8">
-            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg bg-white">
             @if($notifications)
                 @if($notifications->count() > 0)
-                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg bg-white">
                     <div class="order-1 mt-2 flex-shrink-0 sm:mt-0">
                         <a href="{{ route('markNotification', $notification = "mark-all") }}" class="flex items-center justify-center px-4 py-2 shadow-sm text-sm font-medium text-gray-700 bg-amber-400"> Mark all as read </a>
                     </div>
@@ -18,13 +17,13 @@
                         <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
                             <div class="flex items-center justify-between flex-wrap">
                                 <div class="flex items-center">
-                                    <p class="ml-3 font-medium text-gray-700 truncate">
-                                        @if($notification->type == "App\Notifications\SoldOut")
-                                            <span class="md:inline"> {{$notification->data['name']}} is sold out [ {{$notification->created_at}} ] </span>
-                                        @endif
-                                        @if($notification->type == "App\Notifications\NewOrderShipped")
-                                            <span class="md:inline"> Order #{{$notification->data['name']}} has been shipped [ {{$notification->created_at}} ] </span>
-                                        @endif
+                                    <p class="ml-3 font-medium text-gray-700">
+                                    @if($notification->type == "App\Notifications\SoldOut")
+                                        <span class="md:inline"> {{$notification->data['name']}} is sold out [ {{$notification->created_at}} ] </span>
+                                    @endif
+                                    @if($notification->type == "App\Notifications\NewOrderShipped")
+                                        <span class="md:inline"> Your order {{ $notification->data['name'] }} has been shipped. Order number #000{{ $notification->data['order_number'] }} [ {{ $notification->created_at }} ] </span>
+                                    @endif
                                     </p>
                                 </div>
                                 <div class="order-2 ml-3 mt-2 flex sm:mt-0 sm:w-auto">
@@ -41,7 +40,6 @@
                     </div>
                 @endif
             @endif
-            </div>
         </div>
     </div>
 </x-app-layout>
