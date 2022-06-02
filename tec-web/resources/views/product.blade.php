@@ -21,8 +21,7 @@
                     @endif
                     <p class="text-2xl text-gray-700 block mb-1 font-medium">{{ $product->price }} €</p>
 
-                    <form action={{ route('addProductToCart') }} method="POST"
-                        class="mt-16">
+                    <form action={{ route('addProductToCart') }} method="POST" class="mt-16">
                         @csrf
                         <input type="hidden" name="product_id" value="{{ $product->id }}">
                         <select name="quantity">
