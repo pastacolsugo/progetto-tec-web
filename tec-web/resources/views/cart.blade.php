@@ -72,10 +72,10 @@
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap hidden md:table-cell" headers="unit_price">
-                                        <div class="text-sm lg:text-base font-medium">{{ $item->price }}$</div>
+                                        <div class="text-sm lg:text-base font-medium">{{ $item->price }} €</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap" headers="total_price">
-                                        <div class="text-sm lg:text-base font-medium">{{ $item->price * $item->quantity }}$</div>
+                                        <div class="text-sm lg:text-base font-medium">{{ $item->price * $item->quantity }} €</div>
                                     </td>
                                 </tr>
                                 @endforeach
