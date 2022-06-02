@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditProductController;
 use App\Http\Controllers\HomeController;
@@ -49,6 +50,9 @@ Route::get('/cart', [CartController::class, 'showCart'])->middleware('auth')->na
 Route::get('/order/new-order', [OrderController::class, 'showOrder'])->middleware('auth')->name('new-order');
 
 Route::get('/order/my-orders', [OrderController::class, 'showMyOrders'])->middleware('auth')->name('my-orders');
+
+Route::get('/profile-edit', [ProfileController::class, 'editProfile'])->middleware('auth')->name('profile-edit');
+Route::post('/profile-edit', [ProfileController::class, 'editProfileRequest'])->middleware('auth')->name('profile-edit-post');
 
 Route::get('/notifications', [NotificationController::class, 'show'])->middleware('auth')->name('notifications');
 
