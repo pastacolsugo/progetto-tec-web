@@ -28,7 +28,7 @@ class ProfileController extends Controller
                 return Response("Missing fields", 422);
         }
 
-        $user = User::find(Auth::id())->first();
+        $user = User::where('id', Auth::id())->first();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->isSeller = $request->isSeller;
