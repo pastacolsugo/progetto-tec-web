@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class ProfileController extends Controller
 {
     public function editProfile(Request $request) {
-        $user = User::find(Auth::id())->first();
+        $user = User::where("id", Auth::id())->first();
         return view('editProfile', ['user' => $user]);
     }
 
