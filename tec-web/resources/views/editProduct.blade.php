@@ -41,7 +41,11 @@
 
             <div>
                 <label for="category" class="text-sm text-gray-700 block mb-1 font-medium">Category</label>
-                <input type="text" name="category" id="category" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="{{ $product->category_id }}" value="{{ $product->category_id }}" />
+                <select name="category">
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="col-span-full">
