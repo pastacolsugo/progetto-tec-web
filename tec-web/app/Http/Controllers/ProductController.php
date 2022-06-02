@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
@@ -87,7 +88,8 @@ class ProductController extends Controller
     }
 
     public function createProductPage (Request $request) {
-        return view('createProduct');
+        $categories = Category::all();
+        return view('createProduct', ['categories' => $categories]);
     }
 
     public function createProductRequest (Request $request) {
