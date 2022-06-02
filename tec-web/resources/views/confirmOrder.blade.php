@@ -51,7 +51,7 @@
                                 <button class="flex items-center px-3 py-3 bg-amber-400 text-gray-700 text-sm font-medium rounded-md hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
                                     <span>Order now</span>
                                 </button>
-                            </div> 
+                            </div>
                         </form>
                     </div>
                     <div class="w-full mb-8 flex-shrink-0 order-1 lg:w-1/2 lg:mb-0 lg:order-2">
@@ -59,7 +59,7 @@
                             <div class="border rounded-md max-w-md w-full px-4 py-3">
                             <div class="flex items-center justify-between">
                                     <h3 class="text-gray-700 font-medium">Order total ({{ $cart->items }}): </h3>
-                                    <h3 class="text-gray-700 text-sm">{{ $cart->subtotal }}$</span>
+                                    <h3 class="text-gray-700 text-sm">{{ $cart->subtotal }} €</h3>
                                 </div>
                                 @foreach($cart_items as $cart_item)
                                     <div class="flex justify-between mt-6">
@@ -72,12 +72,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span class="text-gray-600">{{ $cart_item->price }}$</span>
+                                        <span class="text-gray-600">{{ $cart_item->price }} €</span>
                                     </div>
                                 @endforeach
                             </div>
                         </div>
-                    </div>   
+                    </div>
                 </div>
             </div>
         </div>
