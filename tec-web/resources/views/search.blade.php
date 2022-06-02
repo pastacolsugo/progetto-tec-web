@@ -16,7 +16,7 @@
                             <x-product-card>
                                 <x-slot name="name">{{ $product->name }}</x-slot>
                                 <x-slot name="id">{{ $product->id }}</x-slot>
-                                <x-slot name="price"> {{ $product->price }}$</x-slot>
+                                <x-slot name="price"> {{ $product->price }} €</x-slot>
                                 <p class="truncate">{{ $product->description }}</p>
                             </x-product-card>
                          @endforeach
