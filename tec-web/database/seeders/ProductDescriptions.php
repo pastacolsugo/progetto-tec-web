@@ -1,7 +1,7 @@
 <?php
 
 $product_descriptions = [
-    'oppo_mobile'=>'A smartphone with 8gb ram and much more feature',
+    'oppo_mobile'=>'Display Super Retina XDR da 6,1" con ProMotion per un’esperienza ancora più fluida e reattiva Modalità Cinema con profondità di campo smart e spostamento automatico della messa a fuoco nei video. Nuovo sistema di fotocamere Pro da 12MP (teleobiettivo, grandangolo e ultra-grandangolo) con scanner LiDAR, zoom ottico 6x (estensione totale), fotografia macro, Stili fotografici, video ProRes, Smart HDR 4, modalità Notte, Apple ProRAW, registrazione video HDR a 4K con Dolby Vision. Fotocamera anteriore TrueDepth da 12MP con modalità Notte e registrazione video HDR a 4K con Dolby Vision. Chip A15 Bionic per prestazioni fulminee. Fino a 22 ore di riproduzione video. Robusto design con Ceramic Shield. Resistenza all’acqua di grado IP68, la migliore del settore. 5G per download velocissimi e streaming ad alta qualità. iOS 15 e le sue nuove funzioni per fare ancora di più con iPhone. Compatibilità con gli accessori MagSafe: aggancio rapido e ricarica wireless più veloce.',
 
     'panasonic_tv'=>'A smart tv with much more feature',
 
