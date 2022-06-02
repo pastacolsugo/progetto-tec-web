@@ -12,7 +12,13 @@ use Illuminate\Support\Facades\Auth;
 class CartController extends Controller
 {
     private function getCartId(int $user_id) {
-        return Cart::where('user_id', $user_id)->select('id')->get()->first()->id;
+        $cart = Cart::where('user_id', $user_id)->select('id')->get()->first();
+        if ($cart == null) {
+            $cart = new Cart();
+            $cart->user_id = $user_id;
+            $cart->save();
+        }
+        return $cart->id;
     }
 
     private function getCartItems(int $cart_id) {

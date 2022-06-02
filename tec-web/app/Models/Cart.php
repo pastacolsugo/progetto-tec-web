@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Cart extends Model
 {
     use HasFactory;
+
+    protected $attributes = [
+        'items' => 0,
+        'subtotal' => 0
+    ];
 }
