@@ -118,7 +118,7 @@ class OrderController extends Controller
             $newOrderItem = new OrderItem();
             $newOrderItem->product_id = $cart_item->product_id;
             $newOrderItem->order_id = $newOrder->id;
-            $newOrderItem->quantity = $availableProductStock < $cart_item->quantity ? $availableProductStock : $cart_item->quantity;
+            $newOrderItem->quantity = $cart_item->quantity;
 
             $product = Product::where('id', $cart_item->product_id)->first();
             $product->stock -= $newOrderItem->quantity;
@@ -127,12 +127,7 @@ class OrderController extends Controller
             $newOrder->order_total += $product->price * $newOrderItem->quantity;
             $newOrder->save();
 
-            if ($availableProductStock < $cart_item->quantity) {
-                $cart_item->quantity -= $availableProductStock;
-                $cart_item->save();
-            } else {
-                $cart_item->delete();
-            }
+            $cart_item->delete();
 
             if ($newOrderItem->quantity <= 0) {
                 $newOrderItem->delete();
@@ -141,22 +136,9 @@ class OrderController extends Controller
             }
         }
 
-        $cart_items = CartItem::where('cart_id', $user_cart->id)->get();
         $user_cart->subtotal = 0;
         $user_cart->items = 0;
-
-        foreach ($cart_items as $cart_item) {
-            $product_price = Product::where('id', $cart_item->product_id)->first()->price;
-            $user_cart->subtotal += $cart_item->quantity * $product_price;
-            $user_cart->items += $cart_item->quantity;
-        }
         $user_cart->save();
-
-        if (OrderItem::where('order_id', $newOrder->id)->count() <= 0) {
-            $newOrder->delete();
-        }
-        $cart->subtotal = 0;
-        $cart->items = 0;
 
         return redirect()->route('my-orders');
     }
