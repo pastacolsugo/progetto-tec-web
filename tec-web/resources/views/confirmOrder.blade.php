@@ -17,7 +17,7 @@
                         <form action="{{ route('placeOrder') }}" method="POST">
                             @csrf
                             <div class="mt-8 lg:w-3/4 rounded-md max-w-md w-full px-4 py-3">
-                                <h4 class="text-sm text-gray-500 font-medium">Deliver to:</h4>
+                                <h3 class="text-sm text-gray-500 font-medium">Deliver to:</h3>
                                 <div class="mt-2">
                                     <div class="mt-2 flex">
                                         <label class="block flex-1">{{ auth()->user()->name }}</label>
@@ -30,13 +30,13 @@
                                     </div>
                                 </div>
                                 <div class="mt-4">
-                                    <h4 class="text-sm text-gray-500 font-medium">Contacts:</h4>
+                                    <h3 class="text-sm text-gray-500 font-medium">Contacts:</h3>
                                     <div class="mt-2 flex">
                                     <label class="block flex-1">{{ auth()->user()->email }}</label>
                                     </div>
                                 </div>
                                 <div class="mt-6" >
-                                    <h4 class="text-sm text-gray-500 font-medium">Payment method:</h4>
+                                    <h3 class="text-sm text-gray-500 font-medium">Payment method:</h3>
                                     <div class="mt-2">
                                         <div class="mt-2 flex">
                                             <label class="block flex-1">ending in {{ substr(request()->card_number, -4) }}, expires {{ request()->expiration_month }}/{{ substr(request()->expiration_year,-2) }}</label>
