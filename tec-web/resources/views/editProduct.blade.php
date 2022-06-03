@@ -21,7 +21,7 @@
 
             <div>
                 <label for="upload" class="text-sm text-gray-700 block mb-1 font-medium">Upload new image</label>
-                <input class="py-8" type="file" accept=".jpeg,.jpg,.png" name="image_upload" id="upload" required="required">
+                <input class="py-8" type="file" accept=".jpeg,.jpg,.png,.webp" name="image_upload" id="upload">
             </div>
 
             <div>
