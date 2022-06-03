@@ -30,11 +30,12 @@ class ProductController extends Controller
 
     public function editProductPage(Request $request, $id) {
         $product = Product::where('id', $id)->where('seller_id', Auth::id())->get()->first();
+        $categories = Category::all();
 
         if ($product == null) {
             return null;
         }
-        return view('editProduct', ['product' => $product]);
+        return view('editProduct', ['product' => $product, 'categories' => $categories]);
     }
 
     public function editProductRequest(Request $request) {
