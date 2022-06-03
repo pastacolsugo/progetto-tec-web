@@ -91,7 +91,7 @@ class OrderController extends Controller
         $user_cart = Cart::where('user_id', $user_id)->get()->first();
         $cart_items = CartItem::where('cart_id', $user_cart->id)->get();
 
-        foreach($items as $item)
+        foreach($cart_items as $item)
         {
             $product = Product::find($item->product_id);
             if($this->checkSoldOut($product, $item->quantity))
@@ -119,6 +119,7 @@ class OrderController extends Controller
             $newOrderItem->product_id = $cart_item->product_id;
             $newOrderItem->order_id = $newOrder->id;
             $newOrderItem->quantity = $cart_item->quantity;
+            $newOrderItem->status = "Ordered";
 
             $product = Product::where('id', $cart_item->product_id)->first();
             $product->stock -= $newOrderItem->quantity;
