@@ -11,6 +11,6 @@ class DashboardController extends Controller
         $user = Auth::user();
         $isSeller = $user->isSeller;
 
-        return view('dashboard', ['isSeller' => TRUE]);
+        return view('dashboard', ['isSeller' => $isSeller]);
     }
 }

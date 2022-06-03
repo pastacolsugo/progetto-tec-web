@@ -88,11 +88,10 @@ class OrderController extends Controller
     public function placeOrder(Request $request)
     {
         $user_id = auth()->user()->id;
-        $cart = Cart::where('user_id', $user_id)->get()->first();
-        $cart_id = $cart->id;
-        $items = CartItem::where('cart_id', $cart->id)->get();
+        $user_cart = Cart::where('user_id', $user_id)->get()->first();
+        $cart_items = CartItem::where('cart_id', $user_cart->id)->get();
 
-        foreach($items as $item)
+        foreach($cart_items as $item)
         {
             $product = Product::find($item->product_id);
             if($this->checkSoldOut($product, $item->quantity))
@@ -103,27 +102,41 @@ class OrderController extends Controller
 
         $newOrder = new Order;
         $newOrder->order_date = new DateTime();
-        $newOrder->order_total = $cart->subtotal;
+        $newOrder->order_total = 0;
         $newOrder->order_status = "Pending";
         $newOrder->user_id = $user_id;
         $newOrder->ship_address = $request->get('address');
         $newOrder->save();
 
-        foreach($items as $item)
+        foreach ($cart_items as $cart_item)
         {
-            $product = Product::find($item->product_id);
-            $product->stock -=  $item->quantity;
-            $product->save();
-            $newOrderItem = new OrderItem;
-            $newOrderItem->product_id = $item->product_id;
+            $product = Product::where('id', $cart_item->product_id)->first();
+
+            $newOrderItem = new OrderItem();
+            $newOrderItem->product_id = $cart_item->product_id;
             $newOrderItem->order_id = $newOrder->id;
-            $newOrderItem->quantity = $item->quantity;
-            $newOrderItem->status = "Pending";
-            $newOrderItem->save();
-            $item->delete();
+            $newOrderItem->quantity = $cart_item->quantity;
+            $newOrderItem->unit_price_paid = $product->price;
+            $newOrderItem->status = "Ordered";
+
+            $product->stock -= $newOrderItem->quantity;
+            $product->save();
+
+            $newOrder->order_total += $product->price * $newOrderItem->quantity;
+            $newOrder->save();
+
+            $cart_item->delete();
+
+            if ($newOrderItem->quantity <= 0) {
+                $newOrderItem->delete();
+            } else {
+                $newOrderItem->save();
+            }
         }
-        $cart->subtotal = 0;
-        $cart->items = 0; 
+
+        $user_cart->subtotal = 0;
+        $user_cart->items = 0;
+        $user_cart->save();
 
         return redirect()->route('my-orders');
     }

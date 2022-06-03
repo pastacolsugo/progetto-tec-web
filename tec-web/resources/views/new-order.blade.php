@@ -55,7 +55,7 @@
                             <div class="border rounded-md max-w-md w-full px-4 py-3">
                                 <div class="flex items-center justify-between">
                                     <h3 class="text-gray-700 font-medium">Order total ({{ $cart->items }}): </h3>
-                                    <h3 class="text-gray-700 text-sm">{{ $cart->subtotal }}$</span>
+                                    <h3 class="text-gray-700 text-sm">{{ $cart->subtotal }} €</span>
                                 </div>
                                 @foreach($cart_items as $cart_item)
                                     <div class="flex justify-between mt-6">
@@ -84,12 +84,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span class="text-gray-600">{{ $cart_item->price }}$</span>
+                                        <span class="text-gray-600">{{ $cart_item->price }} €</span>
                                     </div>
                                 @endforeach
                             </div>
                         </div>
-                    </div>   
+                    </div>
                 </div>
             </div>
         </div>

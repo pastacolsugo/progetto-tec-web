@@ -14,7 +14,7 @@ class SearchController extends Controller
 
         if($query = $request->get('query')){
            $results = Product::search($query)->paginate(12);
-         
+
             switch (request('sortBy')) {
                 case 'ascendingPrice':
                     $results = Product::search($query, function($meilisearch, $query, $options){
