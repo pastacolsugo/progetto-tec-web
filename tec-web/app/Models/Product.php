@@ -11,9 +11,7 @@ class Product extends Model
     use HasFactory, Searchable;
 
     public function user() {
-
         return $this->hasOne('App\Models\User');
-
     }
 
 }
