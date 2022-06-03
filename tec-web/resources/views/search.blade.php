@@ -3,11 +3,13 @@
         <div class="my-0 md:mx-0 xl:mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-0 lg:p-8 lg:pt-4">
                 <div class="overflow-hidden sm:rounded-lg">
-                    <x-select onchange="location = this.value;" class="mx-2 form-select">
-                        <option value="?query={{ $query }}">Sort by</option>
-                        <option value="?query={{ $query }}&sortBy=ascendingPrice" {{ (request('sortBy') == 'ascendingPrice' ? 'selected=selected' : '') }}>Low to High</option>
-                        <option value="?query={{ $query }}&sortBy=descendingPrice" {{ (request('sortBy') == 'descendingPrice' ? 'selected=selected' : '') }}>High to Low</option>
-                    </x-select>
+                    <label for="order_by">
+                        <x-select id="order_by" onchange="location = this.value;" class="mx-2 form-select">
+                            <option value="?query={{ $query }}">Sort by</option>
+                            <option value="?query={{ $query }}&sortBy=ascendingPrice" {{ (request('sortBy') == 'ascendingPrice' ? 'selected=selected' : '') }}>Low to High</option>
+                            <option value="?query={{ $query }}&sortBy=descendingPrice" {{ (request('sortBy') == 'descendingPrice' ? 'selected=selected' : '') }}>High to Low</option>
+                        </x-select>
+                    </label>
                     @if($query and $results)
                         @if($results->count() > 0)
                         <p class="mx-2 py-2 font-medium text-gray-700">Found {{ $results->total() }} results</p>
