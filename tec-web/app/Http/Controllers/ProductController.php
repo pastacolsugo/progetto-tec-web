@@ -43,7 +43,6 @@ class ProductController extends Controller
 
         foreach ($requiredFields as $field) {
             if (!$request->has($field)){
-                // TODO: use correct http status code
                 return Response("Error, missing $field", 401);
             }
         }
@@ -52,7 +51,6 @@ class ProductController extends Controller
         $product = Product::where('id', $product_id)->where('seller_id', Auth::id())->get()->first();
 
         if ($product == null) {
-            // TODO: use correct http status code
             return Response("Error, product $product_id not found", 401);
         }
 
@@ -113,7 +111,6 @@ class ProductController extends Controller
 
         foreach ($requiredFields as $field) {
             if (!$request->has($field)) {
-                // TODO: use correct http status code
                 return Response("Error, missing $field", 401);
             }
             $product->$field = $request->$field;
