@@ -16,13 +16,13 @@
                         </div>
                         <div class="mt-8 lg:w-3/4">
                             <div class="mt-6">
-                                <h4 class="text-sm text-gray-500 font-medium">Name</h4>
+                                <h3 class="text-sm text-gray-500 font-medium">Name</h3>
                                 <div class="mt-2 flex">
                                     <label class="block flex-1">{{ auth()->user()->name }}</label>
                                 </div>
                             </div>
                             <div class="mt-6">
-                                <h4 class="text-sm text-gray-500 font-medium">Email</h4>
+                                <h3 class="text-sm text-gray-500 font-medium">Email</h3>
                                 <div class="mt-2 flex">
                                     <label class="block flex-1">{{ auth()->user()->email }}</label>
                                 </div>
@@ -31,11 +31,12 @@
                         <form action="{{ route('payments') }}" method="POST" class="mt-8 lg:w-3/4">
                             @csrf
                             <div class="mt-8">
-                                <h4 class="text-sm text-gray-500 font-medium">Delivery address</h4>
+                                <h3 class="text-sm text-gray-500 font-medium">Delivery address</h3>
                                 <div class="mt-2 flex">
-                                    <label class="block flex-1">
+                                    <label for="address" class="hidden" >Address</label>
+                                    <div class="block flex-1">
                                         <x-input type="text" name="address" id="address" class="form-input mt-1 block w-full text-gray-700" placeholder="Address" required/>
-                                    </label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="flex items-center justify-between mt-8">
