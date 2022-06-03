@@ -15,8 +15,8 @@ class CreateCartsTable extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->integer('items');
-            $table->float('subtotal', 8, 2);
+            $table->integer('items')->default('0');
+            $table->float('subtotal', 8, 2)->default('0.00');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

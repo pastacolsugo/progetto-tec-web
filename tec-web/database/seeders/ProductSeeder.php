@@ -20,14 +20,14 @@ class ProductSeeder extends Seeder
 
         DB::table('products')->insert([
             [
-                'name'=>'Oppo mobile',
+                'name'=>'iPhone 13 Pro',
                 'model'=>null,
                 'price'=>'350',
-                'description'=>$product_descriptions['oppo_mobile'],
+                'description'=>$product_descriptions['iphone-13'],
                 'stock'=>'100',
                 'category_id'=>'1',
                 'seller_id'=>'3',
-                'gallery'=>'/images/oppo-phone.webp'
+                'gallery'=>'/images/iphone-13.webp'
             ],
             [
                 'name'=>'Panasonic Tv',
@@ -514,7 +514,7 @@ class ProductSeeder extends Seeder
         $imgs_folder = 'database/seeders/imgs/';
         $imgs = [
             'lg-fridge.webp',
-            'oppo-phone.webp',
+            'iphone-13.webp',
             'panasonic-tv.webp',
             'sony-tv.webp',
             'longboard.webp',

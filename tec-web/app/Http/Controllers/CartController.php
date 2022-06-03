@@ -12,7 +12,13 @@ use Illuminate\Support\Facades\Auth;
 class CartController extends Controller
 {
     private function getCartId(int $user_id) {
-        return Cart::where('user_id', $user_id)->select('id')->get()->first()->id;
+        $cart = Cart::where('user_id', $user_id)->select('id')->get()->first();
+        if ($cart == null) {
+            $cart = new Cart();
+            $cart->user_id = $user_id;
+            $cart->save();
+        }
+        return $cart->id;
     }
 
     private function getCartItems(int $cart_id) {
@@ -77,7 +83,7 @@ class CartController extends Controller
         $cart->subtotal += ($this->getProductPrice($product_id)) * ($request->quantity);
         $cart->save();
 
-        return back()->withInput();
+        return redirect()->route('cart');
     }
 
     public function emptyCart(Request $request) {
@@ -109,19 +115,19 @@ class CartController extends Controller
             return Response("Item not found in user's cart.");
         }
 
-        if ($request->has('quantity')) {
+        if ($request->has('quantity') && $request->quantity < $cartItem->quantity) {
             $cartItem->quantity -= $request->quantity;
             $cartItem->save();
             $cart->items -= $request->quantity;
             $cart->subtotal -= ($this->getProductPrice($product_id)) * ($request->quantity);
         }
 
-        if ($cartItem->quantity <= 0 or !$request->has('quantity')) {
+        if ($request->has('deleteAll') && $request->deleteAll == 1) {
             $cart->items -= $cartItem->quantity;
             $cart->subtotal -= ($this->getProductPrice($product_id)) * ($cartItem->quantity);
             $cartItem->delete();
         }
-        
+
         $cart->save();
 
         return back()->withInput();
