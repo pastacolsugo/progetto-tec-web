@@ -83,7 +83,7 @@ class CartController extends Controller
         $cart->subtotal += ($this->getProductPrice($product_id)) * ($request->quantity);
         $cart->save();
 
-        return back()->withInput();
+        return redirect()->route('cart');
     }
 
     public function emptyCart(Request $request) {
