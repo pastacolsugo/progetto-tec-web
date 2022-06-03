@@ -110,18 +110,15 @@ class OrderController extends Controller
 
         foreach ($cart_items as $cart_item)
         {
-            $availableProductStock = Product::where('id', $cart_item->product_id)->first()->stock;
-            if ($availableProductStock <= 0) {
-                continue;
-            }
+            $product = Product::where('id', $cart_item->product_id)->first();
 
             $newOrderItem = new OrderItem();
             $newOrderItem->product_id = $cart_item->product_id;
             $newOrderItem->order_id = $newOrder->id;
             $newOrderItem->quantity = $cart_item->quantity;
+            $newOrderItem->unit_price_paid = $product->price;
             $newOrderItem->status = "Ordered";
 
-            $product = Product::where('id', $cart_item->product_id)->first();
             $product->stock -= $newOrderItem->quantity;
             $product->save();
 
