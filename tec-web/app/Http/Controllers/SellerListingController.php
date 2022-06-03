@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +18,13 @@ class SellerListingController extends Controller
 
         $products = Product::where('seller_id', $seller_id)->get();
 
-        return view('sellerListing', ['products' => $products]);
+        $categories = [];
+        $db_categories = Category::all();
+
+        foreach ($db_categories as $c) {
+            $categories[$c->id] = $c->name;
+        }
+
+        return view('sellerListing', ['products' => $products, 'categories' => $categories]);
     }
 }
