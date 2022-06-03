@@ -16,7 +16,9 @@
                                 <th scope="col" class="w-px px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:block" id="product_image">Image</th>
                                 <th scope="col" id="product_name" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product</th>
                                 <th scope="col" id="order_number" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order Number</th>
-                                <th scope="col" id="order_total" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                                <th scope="col" id="unit_price" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Unit Price</th>
+                                <th scope="col" id="product_quantity" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantity</th>
+                                <th scope="col" id="product_total" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product Total</th>
                                 <th scope="col" id="order_date" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order Date</th>
                                 <th scope="col" id="status" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                             </tr>
@@ -24,20 +26,24 @@
                         <tbody class="bg-white divide-y divide-gray-200">
                         @foreach ($order_items as $order_item)
                             <tr>
-                                <td class="px-6 py-4 whitespace-nowrap hidden md:table-cell" headers="product_image">
-                                    <div class="flex-shrink-0 h-20 w-20">
-                                        <a href="{{ route('product', ['id' => $order_item->product_id ]) }}">
-                                            <img class="h-20 w-20 object-cover rounded" src="{{ route('product-image', $order_item->product_id) }}" alt="{{ $order_item->name }}">
-                                        </a>
+                                <td class="px-6 py-4 hidden md:block">
+                                    <div class="flex-shrink-0 h-20 w-20 flex flex-col justify-center">
+                                        <img class="max-h-20 max-w-[5rem] object-contain" src="{{ route('product-image', [$order_item->product_id]) }}" alt="">
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap" headers="product_name">
                                     <div class="text-base text-gray-900">{{ $order_item->name }}</div>
                                 <td class="px-6 py-4 whitespace-nowrap" headers="order_number">
-                                    <div class="text-base text-gray-900">#O-000{{ $order_item->order_id }}</div>
+                                    <div class="text-base text-gray-900">{{ sprintf("#%05d", $order_item->order_id) }}</div>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap" headers="order_total">
-                                    <div class="text-base font-medium text-gray-500">{{ $order_item->price }}$</div>
+                                <td class="px-6 py-4 whitespace-nowrap" headers="unit_price">
+                                    <div class="text-base font-medium text-gray-500">{{ $order_item->price }} €</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap" headers="product_quantity">
+                                    <div class="text-base font-medium text-gray-500">{{ $order_item->quantity }}x</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap" headers="product_total">
+                                    <div class="text-base font-medium text-gray-500">{{ $order_item->price * $order_item->quantity }} €</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap" headers="order_date">
                                     <div class="text-base font-medium text-gray-500">{{ $orders->find($order_item->order_id)->order_date }}</div>
