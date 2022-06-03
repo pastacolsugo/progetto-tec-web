@@ -20,7 +20,7 @@
                     <div class="mb-3 flex -mx-2">
                         <div class="px-2">
                             <label for="type1" class="flex items-center">
-                                <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" class="h-8 ml-3">
+                                <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" class="h-8 ml-3" alt="credit card types">
                             </label>
                         </div>
                     </div>
@@ -28,14 +28,15 @@
                         @csrf
                         <div class="mb-3 mx-2 flex items-end">
                             <div class="px-2 w-1/2">
-                                <label class="font-semibold text-gray-500 text-sm mb-2 ml-1">Name on card</label>
+                                <label for="name" class="font-semibold text-gray-500 text-sm mb-2 ml-1">Name on card</label>
                                 <div>
+                                    <label for="address" class="hidden">Address</label>
                                     <x-input type="hidden" name="address" value="{{ request()->address }}"/>
                                     <x-input class="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md" name="name" id="name" placeholder="John Smith" type="text" required/>
                                 </div>
                             </div>
                             <div class="px-2 w-1/2">
-                                <label class="font-semibold text-gray-500 text-sm mb-2 ml-1">Card number</label>
+                                <label for="card_number" class="font-semibold text-gray-500 text-sm mb-2 ml-1">Card number</label>
                                 <div>
                                     <x-input class="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md" name="card_number" id="card_number" placeholder="0000 0000 0000 0000" type="text" required/>
                                 </div>
@@ -43,7 +44,7 @@
                         </div>
                         <div class="mb-3 mx-2 flex items-end">
                             <div class="px-2 w-1/2">
-                                <label class="font-semibold text-gray-500 text-sm mb-2 ml-1">Expiration date</label>
+                                <label for="expiration_month" class="font-semibold text-gray-500 text-sm mb-2 ml-1">Expiration date</label>
                                 <div>
                                     <x-select class="form-select w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md cursor-pointer" name="expiration_month" id="expiration_month">
                                         <option value="01">01 - January</option>
@@ -62,6 +63,7 @@
                                 </div>
                             </div>
                             <div class="px-2 w-1/2">
+                                <label for="expiration_year" class="hidden">Expiration year</label>
                                 <x-select class="form-select w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md cursor-pointer" name="expiration_year" id="expiration_year">
                                     <option value="2022">2022</option>
                                     <option value="2023">2023</option>
@@ -77,7 +79,7 @@
                             </div>
                         </div>
                         <div class="mb-10 mx-2 px-2">
-                            <label class="font-semibold text-gray-500 text-sm mb-2 ml-1">Security code</label>
+                            <label for="security_code" class="font-semibold text-gray-500 text-sm mb-2 ml-1">Security code</label>
                             <div>
                                 <x-input class="w-32 px-3 py-2 mb-1 border-2 border-gray-200 rounded-md" name="security_code" id="security_code" placeholder="000" type="text" required/>
                             </div>
