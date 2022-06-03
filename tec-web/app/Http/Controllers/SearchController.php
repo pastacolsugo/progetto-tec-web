@@ -31,24 +31,6 @@ class SearchController extends Controller
                 default:
                     break;
             }
-
-        //    $results = Product::search($query)->paginate(10);
-
-        //     switch (request('sortBy')) {
-        //         case 'ascendingPrice':
-        //             $results = Product::search($query)->get()->pluck('price');
-        //             $results= Product::whereIn('price',$results)->orderBy('price','asc')->paginate(10);
-        //             break;
-        //         case 'descendingPrice':
-        //             $results = Product::search($query)->get()->pluck('price');
-        //             $results= Product::whereIn('price',$results)->orderBy('price','desc')->cursorPaginate(10);
-        //             break;
-        //         default:
-        //             $results = Product::search( $query )
-        //                 ->orderBy('price', 'DESC')
-        //                 ->paginate(10);
-        //             break;
-        //     }
         }
 
         return view('search', ['query' => $query, 'results' => $results]);
