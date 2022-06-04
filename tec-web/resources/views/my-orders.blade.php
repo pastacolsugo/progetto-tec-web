@@ -55,9 +55,6 @@
                                         <td class="px-6 py-4 whitespace-nowrap" headers="product_total">
                                             <div class="text-base font-medium text-gray-500">{{ sprintf("%.2f", $order_item->price * $order_item->quantity) }} €</div>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap" headers="order_date">
-                                            <div class="text-base font-medium text-gray-500"></div>
-                                        </td>
                                         <td class="px-6 py-4 whitespace-nowrap" headers="status">
                                             <div class="text-base font-medium text-gray-500">{{ $order_item->status }}</div>
                                         </td>
