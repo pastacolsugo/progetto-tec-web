@@ -16,6 +16,9 @@ class ImagesController extends Controller
 
         $image = Product::where("id", $id)->first()->gallery;
 
-        return Storage::response($image);
+        $response = Storage::response($image);
+        $response->headers->set('Cache-Control', 'public, max-age=2628000');
+
+        return $response;
     }
 }
