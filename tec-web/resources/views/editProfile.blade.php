@@ -21,7 +21,7 @@
 
                     <div>
                         <label for="isSeller" class="text-sm text-gray-700 block mb-1 font-medium">Venditore?</label>
-                            <select name="isSeller">
+                            <select id="isSeller">
                                 @if ($user->isSeller)
                                     <option value="1">Si</option>
                                     <option value="0">No</option>

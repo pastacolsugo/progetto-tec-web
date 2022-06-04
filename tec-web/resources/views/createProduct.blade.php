@@ -36,7 +36,7 @@
 
             <div>
                 <label for="category" class="text-sm text-gray-700 block mb-1 font-medium">Category</label>
-                <select name="category">
+                <select id="category">
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
