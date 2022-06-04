@@ -38,15 +38,15 @@
                                     <td class="px-6 py-4 whitespace-nowrap" headers="product_name">
                                         <a href="{{ route('product', ['id' => $item->product_id ]) }}">
                                             <p class="mb-2">{{ $item->name }}</p>
-                                            <form action="{{ route('removeProductFromCart') }}" method="POST">
-                                            @csrf
-                                                <x-input type="hidden" name="product_id" value="{{ $item->product_id }}"/>
-                                                <input type="hidden" name="deleteAll" value="1"/>
-                                                <button type="submit" class="text-gray-700">
-                                                    <small>(Remove item)</small>
-                                                </button>
-                                            </form>
                                         </a>
+                                        <form action="{{ route('removeProductFromCart') }}" method="POST">
+                                        @csrf
+                                            <x-input type="hidden" name="product_id" value="{{ $item->product_id }}"/>
+                                            <input type="hidden" name="deleteAll" value="1"/>
+                                            <button type="submit" class="text-gray-700">
+                                                <small>(Remove item)</small>
+                                            </button>
+                                        </form>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap" headers="quantity">
                                         <div class="w-20 h-5">
