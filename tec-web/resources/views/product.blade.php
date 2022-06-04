@@ -21,10 +21,11 @@
                     @endif
                     <p class="text-2xl text-gray-700 block mb-1 font-medium">{{ $product->price }} €</p>
 
-                    <form action={{ route('addProductToCart') }} method="POST" class="mt-16">
+                    <form action="{{ route('addProductToCart') }}" method="POST" class="mt-16">
                         @csrf
                         <input type="hidden" name="product_id" value="{{ $product->id }}">
-                        <select name="quantity">
+                        <label for="quantity" class="hidden">Quantity</label>
+                        <x-select id="quantity" name="quantity" class="form-select">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -55,15 +56,14 @@
                             <option value="28">28</option>
                             <option value="29">29</option>
                             <option value="30">30</option>
-                        </select>
+                        </x-select>
                         <x-amber-button class="m-4">Aggiungi al carrello</x-amber-button>
                     </form>
                 </div>
             </div>
 
             <div>
-                <p class="text-sm text-gray-700 block mb-1 font-medium">Category</p>
-                <input type="text" name="category" id="category" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="{{ $product->category_id }}" value="{{ $product->category_id }}" />
+                <label class="text-sm text-gray-700 block mb-1 font-medium">Category: {{ \App\Models\Category::find($product->category_id)->get()->first()->name }}</label>
             </div>
 
             <div class="col-span-full whitespace-pre-line">
