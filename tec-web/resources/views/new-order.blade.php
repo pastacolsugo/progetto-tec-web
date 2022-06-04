@@ -11,8 +11,8 @@
                     <div class="w-full lg:w-1/2 order-2">
                         <div class="flex items-center">
                             <a href="{{ route('new-order') }}" class="button flex text-sm text-gray-700 focus:outline-none"><span class="flex items-center justify-center border-2 border-blue-500 rounded-full h-5 w-5 mr-2">1</span>Shipping</a>
-                            <a class="button flex text-sm text-gray-500 ml-8 focus:outline-none" disabled><span class="flex items-center justify-center border-2 border-gray-500 rounded-full h-5 w-5 mr-2">2</span>Payments</a>
-                            <a class="button flex text-sm text-gray-500 ml-8 focus:outline-none" disabled><span class="flex items-center justify-center border-2 border-gray-500 rounded-full h-5 w-5 mr-2">3</span>Confirm</a>
+                            <a class="button flex text-sm text-gray-500 ml-8 focus:outline-none disabled"><span class="flex items-center justify-center border-2 border-gray-500 rounded-full h-5 w-5 mr-2">2</span>Payments</a>
+                            <a class="button flex text-sm text-gray-500 ml-8 focus:outline-none disabled"><span class="flex items-center justify-center border-2 border-gray-500 rounded-full h-5 w-5 mr-2">3</span>Confirm</a>
                         </div>
                         <div class="mt-8 lg:w-3/4">
                             <div class="mt-6">
@@ -56,7 +56,7 @@
                             <div class="border rounded-md max-w-md w-full px-4 py-3">
                                 <div class="flex items-center justify-between">
                                     <h3 class="text-gray-700 font-medium">Order total ({{ $cart->items }}): </h3>
-                                    <h3 class="text-gray-700 text-sm">{{ $cart->subtotal }} €</span>
+                                    <h3 class="text-gray-700 text-sm">{{ $cart->subtotal }} €</h3>
                                 </div>
                                 @foreach($cart_items as $cart_item)
                                     <div class="flex justify-between mt-6">

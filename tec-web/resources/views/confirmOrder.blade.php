@@ -10,9 +10,9 @@
                 <div class="flex flex-col lg:flex-row p-8 mt-8">
                     <div class="w-full lg:w-1/2 order-2">
                         <div class="flex items-center">
-                            <a class="button flex text-sm text-blue-500 focus:outline-none" disabled><span class="flex items-center justify-center text-white bg-blue-500 rounded-full h-5 w-5 mr-2">1</span>Shipping</a>
-                            <a class="button flex text-sm ml-8 text-blue-500 focus:outline-none" disabled><span class="flex items-center justify-center text-white bg-blue-500 rounded-full h-5 w-5 mr-2">2</span>Payments</a>
-                            <a href="{{ route('confirmOrder') }}" class="button flex text-sm text-gray-700 ml-8 focus:outline-none" disabled><span class="flex items-center justify-center border-2 border-blue-500 rounded-full h-5 w-5 mr-2">3</span>Confirm</a>
+                            <a class="button flex text-sm text-blue-500 focus:outline-none disabled"><span class="flex items-center justify-center text-white bg-blue-500 rounded-full h-5 w-5 mr-2">1</span>Shipping</a>
+                            <a class="button flex text-sm ml-8 text-blue-500 focus:outline-none disabled"><span class="flex items-center justify-center text-white bg-blue-500 rounded-full h-5 w-5 mr-2">2</span>Payments</a>
+                            <a href="{{ route('confirmOrder') }}" class="button flex text-sm text-gray-700 ml-8 focus:outline-none"><span class="flex items-center justify-center border-2 border-blue-500 rounded-full h-5 w-5 mr-2">3</span>Confirm</a>
                         </div>
                         <form action="{{ route('placeOrder') }}" method="POST">
                             @csrf

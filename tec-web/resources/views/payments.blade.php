@@ -11,17 +11,17 @@
                     <div class="flex flex-col lg:flex-row p-8 mt-8">
                         <div class="w-full lg:w-1/2 order-2">
                             <div class="flex items-center">
-                                <a class="button flex text-sm text-blue-500 focus:outline-none" disabled><span class="flex items-center justify-center text-white bg-blue-500 rounded-full h-5 w-5 mr-2">1</span>Shipping</a>
-                                <a href="{{ route('payments') }}"class="button flex text-sm text-gray-700 ml-8 focus:outline-none"><span class="flex items-center justify-center border-2 border-blue-500 rounded-full h-5 w-5 mr-2">2</span>Payments</a>
-                                <a class="button flex text-sm text-gray-500 ml-8 focus:outline-none" disabled><span class="flex items-center justify-center border-2 border-gray-500 rounded-full h-5 w-5 mr-2">3</span>Confirm</a>
+                                <a class="button flex text-sm text-blue-500 focus:outline-none disabled"><span class="flex items-center justify-center text-white bg-blue-500 rounded-full h-5 w-5 mr-2">1</span>Shipping</a>
+                                <a href="{{ route('payments') }}" class="button flex text-sm text-gray-700 ml-8 focus:outline-none"><span class="flex items-center justify-center border-2 border-blue-500 rounded-full h-5 w-5 mr-2">2</span>Payments</a>
+                                <a class="button flex text-sm text-gray-500 ml-8 focus:outline-none disabled"><span class="flex items-center justify-center border-2 border-gray-500 rounded-full h-5 w-5 mr-2">3</span>Confirm</a>
                             </div>
                         </div>
                     </div>
                     <div class="mb-3 flex -mx-2">
                         <div class="px-2">
-                            <label for="type1" class="flex items-center">
+                            <div class="flex items-center">
                                 <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" class="h-8 ml-3" alt="credit card types">
-                            </label>
+                            </div>
                         </div>
                     </div>
                     <form action="{{ route('confirmOrder') }}" method="POST">
@@ -30,8 +30,7 @@
                             <div class="px-2 w-1/2">
                                 <label for="name" class="font-semibold text-gray-500 text-sm mb-2 ml-1">Name on card</label>
                                 <div>
-                                    <label for="address" class="hidden">Address</label>
-                                    <x-input type="hidden" name="address" value="{{ request()->address }}"/>
+                                    <x-input type="hidden" name="address" id="address" value="{{ request()->address }}"/>
                                     <x-input class="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md" name="name" id="name" placeholder="John Smith" type="text" required/>
                                 </div>
                             </div>
