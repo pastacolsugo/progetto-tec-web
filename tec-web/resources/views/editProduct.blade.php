@@ -15,7 +15,7 @@
         <input type="hidden" name="product_id" id="product_id" value="{{ $product->id }}"/>
         <div class="mt-8 grid lg:grid-cols-2 gap-8 gap-x-16">
             <div>
-                <label for="image" class="text-sm text-gray-700 block mb-1 font-medium">Image</label>
+                <label class="text-sm text-gray-700 block mb-1 font-medium">Image</label>
                 <img class="h-80" src="{{ route('product-image', ['product_id' => $product->id]) }}" alt=""/>
             </div>
 
@@ -41,16 +41,16 @@
 
             <div>
                 <label for="category" class="text-sm text-gray-700 block mb-1 font-medium">Category</label>
-                <select id="category">
+                <x-select id="category" name="category">
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
-                </select>
+                </x-select>
             </div>
 
             <div class="col-span-full">
                 <label for="description" class="text-sm text-gray-700 block mb-1 font-medium">Description</label>
-                <textarea cols="50" rows="8" type="text" name="description" id="description" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="{{ $product->description }}">{{ $product->description }}</textarea>
+                <textarea cols="50" rows="8" name="description" id="description" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="{{ $product->description }}">{{ $product->description }}</textarea>
             </div>
 
         </div>

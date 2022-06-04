@@ -16,21 +16,20 @@
 
                     <div>
                         <label for="email" class="text-sm text-gray-700 block mb-1 font-medium">Email</label>
-                        <input type="email" step="0.01" name="email" id="email" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="{{ $user->email }}" value="{{ $user->email }}" />
+                        <input type="email" name="email" id="email" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="{{ $user->email }}" value="{{ $user->email }}" />
                     </div>
 
                     <div>
                         <label for="isSeller" class="text-sm text-gray-700 block mb-1 font-medium">Venditore?</label>
-                            <select id="isSeller">
-                                @if ($user->isSeller)
-                                    <option value="1">Si</option>
-                                    <option value="0">No</option>
-                                @else
-                                    <option value="0">No</option>
-                                    <option value="1">Si</option>
-                                @endif
-                            </select>
-                        </label>
+                        <x-select id="isSeller" name="isSeller">
+                            @if ($user->isSeller)
+                                <option value="1">Si</option>
+                                <option value="0">No</option>
+                            @else
+                                <option value="0">No</option>
+                                <option value="1">Si</option>
+                            @endif
+                        </x-select>
                     </div>
                 </div>
                 <div class="flex justify-end space-x-4 mt-8">
