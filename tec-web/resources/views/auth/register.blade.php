@@ -48,8 +48,9 @@
             <!-- TODO: Localize text -->
             <!-- Seller -->
             <div class="mt-4">
-                Sei un venditore?
-                <input type="checkbox" name="isSeller">
+                <x-label for="seller" class="hidden"> Seller </x-label>
+                Sei un venditore? 
+                <input id="seller" type="checkbox" name="isSeller">
             </div>
 
             <div class="flex items-center justify-end mt-4">
