@@ -44,15 +44,14 @@
                                     <div class="text-base font-medium text-gray-500">{{ $orders->find($order_item->order_id)->order_date }}</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap" headers="status">
-                                    <x-select onchange="location = this.value;">
+                                    <label for="change_status{{ $order_item->id }}" class="hidden">Change status</label>
+                                    <x-select id="change_status{{ $order_item->id }}" onchange="location = this.value;">
                                         <option>{{ $order_item->status }}</option>
                                         @if($order_item->status != "Confirmed" && $order_item->status != "Shipped" && $order_item->status != "Delivered")
                                         <option value="{{ route('confirmOrderItem', ['order_item_id' => $order_item->id]) }}">Confirmed</option>
-                                        @endif
-                                        @if($order_item->status != "Shipped" && $order_item->status != "Delivered")
+                                        @elseif($order_item->status != "Shipped" && $order_item->status != "Delivered")
                                         <option value="{{ route('shipOrderItem', ['order_item_id' => $order_item->id]) }}">Shipped</option>
-                                        @endif
-                                        @if($order_item->status != "Delivered")
+                                        @elseif($order_item->status != "Delivered")
                                         <option value="{{ route('deliverOrderItem', ['order_item_id' => $order_item->id]) }}">Delivered</option>
                                         @endif
                                     </x-select>
