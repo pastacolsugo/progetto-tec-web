@@ -57,13 +57,17 @@
                             <option value="29">29</option>
                             <option value="30">30</option>
                         </x-select>
+                        @if ($product->stock > 0)
                         <x-amber-button class="m-4">Aggiungi al carrello</x-amber-button>
+                        @else
+                        <x-amber-button class="m-4" disabled>Aggiungi al carrello</x-amber-button>
+                        @endif
                     </form>
                 </div>
             </div>
 
             <div>
-                <label class="text-sm text-gray-700 block mb-1 font-medium">Category: {{ \App\Models\Category::find($product->category_id)->get()->first()->name }}</label>
+                <label class="text-sm text-gray-700 block mb-1 font-medium">Categoria: {{ \App\Models\Category::find($product->category_id)->get()->first()->name }}</label>
             </div>
 
             <div class="col-span-full whitespace-pre-line">
