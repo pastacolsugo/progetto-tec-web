@@ -14,9 +14,10 @@
                     </div>
                 @else
                     @foreach ($orders as $order)
-                        <div class="mt-8 bg-gray-50 shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                        <div class="mt-8 bg-neutral-500 shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                             <div class="flex justify-between">
                                 <div class="mx-8 my-4 text-gray-600">Ordine: {{ sprintf("#%05d", $order->id) }}</div>
+                                <div class="mx-8 my-4 text-lg text-gray-50">{{ $order->order_date }}</div>
                                 <div class="mx-8 my-4 text-gray-600">Totale: {{ sprintf("%.2f", $order->order_total) }} €</div>
                             </div>
                             <table class="border-t min-w-full divide-y divide-gray-200">
@@ -45,22 +46,18 @@
                                         <td class="px-6 py-4 whitespace-nowrap" headers="product_name{{ $order->id }}">
                                             <div class="text-base text-gray-900">{{ $order_item->name }}</div>
 
-                                        {{-- <td class="px-6 py-4 whitespace-nowrap" headers="order_number{{ $order->id }}">
-                                            <div class="text-base text-gray-900"></div>
-                                        </td> --}}
-
-                                        <td class="px-6 py-4 whitespace-nowrap" headers="unit_price{{ $order->id }}">
-                                            <div class="text-base font-medium text-gray-500">{{ $order_item->price }} €</div>
+                                        <td class="px-6 py-4 whitespace-nowrap" headers="unit_price">
+                                            <div class="text-base font-medium text-gray-500">{{ sprintf("%.2f", $order_item->price) }} €</div>
+                                            
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap" headers="product_quantity{{ $order->id }}">
                                             <div class="text-base font-medium text-gray-500">{{ $order_item->quantity }}x</div>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap" headers="product_total{{ $order->id }}">
-                                            <div class="text-base font-medium text-gray-500">{{ $order_item->price * $order_item->quantity }} €</div>
+
+                                        <td class="px-6 py-4 whitespace-nowrap" headers="product_total">
+                                            <div class="text-base font-medium text-gray-500">{{ sprintf("%.2f", $order_item->price * $order_item->quantity) }} €</div>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap" headers="order_date{{ $order->id }}">
-                                            <div class="text-base font-medium text-gray-500">{{ $orders->find($order_item->order_id)->order_date }}</div>
-                                        </td>
+                                        
                                         <td class="px-6 py-4 whitespace-nowrap" headers="status{{ $order->id }}">
                                             <div class="text-base font-medium text-gray-500">{{ $order_item->status }}</div>
                                         </td>

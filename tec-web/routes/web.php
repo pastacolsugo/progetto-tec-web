@@ -65,7 +65,7 @@ Route::get('/seller/edit-listing/{product_id}', [ProductController::class, 'edit
 
 Route::post('/seller/edit-product', [ProductController::class, 'editProductRequest'])->middleware('auth')->name('editProduct');
 
-Route::get('/product/image/{product_id}', ImagesController::class)->middleware('cache.headers:public;max_age=2628000;etag')->name('product-image');
+Route::get('/product/image/{product_id}', ImagesController::class)->name('product-image');
 
 Route::post('/product/delete/{product_id}', [ProductController::class, 'deleteProductRequest'])->middleware('auth')->name('deleteProduct');
 
