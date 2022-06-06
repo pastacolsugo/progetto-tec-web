@@ -18,11 +18,11 @@
                         <table class="w-full text-sm lg:text-base">
                             <thead class="bg-gray-50">
                                 <tr class="min-w-full divide-y divide-gray-200">
-                                    <th scope="col" class="w-px px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:block" id="product_image">Image</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" id="product_name">Product</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" id="quantity">Quantity</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:block" id="unit_price">Unit price</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" id="total_price">Total price</th>
+                                    <th scope="col" class="w-px px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:block" id="product_image">Immagine</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" id="product_name">Prodotto</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" id="quantity">Quantità</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:block" id="unit_price">Prezzo unitario</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" id="total_price">Prezzo totale</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
@@ -44,7 +44,7 @@
                                             <x-input type="hidden" name="product_id" value="{{ $item->product_id }}"/>
                                             <input type="hidden" name="deleteAll" value="1"/>
                                             <button type="submit" class="text-gray-700">
-                                                <small>(Remove item)</small>
+                                                <small>( Rimuovi )</small>
                                             </button>
                                         </form>
                                     </td>
@@ -83,11 +83,11 @@
                         </table>
                     </div>
                     <div class="flex items-center justify-center md:justify-end mx-2 mt-8">
-                        <a href="{{ route('new-order') }}" class="btn flex px-6 py-3 bg-amber-400 text-gray-700 text-sm font-medium rounded-md focus:outline-none">Proceed to checkout</a>
+                        <a href="{{ route('new-order') }}" class="btn flex px-6 py-3 bg-amber-400 text-gray-700 text-sm font-medium rounded-md focus:outline-none">Procedi all'ordine</a>
                     </div>
                 @else
                 <div class="mt-6 flex items-center justify-center">
-                    <p class="text-gray-700 text-2xl font-medium">Your cart is empty</p>
+                    <p class="text-gray-700 text-2xl font-medium">Il tuo carrello è vuoto</p>
                 </div>
                 @endif
             @endif

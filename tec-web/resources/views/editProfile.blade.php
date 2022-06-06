@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edit profile') }}
+            {{ __('Modifica profilo') }}
         </h2>
     </x-slot>
     <div class="max-w-7xl mx-auto bg-white py-8 my-4 border border-gray-200">
@@ -10,7 +10,7 @@
                 @csrf
                 <div class="mt-8 grid lg:grid-cols-2 gap-8 gap-x-16">
                     <div>
-                        <label for="name" class="text-sm text-gray-700 block mb-1 font-medium">Name</label>
+                        <label for="name" class="text-sm text-gray-700 block mb-1 font-medium">Nome</label>
                         <input type="text" name="name" id="name" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="{{ $user->name }}" value="{{ $user->name }}" />
                     </div>
 
