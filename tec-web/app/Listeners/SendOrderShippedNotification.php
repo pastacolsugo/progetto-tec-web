@@ -34,6 +34,6 @@ class SendOrderShippedNotification
         $order = Order::find($event->order_item->order_id);
         $product = Product::find($event->order_item->product_id);
         $user = User::find($order->user_id);
-        $user->notify(new NewOrderShipped($event->order_item, $product, $order));
+        $user->notify(new NewOrderShipped($event->order_item, $product, $order, $user));
     }
 }

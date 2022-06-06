@@ -16,9 +16,10 @@ class SoldOut extends Notification
      *
      * @return void
      */
-    public function __construct($product)
+    public function __construct($product, $seller)
     {
         $this->product = $product;
+        $this->seller = $seller;
     }
 
     /**
@@ -29,7 +30,7 @@ class SoldOut extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -40,10 +41,12 @@ class SoldOut extends Notification
      */
     public function toMail($notifiable)
     {
+        $url = url('/seller/listings'); 
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject('Prodotto esaurito')
+                    ->greeting('Ciao '.$this->seller->name.',')
+                    ->line('Il prodotto  '.$this->product->name.' è esaurito. Rifornisci le scorte al più presto!')
+                    ->action('Visualizza i tuoi prodotti', $url);
     }
 
     /**
