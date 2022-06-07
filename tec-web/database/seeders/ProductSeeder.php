@@ -56,7 +56,7 @@ class ProductSeeder extends Seeder
                 'description'=>$product_descriptions['longboard'],
                 'stock'=>'3',
                 'category_id'=>'3',
-                'seller_id'=>'2',
+                'seller_id'=>'1',
                 'gallery'=>'/images/longboard.webp'
             ],
             [
@@ -66,7 +66,7 @@ class ProductSeeder extends Seeder
                 'description'=>$product_descriptions['cinelli_king_zydeco'],
                 'stock'=>'2',
                 'category_id'=>'3',
-                'seller_id'=>'4',
+                'seller_id'=>'3',
                 'gallery'=>'/images/bici.webp'
             ],
             [
@@ -76,7 +76,7 @@ class ProductSeeder extends Seeder
                 'description'=>$product_descriptions['trenta_e_lode'],
                 'stock'=>'999',
                 'category_id'=>'3',
-                'seller_id'=>'4',
+                'seller_id'=>'3',
                 'gallery'=>'/images/trenta.webp'
             ],
             [
