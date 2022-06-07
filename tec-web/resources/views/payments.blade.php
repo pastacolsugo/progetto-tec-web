@@ -8,7 +8,7 @@
         <div class="flex flex-col items-center justify-center max-w-7xl mx-auto">
             <div class="py-0 align-middle inline-block min-w-full lg:py-2 sm:px-0 lg:px-8">
                 <div class="shadow bg-white overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                    <div class="flex flex-col lg:flex-row p-4 mt-8">
+                    <div class="flex flex-col lg:flex-row p-4 mt-0 md:mt-8">
                         <div class="w-full lg:w-1/2 order-2">
                             <div class="flex items-center">
                                 <a class="button flex text-sm text-blue-500 focus:outline-none disabled"><span class="flex items-center justify-center text-white bg-blue-500 rounded-full h-5 w-5 mr-2">1</span>Spedizione</a>
@@ -26,23 +26,23 @@
                     </div>
                     <form action="{{ route('confirmOrder') }}" method="POST">
                         @csrf
-                        <div class="mb-3 mx-2 flex items-end">
-                            <div class="px-2 w-1/2">
+                        <div class="mb-3 mx-2 md:flex md:items-end">
+                            <div class="px-2 md:w-1/2">
                                 <label for="name" class="font-semibold text-gray-500 text-sm mb-2 ml-1">Nome sulla carta</label>
                                 <div>
                                     <x-input type="hidden" name="address" id="address" value="{{ request()->address }}"/>
                                     <x-input class="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md" name="name" id="name" placeholder="John Smith" type="text" required/>
                                 </div>
                             </div>
-                            <div class="px-2 w-1/2">
+                            <div class="px-2 mt-4 md:mt-0 md:w-1/2">
                                 <label for="card_number" class="font-semibold text-gray-500 text-sm mb-2 ml-1">Numero della carta</label>
                                 <div>
                                     <x-input class="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md" name="card_number" id="card_number" placeholder="0000 0000 0000 0000" type="text" required/>
                                 </div>
                             </div>
                         </div>
-                        <div class="mb-3 mx-2 flex items-end">
-                            <div class="px-2 w-1/2">
+                        <div class="mb-3 mx-2 md:flex md:items-end">
+                            <div class="px-2 mt-4 md:mt-0 md:w-1/2">
                                 <label for="expiration_month" class="font-semibold text-gray-500 text-sm mb-2 ml-1">Data di scadenza</label>
                                 <div>
                                     <x-select class="form-select w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md cursor-pointer" name="expiration_month" id="expiration_month">
@@ -61,7 +61,7 @@
                                     </x-select>
                                 </div>
                             </div>
-                            <div class="px-2 w-1/2">
+                            <div class="px-2 md:w-1/2">
                                 <label for="expiration_year" class="hidden">Expiration year</label>
                                 <x-select class="form-select w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md cursor-pointer" name="expiration_year" id="expiration_year">
                                     <option value="2022">2022</option>

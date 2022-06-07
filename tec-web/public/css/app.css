@@ -791,6 +791,9 @@ select {
 .-mt-px {
   margin-top: -1px;
 }
+.mt-0 {
+  margin-top: 0px;
+}
 .block {
   display: block;
 }
@@ -2041,6 +2044,14 @@ select {
 
   .md\:ml-16 {
     margin-left: 4rem;
+  }
+
+  .md\:mt-8 {
+    margin-top: 2rem;
+  }
+
+  .md\:mt-0 {
+    margin-top: 0px;
   }
 
   .md\:block {
