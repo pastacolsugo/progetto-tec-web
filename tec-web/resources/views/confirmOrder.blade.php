@@ -7,12 +7,12 @@
     <div class="my-0 md:mx-0 xl:mx-8">
         <div class="py-0 align-middle inline-block min-w-full lg:py-2 sm:px-0 lg:px-8">
             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg bg-white">
-                <div class="flex flex-col lg:flex-row p-8 mt-8">
+                <div class="flex flex-col lg:flex-row m-4 mt-0 md:mt-8">
                     <div class="w-full lg:w-1/2 order-2">
-                        <div class="flex items-center">
+                        <div class="flex justify-around md:justify-start items-center">
                             <a class="button flex text-sm text-blue-500 focus:outline-none disabled"><span class="flex items-center justify-center text-white bg-blue-500 rounded-full h-5 w-5 mr-2">1</span>Spedizione</a>
-                            <a class="button flex text-sm ml-8 text-blue-500 focus:outline-none disabled"><span class="flex items-center justify-center text-white bg-blue-500 rounded-full h-5 w-5 mr-2">2</span>Pagamento</a>
-                            <a href="{{ route('confirmOrder') }}" class="button flex text-sm text-gray-700 ml-8 focus:outline-none"><span class="flex items-center justify-center border-2 border-blue-500 rounded-full h-5 w-5 mr-2">3</span>Conferma</a>
+                            <a class="button flex text-sm ml-0 md:ml-8 text-blue-500 focus:outline-none disabled"><span class="flex items-center justify-center text-white bg-blue-500 rounded-full h-5 w-5 mr-2">2</span>Pagamento</a>
+                            <a href="{{ route('confirmOrder') }}" class="button flex text-sm ml-0 md:ml-8 text-gray-700 focus:outline-none"><span class="flex items-center justify-center border-2 border-blue-500 rounded-full h-5 w-5 mr-2">3</span>Conferma</a>
                         </div>
                         <form action="{{ route('placeOrder') }}" method="POST">
                             @csrf

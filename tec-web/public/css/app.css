@@ -679,6 +679,12 @@ select {
 .m-4 {
   margin: 1rem;
 }
+.m-8 {
+  margin: 2rem;
+}
+.m-0 {
+  margin: 0px;
+}
 .my-0 {
   margin-top: 0px;
   margin-bottom: 0px;
@@ -793,6 +799,9 @@ select {
 }
 .mt-0 {
   margin-top: 0px;
+}
+.ml-0 {
+  margin-left: 0px;
 }
 .block {
   display: block;
@@ -2052,6 +2061,10 @@ select {
 
   .md\:mt-0 {
     margin-top: 0px;
+  }
+
+  .md\:ml-8 {
+    margin-left: 2rem;
   }
 
   .md\:block {
