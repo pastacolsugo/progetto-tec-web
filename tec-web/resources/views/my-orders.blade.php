@@ -39,7 +39,7 @@
                                     <tr class="grid grid-cols-[3fr_1fr_1fr_1fr_1fr] grid-rows-2 md:table-row text-sm md:text-base">
                                         <td class="m-4 md:m-0 md:px-6 md:py-4 row-start-1 row-span-2 block md:table-cell" headers="product_image{{ $order->id }}">
                                             <div class="h-20 w-20 flex flex-col justify-center">
-                                                <img class="max-h-20 max-w-[5rem] object-contain" src="{{ route('product-image', [$order_item->product_id]) }}" alt="">
+                                                <img class="max-h-20 max-w-[5rem] object-contain rounded" src="{{ route('product-image', [$order_item->product_id]) }}" alt="">
                                             </div>
                                         </td>
                                         <td class="mx-2 md:mx-0 md:px-6 py-4 whitespace-nowrap col-start-2 col-end-[-1] block md:table-cell" headers="product_name{{ $order->id }}">
