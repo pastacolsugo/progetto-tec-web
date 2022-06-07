@@ -16,11 +16,12 @@ class NewOrderShipped extends Notification
      *
      * @return void
      */
-    public function __construct($order_item, $product, $order)
+    public function __construct($order_item, $product, $order, $user)
     {
         $this->order_item = $order_item;
         $this->product = $product;
         $this->order = $order;
+        $this->user = $user;
     }
 
     /**
@@ -31,7 +32,7 @@ class NewOrderShipped extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['mail','database'];
     }
 
     /**
@@ -42,10 +43,13 @@ class NewOrderShipped extends Notification
      */
     public function toMail($notifiable)
     {
+        $url = url('/order/my-orders'); 
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject('Il tuo ordine è stato spedito')
+                    ->greeting('Ciao '.$this->user->name.',')
+                    ->line('Il tuo ordine di '.$this->product->name.' è stato spedito.')
+                    ->action('Visualizza la sezione ordini', $url)
+                    ->line('Ci auguriamo di rivederti presto.');
     }
 
     /**

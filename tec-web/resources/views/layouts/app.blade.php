@@ -31,7 +31,7 @@
                 </header>
             @else
                 <header class="bg-gray-700 w-full p-1 text-gray-200 text-center">
-                    <p>✨ <b>Localhost</b>, il progetto eCommerce da 30 e lode! ✨</p>
+                    <p>✨ <strong>Localhost</strong>, il progetto eCommerce da 30 e lode! ✨</p>
                 </header>
             @endif
 

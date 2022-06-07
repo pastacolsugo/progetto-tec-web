@@ -96,14 +96,14 @@ class OrderController extends Controller
             $product = Product::find($item->product_id);
             if($this->checkSoldOut($product, $item->quantity))
             {
-                return redirect()->route('cart')->with('Message', 'Only '.$product->stock.' '.$product->name.' left in stock');
+                return redirect()->route('cart')->with('Message', $product->name.' solo '.$product->stock.' rimasti');
             }
         }
 
         $newOrder = new Order;
         $newOrder->order_date = new DateTime();
         $newOrder->order_total = 0;
-        $newOrder->order_status = "Pending";
+        $newOrder->order_status = "Ordinato";
         $newOrder->user_id = $user_id;
         $newOrder->ship_address = $request->get('address');
         $newOrder->save();
@@ -117,7 +117,7 @@ class OrderController extends Controller
             $newOrderItem->order_id = $newOrder->id;
             $newOrderItem->quantity = $cart_item->quantity;
             $newOrderItem->unit_price_paid = $product->price;
-            $newOrderItem->status = "Ordered";
+            $newOrderItem->status = "Ordinato";
 
             $product->stock -= $newOrderItem->quantity;
             $product->save();
@@ -163,7 +163,7 @@ class OrderController extends Controller
     public function confirmOrderItem(Request $request)
     {
         $order_item = OrderItem::find($request->get('order_item_id'));
-        $order_item->status = "Confirmed";
+        $order_item->status = "Confermato";
         $order_item->save();
 
         $this->confirmOrder(Order::find($order_item->order_id));
@@ -177,14 +177,14 @@ class OrderController extends Controller
         $count = 0;
         foreach($order_items as $item)
         {
-            if($item->status == "Confirmed" || $item->status == "Shipped" || $item->status == "Delivered")
+            if($item->status == "Confermato" || $item->status == "Spedito" || $item->status == "Consegnato")
             {
                 $count++;
             }
         }
         if($count == $order_items->count())
         {
-            $order->order_status = "Confirmed";
+            $order->order_status = "Confermato";
             $order->save();
         }
 
@@ -196,7 +196,7 @@ class OrderController extends Controller
         $order_item = OrderItem::find($request->get('order_item_id'));
         $order = Order::find($order_item->order_id);
         $product = Product::find($order_item->product_id);
-        $order_item->status = "Shipped";
+        $order_item->status = "Spedito";
         $order_item->save();
 
         event(new OrderShipped($order_item, $order, $product));
@@ -211,14 +211,14 @@ class OrderController extends Controller
         $count = 0;
         foreach($order_items as $item)
         {
-            if($item->status == "Shipped" || $item->status == "Delivered")
+            if($item->status == "Spedito" || $item->status == "Consegnato")
             {
                 $count++;
             }
         }
         if($count == $order_items->count())
         {
-            $order->order_status = "Shipped";
+            $order->order_status = "Spedito";
             $order->shipped_date = new DateTime();
             $order->save();
         }
@@ -229,7 +229,7 @@ class OrderController extends Controller
     public function deliverOrderItem(Request $request)
     {
         $order_item = OrderItem::find($request->get('order_item_id'));
-        $order_item->status = "Delivered";
+        $order_item->status = "Consegnato";
         $order_item->save();
 
         $this->deliverOrder(Order::find($order_item->order_id));
@@ -243,14 +243,14 @@ class OrderController extends Controller
         $count = 0;
         foreach($order_items as $item)
         {
-            if($item->status == "Delivered")
+            if($item->status == "Consegnato")
             {
                 $count++;
             }
         }
         if($count == $order_items->count())
         {
-            $order->order_status = "Delivered";
+            $order->order_status = "Consegnato";
             $order->save();
         }
 
