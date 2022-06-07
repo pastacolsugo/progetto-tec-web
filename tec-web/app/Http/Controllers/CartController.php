@@ -46,6 +46,7 @@ class CartController extends Controller
         $user_id = Auth::id();
         $cart_id = $this->getCartId($user_id);
         $cart_items = $this->getCartItems($cart_id);
+        $total = 0.0;
         foreach ($cart_items as $item) {
             $image_url = $this->getProductImageUrl($item->product_id);
             $price = $this->getProductPrice($item->product_id);
@@ -53,8 +54,9 @@ class CartController extends Controller
             $item['image'] = $image_url;
             $item['price'] = $price;
             $item['name'] = $name;
+            $total += $item->price * $item->quantity;
         }
-        return view('cart', ['cart_items' => $cart_items]);
+        return view('cart', ['cart_items' => $cart_items, 'cart_total' => $total]);
     }
 
     public function addProductToCart(Request $request)
