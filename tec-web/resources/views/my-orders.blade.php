@@ -28,7 +28,6 @@
                                         <th scope="col" id="unit_price" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Unit Price</th>
                                         <th scope="col" id="product_quantity" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantity</th>
                                         <th scope="col" id="product_total" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product Total</th>
-                                        <th scope="col" id="order_date" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order Date</th>
                                         <th scope="col" id="status" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                                     </tr>
                                 </thead>
