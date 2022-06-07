@@ -1489,6 +1489,9 @@ select {
 .pb-4 {
   padding-bottom: 1rem;
 }
+.pb-2 {
+  padding-bottom: 0.5rem;
+}
 .text-left {
   text-align: left;
 }
@@ -2269,6 +2272,10 @@ select {
 
   .md\:py-4 {
     padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .md\:pb-4 {
     padding-bottom: 1rem;
   }
 

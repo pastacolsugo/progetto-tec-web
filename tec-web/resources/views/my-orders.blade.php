@@ -37,26 +37,26 @@
                                         @continue
                                     @endif
                                     <tr class="grid grid-cols-[3fr_1fr_1fr_1fr_1fr] grid-rows-2 md:table-row text-sm md:text-base">
-                                        <td class="m-4 md:m-0 md:px-6 md:py-4 row-start-1 row-span-2 block md:table-cell" headers="product_image{{ $order->id }}">
+                                        <td class="m-4 md:m-0 md:px-6 md:py-4 row-start-1 row-span-2 block md:table-cell" headers="product_image">
                                             <div class="h-20 w-20 flex flex-col justify-center">
                                                 <img class="max-h-20 max-w-[5rem] object-contain rounded" src="{{ route('product-image', [$order_item->product_id]) }}" alt="">
                                             </div>
                                         </td>
-                                        <td class="mx-2 md:mx-0 md:px-6 py-4 whitespace-nowrap col-start-2 col-end-[-1] block md:table-cell" headers="product_name{{ $order->id }}">
+                                        <td class="mx-2 mt-4 mb-2 md:m-0 md:px-6 md:py-4 whitespace-nowrap col-start-2 col-end-[-1] block md:table-cell" headers="product_name">
                                             <div class="text-gray-900">{{ $order_item->name }}</div>
                                         </td>
-                                        <td class="mx-2 md:mx-0 md:px-6 py-4 whitespace-nowrap block md:table-cell" headers="unit_price">
+                                        <td class="mx-2 mt-2 mb-4 md:mx-0 md:px-6 md:py-4 whitespace-nowrap block md:table-cell" headers="unit_price">
                                             <div class="font-medium text-gray-500">{{ sprintf("%.2f", $order_item->price) }} €</div>
 
                                         </td>
-                                        <td class="mx-2 md:mx-0 md:px-6 md:px-6 py-4 whitespace-nowrap block md:table-cell" headers="product_quantity{{ $order->id }}">
+                                        <td class="mx-2 mt-2 mb-4 md:mx-0 md:px-6 md:px-6 md:py-4 whitespace-nowrap block md:table-cell" headers="product_quantity">
                                             <div class="font-medium text-gray-500">{{ $order_item->quantity }}x</div>
                                         </td>
-                                        <td class="mx-2 md:mx-0 md:px-6 py-4 whitespace-nowrap block md:table-cell" headers="product_total">
+                                        <td class="mx-2 mt-2 mb-4 md:mx-0 md:px-6 md:py-4 whitespace-nowrap block md:table-cell" headers="product_total">
                                             <div class="font-medium text-gray-500">{{ sprintf("%.2f", $order_item->price * $order_item->quantity) }} €</div>
                                         </td>
 
-                                        <td class="mx-2 md:mx-0 md:px-6 py-4 whitespace-nowrap block md:table-cell" headers="status{{ $order->id }}">
+                                        <td class="mx-2 mt-2 mb-4 md:mx-0 md:px-6 md:py-4 whitespace-nowrap block md:table-cell" headers="status">
                                             <div class="font-medium text-gray-500">{{ $order_item->status }}</div>
                                         </td>
                                     </tr>
