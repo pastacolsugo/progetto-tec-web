@@ -85,7 +85,7 @@
                                                 </form>
                                             </div>
                                         </div>
-                                        <span class="text-gray-600 text-right">{{ sprintf("%.2f €", $cart_item->price) }}</span>
+                                        <span class="text-gray-600 text-right">{{ sprintf("%.2f €", $cart_item->price * $cart_item->quantity) }}</span>
                                     @endforeach
                                 </div>
                             </div>
