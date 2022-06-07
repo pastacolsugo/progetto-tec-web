@@ -96,7 +96,7 @@ class OrderController extends Controller
             $product = Product::find($item->product_id);
             if($this->checkSoldOut($product, $item->quantity))
             {
-                return redirect()->route('cart')->with('Message', $product->name.' solo '.$product->stock .' rimasti');
+                return redirect()->route('cart')->with('Message', $product->name.' solo '.$product->stock.' rimasti');
             }
         }
 
@@ -168,7 +168,7 @@ class OrderController extends Controller
 
         $this->confirmOrder(Order::find($order_item->order_id));
 
-        return redirect()->route('ordersSellerListing');
+        return redirect()->route('seller-orders-listing');
     }
 
     private function confirmOrder(Order $order)
@@ -202,7 +202,7 @@ class OrderController extends Controller
         event(new OrderShipped($order_item, $order, $product));
         $this->shipOrder(Order::find($order_item->order_id));
 
-        return redirect()->route('ordersSellerListing');
+        return redirect()->route('seller-orders-listing');
     }
 
     private function shipOrder(Order $order)
@@ -234,7 +234,7 @@ class OrderController extends Controller
 
         $this->deliverOrder(Order::find($order_item->order_id));
 
-        return redirect()->route('ordersSellerListing');
+        return redirect()->route('seller-orders-listing');
     }
 
     private function deliverOrder(Order $order)

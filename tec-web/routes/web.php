@@ -79,12 +79,12 @@ Route::get('/product/create', [ProductController::class, 'createProductPage'])->
 
 Route::post('/product/create', [ProductController::class, 'createProductRequest'])->middleware('auth')->name('api-create-product');
 
-Route::get('/ordersSellerListing', [OrderController::class, 'showOrderSellerListing'])->middleware('auth')->name('ordersSellerListing');
+Route::get('/seller/orders-listing', [OrderController::class, 'showOrderSellerListing'])->middleware('auth')->name('seller-orders-listing');
 
-Route::get('/confirmOrderItem', [OrderController::class, 'confirmOrderItem'])->middleware('auth')->name('confirmOrderItem');
+Route::get('/seller/confirm-order-item', [OrderController::class, 'confirmOrderItem'])->middleware('auth')->name('seller-confirm-order-item');
 
-Route::get('/shipOrderItem', [OrderController::class, 'shipOrderItem'])->middleware('auth')->name('shipOrderItem');
+Route::get('/seller/ship-order-item', [OrderController::class, 'shipOrderItem'])->middleware('auth')->name('seller-ship-order-item');
 
-Route::get('/deliverOrderItem', [OrderController::class, 'deliverOrderItem'])->middleware('auth')->name('deliverOrderItem');
+Route::get('/seller/deliver-order-item', [OrderController::class, 'deliverOrderItem'])->middleware('auth')->name('seller-deliver-order-item');
 
 require __DIR__.'/auth.php';
