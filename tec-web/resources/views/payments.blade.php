@@ -8,7 +8,7 @@
         <div class="flex flex-col items-center justify-center max-w-7xl mx-auto">
             <div class="py-0 align-middle inline-block min-w-full lg:py-2 sm:px-0 lg:px-8">
                 <div class="shadow bg-white overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                    <div class="flex flex-col lg:flex-row p-8 mt-8">
+                    <div class="flex flex-col lg:flex-row p-4 mt-8">
                         <div class="w-full lg:w-1/2 order-2">
                             <div class="flex items-center">
                                 <a class="button flex text-sm text-blue-500 focus:outline-none disabled"><span class="flex items-center justify-center text-white bg-blue-500 rounded-full h-5 w-5 mr-2">1</span>Spedizione</a>
