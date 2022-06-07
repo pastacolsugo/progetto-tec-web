@@ -14,10 +14,10 @@
                     </div>
                 @else
                     @foreach ($orders as $order)
-                        <div class="mt-8 bg-amber-100 shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                            <div class="flex justify-between text-gray-500">
+                        <div class="mt-8 bg-amber-200 shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                            <div class="flex justify-between text-lg text-gray-700">
                                 <div class="mx-8 my-4">Ordine: {{ sprintf("#%05d", $order->id) }}</div>
-                                <div class="mx-8 my-4 text-lg">{{ $order->order_date }}</div>
+                                <div class="mx-8 my-4">{{ $order->order_date }}</div>
                                 <div class="mx-8 my-4">Totale: {{ sprintf("%.2f", $order->order_total) }} €</div>
                             </div>
                             <table class="border-t min-w-full divide-y divide-gray-200">
