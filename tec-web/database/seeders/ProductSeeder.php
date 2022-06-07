@@ -72,7 +72,7 @@ class ProductSeeder extends Seeder
             [
                 'name'=>'Trenta e Lode',
                 'model'=>null,
-                'price'=>'55000',
+                'price'=>'1000',
                 'description'=>$product_descriptions['trenta_e_lode'],
                 'stock'=>'999',
                 'category_id'=>'3',
