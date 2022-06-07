@@ -7,7 +7,7 @@
     <div class="my-0 md:mx-0 xl:mx-8">
         <div class="py-0 align-middle inline-block min-w-full lg:py-2 sm:px-0 lg:px-8">
             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg bg-white">
-                <div class="flex flex-col lg:flex-row p-8 mt-8">
+                <div class="flex flex-col lg:flex-row p-4 mt-8">
                     <div class="w-full lg:w-1/2 order-2">
                         <div class="flex items-center">
                             <a href="{{ route('new-order') }}" class="button flex text-sm text-gray-700 focus:outline-none"><span class="flex items-center justify-center border-2 border-blue-500 rounded-full h-5 w-5 mr-2">1</span>Spedizione</a>
