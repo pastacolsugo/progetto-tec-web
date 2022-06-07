@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
                 'name'=>'Peter Parker',
                 'email'=>'peter@parker.com',
                 'password'=>Hash::make('12345'),
-                'isSeller'=>FALSE
+                'isSeller'=>TRUE
             ],
             [
                 'name'=>'Bruce Banner',
@@ -44,11 +44,23 @@ class UserSeeder extends Seeder
                 'name'=>'Natasha Romanoff',
                 'email'=>'natasha@romanoff.com',
                 'password'=>Hash::make('12345'),
-                'isSeller'=>FALSE
+                'isSeller'=>TRUE
             ],
             [
                 'name'=>'Filippo Benvenuti',
                 'email'=>'filippo@example.com',
+                'password'=>Hash::make('12345'),
+                'isSeller'=>FALSE
+            ],
+            [
+                'name'=>'Ugo Baroncini',
+                'email'=>'ugo.baroncini@studio.unibo.it',
+                'password'=>Hash::make('12345'),
+                'isSeller'=>FALSE
+            ],
+            [
+                'name'=>'Alice Girolomini',
+                'email'=>'alice.girolomini@studio.unibo.it',
                 'password'=>Hash::make('12345'),
                 'isSeller'=>FALSE
             ]

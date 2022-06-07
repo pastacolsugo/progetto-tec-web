@@ -14,11 +14,11 @@
                     </div>
                 @else
                     @foreach ($orders as $order)
-                        <div class="mt-8 bg-neutral-500 shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                            <div class="flex justify-between">
-                                <div class="mx-8 my-4 text-gray-600">Ordine: {{ sprintf("#%05d", $order->id) }}</div>
-                                <div class="mx-8 my-4 text-lg text-gray-50">{{ $order->order_date }}</div>
-                                <div class="mx-8 my-4 text-gray-600">Totale: {{ sprintf("%.2f", $order->order_total) }} €</div>
+                        <div class="mt-8 bg-amber-100 shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                            <div class="flex justify-between text-gray-500">
+                                <div class="mx-8 my-4">Ordine: {{ sprintf("#%05d", $order->id) }}</div>
+                                <div class="mx-8 my-4 text-lg">{{ $order->order_date }}</div>
+                                <div class="mx-8 my-4">Totale: {{ sprintf("%.2f", $order->order_total) }} €</div>
                             </div>
                             <table class="border-t min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">
@@ -28,7 +28,6 @@
                                         <th scope="col" id="unit_price{{ $order->id }}" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Prezzo Unitario</th>
                                         <th scope="col" id="product_quantity{{ $order->id }}" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantità</th>
                                         <th scope="col" id="product_total{{ $order->id }}" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Totale Prodotto</th>
-                                        <th scope="col" id="order_date{{ $order->id }}" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data Ordine</th>
                                         <th scope="col" id="status{{ $order->id }}" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                                     </tr>
                                 </thead>
@@ -48,7 +47,7 @@
 
                                         <td class="px-6 py-4 whitespace-nowrap" headers="unit_price">
                                             <div class="text-base font-medium text-gray-500">{{ sprintf("%.2f", $order_item->price) }} €</div>
-                                            
+
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap" headers="product_quantity{{ $order->id }}">
                                             <div class="text-base font-medium text-gray-500">{{ $order_item->quantity }}x</div>
@@ -57,7 +56,7 @@
                                         <td class="px-6 py-4 whitespace-nowrap" headers="product_total">
                                             <div class="text-base font-medium text-gray-500">{{ sprintf("%.2f", $order_item->price * $order_item->quantity) }} €</div>
                                         </td>
-                                        
+
                                         <td class="px-6 py-4 whitespace-nowrap" headers="status{{ $order->id }}">
                                             <div class="text-base font-medium text-gray-500">{{ $order_item->status }}</div>
                                         </td>

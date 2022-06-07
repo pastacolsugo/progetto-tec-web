@@ -27,7 +27,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap hidden md:table-cell" headers="product_image">
                                     <div class="flex-shrink-0 h-20 w-20">
                                         <a href="{{ route('product', ['id' => $order_item->product_id ]) }}">
-                                            <img class="h-20 w-20 object-cover rounded" src="{{ route('product-image', $order_item->product_id) }}" alt="{{ $order_item->name }}">
+                                            <img class="max-h-20 max-w-[5rem] object-contain" src="{{ route('product-image', $order_item->product_id) }}" alt="{{ $order_item->name }}">
                                         </a>
                                     </div>
                                 </td>
