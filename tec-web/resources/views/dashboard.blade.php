@@ -14,6 +14,7 @@
                       {{-- <a href="{{ route('sellerListing') }}" class="py-2 px-4 bg-white border border-gray-200 text-gray-600 rounded hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50 inline-flex justify-center items-center">Listino</a> --}}
                       <x-dashboard-button href="{{ route('sellerListing') }}">I miei annunci</x-dashboard-button>
                       <x-dashboard-button href="{{ route('createProduct') }}">Crea nuovo annuncio</x-dashboard-button>
+                      <x-dashboard-button href="{{ route('seller-orders-listing') }}">Ordini clienti</x-dashboard-button>
                     @endif
 
                     {{-- TODO: Add links and replace placeholder buttons --}}
