@@ -220,7 +220,7 @@ class ProductSeeder extends Seeder
                 'gallery'=>'/images/borsone_north_face.webp',
             ],
             [
-                'name'=>'Arteza Tappetino da Taglio Autorigenerante',
+                'name'=>'Arteza Tappetino da Taglio',
                 'model'=>'61 x 91 cm, spessore 3mm',
                 'price'=>'33.99',
                 'description'=>$product_descriptions['tappetino_da_taglio'],
@@ -240,7 +240,7 @@ class ProductSeeder extends Seeder
                 'gallery'=>'/images/lampada_scrivania_eyocean.webp',
             ],
             [
-                'name'=>'Tastiera Pieghevole Wireless Universale',
+                'name'=>'Tastiera Pieghevole Wireless',
                 'model'=>null,
                 'price'=>'32.99',
                 'description'=>$product_descriptions['tastiera_pieghevole_wireless'],
