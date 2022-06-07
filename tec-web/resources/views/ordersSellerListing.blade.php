@@ -48,11 +48,11 @@
                                     <x-select id="change_status{{ $order_item->id }}" onchange="location = this.value;">
                                         <option>{{ $order_item->status }}</option>
                                         @if($order_item->status != "Confermato" && $order_item->status != "Spedito" && $order_item->status != "Consegnato")
-                                        <option value="{{ route('confirmOrderItem', ['order_item_id' => $order_item->id]) }}">Confermato</option>
+                                            <option value="{{ route('seller-confirm-order-item', ['order_item_id' => $order_item->id]) }}">Confermato</option>
                                         @elseif($order_item->status != "Spedito" && $order_item->status != "Consegnato")
-                                        <option value="{{ route('shipOrderItem', ['order_item_id' => $order_item->id]) }}">Spedito</option>
+                                            <option value="{{ route('seller-ship-order-item', ['order_item_id' => $order_item->id]) }}">Spedito</option>
                                         @elseif($order_item->status != "Consegnato")
-                                        <option value="{{ route('deliverOrderItem', ['order_item_id' => $order_item->id]) }}">Consegnato</option>
+                                            <option value="{{ route('seller-deliver-order-item', ['order_item_id' => $order_item->id]) }}">Consegnato</option>
                                         @endif
                                     </x-select>
                                 </td>
