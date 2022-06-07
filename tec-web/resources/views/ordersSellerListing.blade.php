@@ -27,7 +27,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap hidden md:table-cell" headers="product_image">
                                     <div class="flex-shrink-0 h-20 w-20">
                                         <a href="{{ route('product', ['id' => $order_item->product_id ]) }}">
-                                            <img class="h-20 w-20 object-cover rounded" src="{{ route('product-image', $order_item->product_id) }}" alt="{{ $order_item->name }}">
+                                            <img class="max-h-20 max-w-[5rem] object-contain" src="{{ route('product-image', $order_item->product_id) }}" alt="{{ $order_item->name }}">
                                         </a>
                                     </div>
                                 </td>
@@ -47,13 +47,13 @@
                                     <x-select onchange="location = this.value;">
                                         <option>{{ $order_item->status }}</option>
                                         @if($order_item->status != "Confirmed" && $order_item->status != "Shipped" && $order_item->status != "Delivered")
-                                        <option value="{{ route('confirmOrderItem', ['order_item_id' => $order_item->id]) }}">Confirmed</option>
+                                        <option value="{{ route('seller-confirm-order-item', ['order_item_id' => $order_item->id]) }}">Confirmed</option>
                                         @endif
                                         @if($order_item->status != "Shipped" && $order_item->status != "Delivered")
-                                        <option value="{{ route('shipOrderItem', ['order_item_id' => $order_item->id]) }}">Shipped</option>
+                                        <option value="{{ route('seller-ship-order-item', ['order_item_id' => $order_item->id]) }}">Shipped</option>
                                         @endif
                                         @if($order_item->status != "Delivered")
-                                        <option value="{{ route('deliverOrderItem', ['order_item_id' => $order_item->id]) }}">Delivered</option>
+                                        <option value="{{ route('seller-deliver-order-item', ['order_item_id' => $order_item->id]) }}">Delivered</option>
                                         @endif
                                     </x-select>
                                 </td>
