@@ -6,7 +6,7 @@
     </x-slot>
     <div class="flex flex-col max-w-7xl mx-auto">
         <div class="py-0 align-middle inline-block min-w-full lg:py-2 sm:px-0 lg:px-8">
-            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg bg-white">
+            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg bg-white pb-4">
                 <div class="flex flex-col lg:flex-row px-4 md:p-4 md:mt-8">
                     <div class="w-full lg:w-1/2 order-2">
                         <div class="flex items-center">
