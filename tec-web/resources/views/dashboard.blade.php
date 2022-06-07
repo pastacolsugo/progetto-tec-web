@@ -17,7 +17,14 @@
                     @endif
 
                     {{-- TODO: Add links and replace placeholder buttons --}}
-                    <x-dashboard-button href="{{ route('notifications') }}">Notifiche</x-dashboard-button>
+                    <x-dashboard-button href="{{ route('notifications') }}">
+                        <span class="mr-2 items-center justify-center">Notifiche</span>
+                    @if(auth()->user()->unreadNotifications)
+                        @if(auth()->user()->unreadNotifications->count() > 0)
+                        <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">{{ auth()->user()->unreadNotifications->count() }}</span>
+                        @endif
+                    @endif
+                    </x-dashboard-button>
                     <x-dashboard-button href="{{ route('cart') }}">Carrello</x-dashboard-button>
                     <x-dashboard-button href="{{ route('my-orders') }}">Ordini</x-dashboard-button>
                     <x-dashboard-button href="{{ route('profile-edit') }}">I miei dati</x-dashboard-button>
