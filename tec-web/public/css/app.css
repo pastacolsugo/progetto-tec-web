@@ -694,6 +694,12 @@ select {
 .col-start-6 {
   grid-column-start: 6;
 }
+.col-start-1 {
+  grid-column-start: 1;
+}
+.col-start-3 {
+  grid-column-start: 3;
+}
 .col-end-3 {
   grid-column-end: 3;
 }
@@ -711,6 +717,9 @@ select {
 }
 .row-start-1 {
   grid-row-start: 1;
+}
+.row-start-3 {
+  grid-row-start: 3;
 }
 .m-6 {
   margin: 1.5rem;
@@ -766,6 +775,14 @@ select {
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
+}
+.mx-6 {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 .ml-3 {
   margin-left: 0.75rem;
@@ -1019,6 +1036,9 @@ select {
 .list-disc {
   list-style-type: disc;
 }
+.auto-rows-auto {
+  grid-auto-rows: auto;
+}
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -1052,8 +1072,41 @@ select {
 .grid-cols-\[2fr_3fr_2fr\] {
   grid-template-columns: 2fr 3fr 2fr;
 }
+.grid-cols-\[2fr_1fr_1fr_1fr_1fr\] {
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+}
+.grid-cols-\[2fr_1fr_1fr\] {
+  grid-template-columns: 2fr 1fr 1fr;
+}
+.grid-cols-\[2fr_2fr_1fr\] {
+  grid-template-columns: 2fr 2fr 1fr;
+}
 .grid-rows-2 {
   grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+.grid-rows-\[3fr_1fr\] {
+  grid-template-rows: 3fr 1fr;
+}
+.grid-rows-\[2fr_1fr_1fr\] {
+  grid-template-rows: 2fr 1fr 1fr;
+}
+.grid-rows-3 {
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+}
+.grid-rows-\[4fr_2fr_1fr\] {
+  grid-template-rows: 4fr 2fr 1fr;
+}
+.grid-rows-\[2fr_2fr_1fr\] {
+  grid-template-rows: 2fr 2fr 1fr;
+}
+.grid-rows-\[6fr_6fr_1fr\] {
+  grid-template-rows: 6fr 6fr 1fr;
+}
+.grid-rows-\[3fr_2fr_1fr\] {
+  grid-template-rows: 3fr 2fr 1fr;
+}
+.grid-rows-\[3fr_1fr_1fr\] {
+  grid-template-rows: 3fr 1fr 1fr;
 }
 .flex-row {
   flex-direction: row;
@@ -2229,6 +2282,10 @@ select {
     width: 50%;
   }
 
+  .md\:w-full {
+    width: 100%;
+  }
+
   .md\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
@@ -2313,6 +2370,10 @@ select {
 
   .md\:pb-4 {
     padding-bottom: 1rem;
+  }
+
+  .md\:pt-0 {
+    padding-top: 0px;
   }
 
   .md\:text-lg {
