@@ -35,7 +35,7 @@
                                     <div class="text-base text-gray-900">{{ $order_item->name }}</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap" headers="order_number">
-                                    <div class="text-base text-gray-900">#O-000{{ $order_item->order_id }}</div>
+                                    <div class="text-base text-gray-900">{{ sprintf("#%05d", $order_item->order_id) }}</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap" headers="order_total">
                                     <div class="text-base font-medium text-gray-500">{{ $order_item->price }}€</div>
