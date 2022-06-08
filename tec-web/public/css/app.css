@@ -2306,6 +2306,11 @@ select {
     padding-bottom: 1rem;
   }
 
+  .md\:py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
   .md\:pb-4 {
     padding-bottom: 1rem;
   }
