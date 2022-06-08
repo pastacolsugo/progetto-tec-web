@@ -4,8 +4,8 @@
             {{ __('Modifica profilo') }}
         </h2>
     </x-slot>
-    <div class="max-w-7xl mx-auto bg-white py-8 my-4 border border-gray-200">
-        <div class="my-0 overflow-x-auto md:mx-0 xl:mx-8">
+    <div class="max-w-7xl mx-auto bg-white rounded pb-8 my-4 border border-gray-200">
+        <div class="my-0 mx-4 overflow-x-auto md:mx-0 xl:mx-8">
             <form action="{{ route('profile-edit-post') }}" enctype="multipart/form-data" method="POST">
                 @csrf
                 <div class="mt-8 grid lg:grid-cols-2 gap-8 gap-x-16">
