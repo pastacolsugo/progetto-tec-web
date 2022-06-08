@@ -1,6 +1,6 @@
 <x-app-layout>
 <div class="max-w-7xl mx-auto bg-white py-8 my-4 border border-gray-200">
-<div class="my-0 overflow-x-auto md:mx-0 xl:mx-8">
+<div class="mx-4 my-0 overflow-x-auto md:mx-0 xl:mx-8">
     <div class="flex justify-between">
         <h1 class="font-medium text-3xl">Modifica prodotto</h1>
 
@@ -16,7 +16,7 @@
         <div class="mt-8 grid lg:grid-cols-2 gap-8 gap-x-16">
             <div>
                 <label class="text-sm text-gray-700 block mb-1 font-medium">Immagine</label>
-                <img class="h-80" src="{{ route('product-image', ['product_id' => $product->id]) }}" alt=""/>
+                <img class="h-80 object-contain" src="{{ route('product-image', ['product_id' => $product->id]) }}" alt=""/>
             </div>
 
             <div>
