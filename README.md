@@ -2,11 +2,6 @@
 
 ## Tools
 
-- Balsamiq per la UX
-	- `TecnologieWeb2021|hp4heJxzCncxiQ+pCUlNzsvPyU/PTFUIT01SMDIwMqwxNDMxNTI0MTEAAQAHhwt0`
-	- (https://balsamiq.com/wireframes/desktop/)
-
-
 ## UX
 
 Pagine:
